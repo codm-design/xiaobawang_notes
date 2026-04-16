@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richie's English Study Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--purple:#7C3AED;--purple-dark:#5B21B6;--purple-bg:#F5F3FF;--purple-bg2:#EDE9FE;--dark:#1F2937;--gray:#6B7280;--gray-light:#9CA3AF;--green:#059669;--red:#DC2626;--white:#FFF;--bg:#FAFAFA;--card-shadow:0 1px 3px rgba(0,0,0,.06);--card-hover:0 10px 25px rgba(124,58,237,.12)}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--dark);line-height:1.6}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--purple-dark),var(--purple),#8B5CF6);color:#fff;padding:50px 20px 40px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.05),transparent 60%);animation:pulse 8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.1);opacity:1}}
+  .hero h1{font-size:2.6rem;font-weight:900;letter-spacing:-1px;position:relative;z-index:1}
+  .hero .sub{font-size:.95rem;opacity:.8;margin-top:10px;font-weight:300;position:relative;z-index:1}
+  .hero .stats{display:flex;justify-content:center;gap:36px;margin-top:24px;position:relative;z-index:1;flex-wrap:wrap}
+  .hero .stat{text-align:center}.hero .stat .n{font-size:1.8rem;font-weight:800}.hero .stat .l{font-size:.7rem;opacity:.7;text-transform:uppercase;letter-spacing:1px}
+
+  /* BIG TABS */
+  .big-tabs{display:flex;justify-content:center;gap:0;background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-index:200}
+  .big-tab{flex:1;max-width:400px;padding:16px 10px;text-align:center;font-size:1rem;font-weight:700;color:var(--gray);cursor:pointer;border-bottom:4px solid transparent;transition:all .2s;user-select:none}
+  .big-tab:hover{color:var(--purple);background:var(--purple-bg)}
+  .big-tab.active{color:var(--purple);border-bottom-color:var(--purple);background:var(--purple-bg)}
+  .big-tab .icon{font-size:1.3rem;display:block;margin-bottom:4px}
+  .big-tab .count{font-size:.7rem;color:var(--gray-light);font-weight:500}
+
+  /* SUB TABS */
+  .sub-tabs{display:flex;max-width:1200px;margin:0 auto;overflow-x:auto;scrollbar-width:none;padding:0 20px;background:#fff;border-bottom:1px solid #F3F4F6}
+  .sub-tabs::-webkit-scrollbar{display:none}
+  .sub-tab{padding:10px 16px;font-size:.8rem;font-weight:600;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
+  .sub-tab:hover{color:var(--purple)}.sub-tab.active{color:var(--purple);border-bottom-color:var(--purple)}
+  .sub-tab .badge{display:inline-block;background:var(--purple-bg2);color:var(--purple);font-size:.65rem;padding:1px 5px;border-radius:8px;margin-left:3px;font-weight:700}
+  .sub-tab.active .badge{background:var(--purple);color:#fff}
+
+  /* SEARCH */
+  .search-bar{max-width:1200px;margin:16px auto;padding:0 20px}
+  .search-bar input{width:100%;padding:12px 18px 12px 44px;border:2px solid #E5E7EB;border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;transition:border-color .2s;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") 14px center no-repeat}
+  .search-bar input:focus{border-color:var(--purple)}
+  .search-count{text-align:right;font-size:.75rem;color:var(--gray-light);margin-top:4px}
+
+  .content{max-width:1200px;margin:0 auto;padding:10px 20px 60px}
+  .big-section{display:none}.big-section.active{display:block}
+  .sub-section{display:none}.sub-section.active{display:block}
+  .section-header{display:flex;align-items:center;gap:10px;margin:24px 0 16px}
+  .section-header h2{font-size:1.2rem;font-weight:800}
+
+  /* VOCAB CARDS */
+  .vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+  .vocab-card{background:#fff;border-radius:14px;padding:16px 20px;box-shadow:var(--card-shadow);border-left:4px solid var(--purple);transition:all .2s}
+  .vocab-card:hover{box-shadow:var(--card-hover);transform:translateY(-2px)}
+  .vocab-card .card-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .vocab-card .en{font-size:1.15rem;font-weight:800}
+  .vocab-card .dict-link{font-size:.7rem;color:var(--purple);text-decoration:none;padding:2px 7px;border:1px solid var(--purple-bg2);border-radius:5px;white-space:nowrap;transition:all .2s}
+  .vocab-card .dict-link:hover{background:var(--purple);color:#fff}
+
+  /* PRONUNCIATION BUTTONS */
+  .pron-row{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
+  .pron-btn{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;padding:2px 8px;border-radius:5px;border:1px solid #E5E7EB;cursor:pointer;transition:all .15s;background:#FAFAFA;color:var(--gray);user-select:none}
+  .pron-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-bg)}
+  .pron-btn:active{transform:scale(.95)}
+  .pron-btn .speaker{font-size:.85rem}
+  .pron-btn.uk{border-color:#3B82F6;color:#1D4ED8;background:#EFF6FF}
+  .pron-btn.uk:hover{background:#DBEAFE}
+  .pron-btn.us{border-color:#F59E0B;color:#B45309;background:#FFFBEB}
+  .pron-btn.us:hover{background:#FEF3C7}
+  .phonetic-text{font-size:.75rem;color:var(--gray);font-style:italic}
+
+  .vocab-card .defs{margin-top:6px}
+  .vocab-card .def-line{font-size:.8rem;color:var(--dark);line-height:1.5;padding:1px 0}
+  .vocab-card .def-line .pos{font-weight:700;color:var(--purple);margin-right:3px}
+  .vocab-card .exam-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
+  .exam-tag{font-size:.6rem;padding:1px 6px;border-radius:3px;font-weight:700;border:1px solid}
+  .exam-tag.gaokao{background:#FEF3C7;color:#92400E;border-color:#FDE68A}
+  .exam-tag.cet4{background:#DBEAFE;color:#1D4ED8;border-color:#BFDBFE}
+  .exam-tag.cet6{background:#E0E7FF;color:#3730A3;border-color:#C7D2FE}
+  .exam-tag.kaoyan{background:#EDE9FE;color:#5B21B6;border-color:#DDD6FE}
+  .exam-tag.ielts{background:#D1FAE5;color:#065F46;border-color:#A7F3D0}
+  .exam-tag.toefl{background:#CFFAFE;color:#155E75;border-color:#A5F3FC}
+
+  .vocab-card .forms{margin-top:8px;padding-top:8px;border-top:1px dashed #E5E7EB;display:flex;flex-wrap:wrap;gap:4px}
+  .form-item{font-size:.67rem;padding:2px 6px;border-radius:4px;border:1px solid #E5E7EB;background:#F9FAFB}
+  .form-item .fl{font-weight:700;margin-right:2px}
+  .form-item.past{border-color:#FBBF24;background:#FFFBEB}.form-item.past .fl{color:#B45309}
+  .form-item.future{border-color:#60A5FA;background:#EFF6FF}.form-item.future .fl{color:#1D4ED8}
+  .form-item.plural{border-color:#34D399;background:#ECFDF5}.form-item.plural .fl{color:#065F46}
+  .form-item.pp{border-color:#C084FC;background:#FAF5FF}.form-item.pp .fl{color:#7C3AED}
+  .form-item.ing{border-color:#FB923C;background:#FFF7ED}.form-item.ing .fl{color:#C2410C}
+  .vocab-card .note{font-size:.68rem;color:var(--gray-light);margin-top:4px}
+
+  /* GRAMMAR */
+  .grammar-card{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--card-shadow);margin-bottom:14px;border-top:4px solid var(--purple)}
+  .grammar-card h3{font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:10px}
+  .grammar-card .rule{color:var(--gray);font-size:.9rem;margin-bottom:12px;line-height:1.7}
+  .grammar-card .ex{padding:8px 14px;border-radius:8px;font-size:.85rem;margin-bottom:6px}
+  .grammar-card .ex.ok{background:#ECFDF5;color:var(--green);border-left:3px solid var(--green)}
+  .grammar-card .ex.no{background:#FEF2F2;color:var(--red);border-left:3px solid var(--red);text-decoration:line-through}
+  .grammar-card .ex .m{font-weight:700;margin-right:6px}
+
+  /* PHRASE */
+  .phrase-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow)}
+  .phrase-table th{background:var(--purple);color:#fff;padding:12px 14px;text-align:left;font-size:.8rem;font-weight:700}
+  .phrase-table td{padding:10px 14px;font-size:.85rem;border-bottom:1px solid #F3F4F6}
+  .phrase-table tr:nth-child(even){background:var(--purple-bg)}
+  .phrase-table tr:hover td{background:var(--purple-bg2)}
+  .phrase-table td:first-child{font-weight:700;color:var(--purple-dark)}
+
+  /* SOURCE */
+  .source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+  .source-card{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:var(--card-shadow);display:flex;align-items:center;gap:14px}
+  .source-card .fi{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+  .source-card .fi.red{background:#FEE2E2}.source-card .fi.blue{background:#DBEAFE}
+  .source-card .fn{font-weight:700;font-size:.9rem}.source-card .fd{font-size:.75rem;color:var(--gray);margin-top:2px}
+  .source-card .ink{display:inline-block;font-size:.65rem;padding:1px 6px;border-radius:5px;margin-top:4px;font-weight:600}
+  .source-card .ink.red{background:#FEE2E2;color:var(--red)}.source-card .ink.blue{background:#DBEAFE;color:#1D4ED8}
+
+  @media(max-width:640px){
+    .hero h1{font-size:1.6rem}.hero .stats{gap:16px}.hero .stat .n{font-size:1.3rem}
+    .vocab-grid{grid-template-columns:1fr}.source-grid{grid-template-columns:1fr}
+    .big-tab{font-size:.85rem;padding:12px 6px}.big-tab .icon{font-size:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Richie's English Notes</h1>
+  <div class="sub">258 entries from 10 handwritten scans &mdash; with pronunciation, phonetics & exam levels</div>
+  <div class="stats">
+    <div class="stat"><div class="n">258</div><div class="l">Total</div></div>
+    <div class="stat"><div class="n">198</div><div class="l">Vocab</div></div>
+    <div class="stat"><div class="n">16</div><div class="l">Grammar</div></div>
+    <div class="stat"><div class="n">44</div><div class="l">Phrases</div></div>
+  </div>
+</div>
+
+<!-- THREE BIG TABS -->
+<div class="big-tabs">
+  <div class="big-tab active" data-big="iris"><span class="icon">📒</span>Iris 英语笔记<div class="count">词汇 & 短语</div></div>
+  <div class="big-tab" data-big="ielts"><span class="icon">🎯</span>雅思笔记<div class="count">考试重点词汇</div></div>
+  <div class="big-tab" data-big="grammar"><span class="icon">📐</span>语法笔记<div class="count">语法规则 & 对比</div></div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍 搜索词汇、音标、释义、语法...">
+  <div class="search-count" id="searchCount"></div>
+</div>
+
+<div class="content">
+
+<!-- ========== IRIS 英语笔记 ========== -->
+<div class="big-section active" id="iris">
+  <div id="irisSubTabs" class="sub-tabs"></div>
+  <div id="irisContent"></div>
+</div>
+
+<!-- ========== 雅思笔记 ========== -->
+<div class="big-section" id="ielts">
+  <div id="ieltsSubTabs" class="sub-tabs"></div>
+  <div id="ieltsContent"></div>
+</div>
+
+<!-- ========== 语法笔记 ========== -->
+<div class="big-section" id="grammar">
+  <div id="grammarSubTabs" class="sub-tabs"></div>
+  <div id="grammarContent"></div>
+</div>
+
+</div>
+
+<script>
+// ============================================================
+// TTS PRONUNCIATION (Web Speech API)
+// ============================================================
+function speak(text, accent) {
+  if (!window.speechSynthesis) return alert("Your browser doesn't support speech synthesis.");
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/\/.+?\//g,"").replace(/[^a-zA-Z\s'-]/g,"").trim());
+  u.rate = 0.85; u.pitch = 1;
+  const voices = window.speechSynthesis.getVoices();
+  const lang = accent === "uk" ? "en-GB" : "en-US";
+  const voice = voices.find(v => v.lang === lang) || voices.find(v => v.lang.startsWith("en"));
+  if (voice) u.voice = voice;
+  u.lang = lang;
+  window.speechSynthesis.speak(u);
+}
+// Preload voices
+if (window.speechSynthesis) {
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+}
+
+// ============================================================
+// ALL DATA
+// ============================================================
+const ALL_VOCAB = [
+  // --- MOVIE GENRES ---
+  {en:"action movie",zh:"动作片",uk:"/ˈækʃn ˈmuːvi/",us:"/ˈækʃn ˈmuːvi/",defs:["n. 动作片"],exam:["高考"],plural:"action movies",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"comedy",zh:"喜剧",uk:"/ˈkɒmədi/",us:"/ˈkɑːmədi/",defs:["n. 喜剧","n. 喜剧性，滑稽"],exam:["高考","四级","六级","考研"],plural:"comedies",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"drama",zh:"剧情片",uk:"/ˈdrɑːmə/",us:"/ˈdrɑːmə/",defs:["n. 戏剧；剧情片","n. 戏剧性事件"],exam:["高考","四级","六级"],plural:"dramas",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"horror movie",zh:"恐怖片",uk:"/ˈhɒrə ˈmuːvi/",us:"/ˈhɔːrər ˈmuːvi/",defs:["n. 恐怖片"],exam:["四级"],plural:"horror movies",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"thriller",zh:"惊悚片",uk:"/ˈθrɪlə/",us:"/ˈθrɪlər/",defs:["n. 惊悚片；惊险小说"],exam:["四级","六级"],plural:"thrillers",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"sci-fi",zh:"科幻片",uk:"/ˈsaɪ faɪ/",us:"/ˈsaɪ faɪ/",defs:["n. 科幻 (= science fiction)"],exam:["四级"],cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"fantasy",zh:"奇幻片",uk:"/ˈfæntəsi/",us:"/ˈfæntəsi/",defs:["n. 幻想；奇幻作品"],exam:["四级","六级","考研"],plural:"fantasies",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"romance",zh:"爱情片",uk:"/rəʊˈmæns/",us:"/roʊˈmæns/",defs:["n. 浪漫故事；爱情片"],exam:["四级","六级"],plural:"romances",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"documentary",zh:"纪录片",uk:"/ˌdɒkjuˈmentəri/",us:"/ˌdɑːkjuˈmentəri/",defs:["n. 纪录片","adj. 文件的"],exam:["四级","六级","考研"],plural:"documentaries",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"adventure",zh:"冒险片",uk:"/ədˈventʃə/",us:"/ədˈventʃər/",defs:["n. 冒险；冒险片"],exam:["高考","四级"],plural:"adventures",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"mystery",zh:"悬疑片",uk:"/ˈmɪstəri/",us:"/ˈmɪstəri/",defs:["n. 神秘；谜；悬疑片"],exam:["高考","四级","六级"],plural:"mysteries",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"blockbuster",zh:"大片",uk:"/ˈblɒkbʌstə/",us:"/ˈblɑːkbʌstər/",defs:["n. 大片；轰动作品"],exam:["六级"],plural:"blockbusters",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  {en:"classic",zh:"经典",uk:"/ˈklæsɪk/",us:"/ˈklæsɪk/",defs:["n. 经典作品","adj. 经典的"],exam:["高考","四级","六级","考研"],plural:"classics",cat:"电影影视",sub:"电影类型",date:"2026-04-16 14:19"},
+  // --- FILM INDUSTRY ---
+  {en:"director",zh:"导演",uk:"/dəˈrektə/",us:"/dəˈrektər/",defs:["n. 导演；主管"],exam:["高考","四级","六级"],plural:"directors",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"release",zh:"上映/发行",uk:"/rɪˈliːs/",us:"/rɪˈliːs/",defs:["v. 发行；释放","n. 发行"],exam:["高考","四级","六级","考研"],tag:"verb",past:"released",pp:"released",ing:"releasing",future:"will release",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"review",zh:"影评/评论",uk:"/rɪˈvjuː/",us:"/rɪˈvjuː/",defs:["n. 评论；审查；复习","v. 评论；复习"],exam:["高考","四级","六级","考研"],tag:"verb",past:"reviewed",pp:"reviewed",ing:"reviewing",future:"will review",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"scene",zh:"场景",uk:"/siːn/",us:"/siːn/",defs:["n. 场景；场面；景色"],exam:["高考","四级","六级","考研"],plural:"scenes",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"plot",zh:"剧情",uk:"/plɒt/",us:"/plɑːt/",defs:["n. 情节；阴谋","v. 密谋；绘制"],exam:["四级","六级","考研"],plural:"plots",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"cast",zh:"演员阵容",uk:"/kɑːst/",us:"/kæst/",defs:["n. 演员阵容","v. 投射；选角"],exam:["四级","六级","考研"],past:"cast",pp:"cast",ing:"casting",future:"will cast",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"subtitle",zh:"字幕",uk:"/ˈsʌbtaɪtl/",us:"/ˈsʌbtaɪtl/",defs:["n. 字幕；副标题"],exam:["六级"],plural:"subtitles",cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  {en:"box office",zh:"票房",uk:"/bɒks ˈɒfɪs/",us:"/bɑːks ˈɑːfɪs/",defs:["n. 票房；售票处"],exam:["四级"],cat:"电影影视",sub:"影视行业",date:"2026-04-16 14:19"},
+  // --- GAMING ---
+  {en:"code",zh:"编程/代码",uk:"/kəʊd/",us:"/koʊd/",defs:["n. 代码；密码","v. 编码；编程"],exam:["高考","四级","六级","考研"],tag:"verb",past:"coded",pp:"coded",ing:"coding",future:"will code",cat:"游戏编程",sub:"游戏编程",date:"2026-04-16 14:19"},
+  {en:"gameplay",zh:"玩法",uk:"/ˈɡeɪmpleɪ/",us:"/ˈɡeɪmpleɪ/",defs:["n. 游戏玩法"],exam:[],cat:"游戏编程",sub:"游戏编程",date:"2026-04-16 14:19"},
+  {en:"rogue",zh:"盗贼",uk:"/rəʊɡ/",us:"/roʊɡ/",defs:["n. 流氓；盗贼(游戏)","adj. 离群的"],exam:["六级","考研"],plural:"rogues",cat:"游戏编程",sub:"游戏编程",date:"2026-04-16 14:19"},
+  {en:"agile",zh:"敏捷",uk:"/ˈædʒaɪl/",us:"/ˈædʒl/",defs:["adj. 敏捷的；灵活的"],exam:["六级","考研"],tag:"adj",cat:"游戏编程",sub:"游戏编程",date:"2026-04-16 14:19"},
+  {en:"vibe",zh:"氛围",uk:"/vaɪb/",us:"/vaɪb/",defs:["n. 氛围；感觉"],exam:[],plural:"vibes",cat:"游戏编程",sub:"游戏编程",date:"2026-04-16 14:19"},
+  // --- COMMON ---
+  {en:"lose",zh:"丢失/失去",uk:"/luːz/",us:"/luːz/",defs:["v. 丢失；失去；输掉"],exam:["高考","四级","六级"],tag:"verb",past:"lost",pp:"lost",ing:"losing",future:"will lose",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"consider",zh:"考虑",uk:"/kənˈsɪdə/",us:"/kənˈsɪdər/",defs:["v. 考虑；认为"],exam:["高考","四级","六级","考研"],tag:"verb",past:"considered",pp:"considered",ing:"considering",future:"will consider",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"appreciate",zh:"感激/欣赏",uk:"/əˈpriːʃieɪt/",us:"/əˈpriːʃieɪt/",defs:["v. 感激；欣赏；理解"],exam:["高考","四级","六级","考研"],tag:"verb",past:"appreciated",pp:"appreciated",ing:"appreciating",future:"will appreciate",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"impressive",zh:"令人印象深刻的",uk:"/ɪmˈpresɪv/",us:"/ɪmˈpresɪv/",defs:["adj. 令人印象深刻的"],exam:["高考","四级","六级","考研"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"attitude",zh:"态度",date:"2026-04-16 15:30",uk:"/ˈætɪtjuːd/",us:"/ˈætɪtuːd/",defs:["n. 态度；看法"],exam:["高考","四级","六级","考研"],plural:"attitudes",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"reduce",zh:"减少",date:"2026-04-16 15:30",uk:"/rɪˈdjuːs/",us:"/rɪˈduːs/",defs:["v. 减少；降低"],exam:["高考","四级","六级","考研"],tag:"verb",past:"reduced",pp:"reduced",ing:"reducing",future:"will reduce",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"audience",zh:"观众",date:"2026-04-16 15:30",uk:"/ˈɔːdiəns/",us:"/ˈɔːdiəns/",defs:["n. 观众；听众；受众"],exam:["高考","四级","六级","考研"],plural:"audiences",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"target",zh:"目标",date:"2026-04-16 15:30",uk:"/ˈtɑːɡɪt/",us:"/ˈtɑːrɡɪt/",defs:["n. 目标；靶子","v. 瞄准"],exam:["高考","四级","六级","考研"],tag:"verb",past:"targeted",pp:"targeted",ing:"targeting",future:"will target",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"convenient",zh:"方便的",uk:"/kənˈviːniənt/",us:"/kənˈviːniənt/",defs:["adj. 方便的；便利的"],exam:["高考","四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"ensure",zh:"确保",date:"2026-04-16 15:30",uk:"/ɪnˈʃɔː/",us:"/ɪnˈʃʊr/",defs:["v. 确保；保证"],exam:["四级","六级","考研"],tag:"verb",past:"ensured",pp:"ensured",ing:"ensuring",future:"will ensure",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"performance",zh:"表现/演出",date:"2026-04-16 15:30",uk:"/pəˈfɔːməns/",us:"/pərˈfɔːrməns/",defs:["n. 表现；性能；表演"],exam:["高考","四级","六级","考研"],plural:"performances",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"budget",zh:"预算",uk:"/ˈbʌdʒɪt/",us:"/ˈbʌdʒɪt/",defs:["n. 预算","adj. 廉价的"],exam:["四级","六级","考研"],plural:"budgets",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"pattern",zh:"模式/图案",date:"2026-04-16 15:30",uk:"/ˈpætn/",us:"/ˈpætərn/",defs:["n. 模式；图案"],exam:["高考","四级","六级","考研"],plural:"patterns",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"security",zh:"安全/保障",date:"2026-04-16 15:30",uk:"/sɪˈkjʊərəti/",us:"/sɪˈkjʊrəti/",defs:["n. 安全；保障；证券"],exam:["四级","六级","考研"],cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"deposit",zh:"存款/押金",date:"2026-04-16 15:30",uk:"/dɪˈpɒzɪt/",us:"/dɪˈpɑːzɪt/",defs:["n. 存款；押金","v. 存放"],exam:["四级","六级","考研"],tag:"verb",past:"deposited",pp:"deposited",ing:"depositing",future:"will deposit",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"pharmacy",zh:"药房",date:"2026-04-16 15:30",uk:"/ˈfɑːməsi/",us:"/ˈfɑːrməsi/",defs:["n. 药房；药学"],exam:["六级"],plural:"pharmacies",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"approximately",zh:"大约",date:"2026-04-16 15:30",uk:"/əˈprɒksɪmətli/",us:"/əˈprɑːksɪmətli/",defs:["adv. 大约；近似地"],exam:["四级","六级","考研","雅思"],tag:"adv",cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  {en:"retention",zh:"保留/记忆力",date:"2026-04-16 15:30",uk:"/rɪˈtenʃn/",us:"/rɪˈtenʃn/",defs:["n. 保留；保持；记忆力"],exam:["六级","考研","雅思"],cat:"日常高频",sub:"日常高频",date:"2026-04-16 14:19"},
+  // --- TRANSPORT ---
+  {en:"drive",zh:"驾驶/车道",uk:"/draɪv/",us:"/draɪv/",defs:["v. 驾驶；驱动","n. 车道"],exam:["高考","四级","六级","考研"],tag:"verb",past:"drove",pp:"driven",ing:"driving",future:"will drive",cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  {en:"cruise ship",zh:"游轮",date:"2026-04-16 15:30",uk:"/kruːz ʃɪp/",us:"/kruːz ʃɪp/",defs:["n. 游轮；邮轮"],exam:[],plural:"cruise ships",cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  {en:"luggage",zh:"行李",date:"2026-04-16 15:30",uk:"/ˈlʌɡɪdʒ/",us:"/ˈlʌɡɪdʒ/",defs:["n. 行李 (不可数)"],exam:["高考","四级","六级"],cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  {en:"subway station",zh:"地铁站",date:"2026-04-16 15:30",defs:["n. 地铁站"],exam:[],plural:"subway stations",cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  {en:"road",zh:"马路",uk:"/rəʊd/",us:"/roʊd/",defs:["n. 道路；公路"],exam:["高考","四级"],plural:"roads",cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  {en:"street",zh:"街道",uk:"/striːt/",us:"/striːt/",defs:["n. 街道"],exam:["高考","四级"],plural:"streets",cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  {en:"avenue",zh:"大道",uk:"/ˈævənjuː/",us:"/ˈævənuː/",defs:["n. 大道；林荫道"],exam:["四级","六级"],plural:"avenues",cat:"交通出行",sub:"交通出行",date:"2026-04-16 14:19"},
+  // --- ACADEMIC ---
+  {en:"function",zh:"功能/函数",uk:"/ˈfʌŋkʃn/",us:"/ˈfʌŋkʃn/",defs:["n. 功能；函数","v. 运转"],exam:["高考","四级","六级","考研"],tag:"verb",past:"functioned",pp:"functioned",ing:"functioning",future:"will function",cat:"学术逻辑",sub:"学术逻辑",date:"2026-04-16 14:19"},
+  {en:"increase",zh:"增加",uk:"/ɪnˈkriːs/",us:"/ɪnˈkriːs/",defs:["v. 增加","n. 增加量"],exam:["高考","四级","六级","考研"],tag:"verb",past:"increased",pp:"increased",ing:"increasing",future:"will increase",cat:"学术逻辑",sub:"学术逻辑",date:"2026-04-16 14:19"},
+  {en:"decrease",zh:"减少",uk:"/dɪˈkriːs/",us:"/dɪˈkriːs/",defs:["v. 减少","n. 减少量"],exam:["四级","六级","考研"],tag:"verb",past:"decreased",pp:"decreased",ing:"decreasing",future:"will decrease",cat:"学术逻辑",sub:"学术逻辑",date:"2026-04-16 14:19"},
+  {en:"survive",zh:"生存",uk:"/səˈvaɪv/",us:"/sərˈvaɪv/",defs:["v. 幸存；生存"],exam:["高考","四级","六级","考研"],tag:"verb",past:"survived",pp:"survived",ing:"surviving",future:"will survive",cat:"学术逻辑",sub:"学术逻辑",date:"2026-04-16 14:19"},
+  {en:"model",zh:"模型",uk:"/ˈmɒdl/",us:"/ˈmɑːdl/",defs:["n. 模型；模范","v. 做模特"],exam:["高考","四级","六级","考研"],plural:"models",cat:"学术逻辑",sub:"学术逻辑",date:"2026-04-16 14:19"},
+  {en:"attack",zh:"攻击",uk:"/əˈtæk/",us:"/əˈtæk/",defs:["v. 攻击；抨击","n. 攻击；发作"],exam:["高考","四级","六级","考研"],tag:"verb",past:"attacked",pp:"attacked",ing:"attacking",future:"will attack",cat:"学术逻辑",sub:"学术逻辑",date:"2026-04-16 14:19"},
+  // --- FOOD ---
+  {en:"meat",zh:"肉",uk:"/miːt/",us:"/miːt/",defs:["n. 肉 (不可数)"],exam:["高考","四级"],cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
+  {en:"popcorn",zh:"爆米花",date:"2026-04-16 15:30",uk:"/ˈpɒpkɔːn/",us:"/ˈpɑːpkɔːrn/",defs:["n. 爆米花"],exam:["四级"],cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
+  {en:"grab",zh:"抓取/快吃",date:"2026-04-16 15:30",uk:"/ɡræb/",us:"/ɡræb/",defs:["v. 抓住；抢夺；赶紧吃"],exam:["四级","六级"],tag:"verb",past:"grabbed",pp:"grabbed",ing:"grabbing",future:"will grab",cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
+  {en:"warm",zh:"温暖的",date:"2026-04-16 15:30",uk:"/wɔːm/",us:"/wɔːrm/",defs:["adj. 温暖的","v. 使变暖"],exam:["高考","四级"],tag:"adj",cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
+];
+
+const GRAMMAR = [
+  {title:"be 动词 + 动词原形",rule:"be动词不能直接跟动词原形。需用 -ing 或过去分词。",ok:"He helps me. / He is helping me.",no:"He is help me.",cat:"基础语法",date:"2026-04-16 14:19"},
+  {title:"被动语态 Passive Voice",rule:"主语 + be + 过去分词 + by + 执行者",ok:"The apple was eaten by me.",no:"I ate on an apple.",cat:"基础语法",date:"2026-04-16 14:19"},
+  {title:"could vs can",rule:"could 是 can 的过去式，也用于假设语气",ok:"That could work.",no:null,cat:"基础语法",date:"2026-04-16 14:19"},
+  {title:"well vs good",rule:"well 修饰动词，good 修饰名词",ok:"She speaks English well.",no:null,cat:"基础语法",date:"2026-04-16 14:19"},
+  {title:"worth + ing",rule:"worth 后面跟动名词",ok:"It's worth watching.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+  {title:"I'm into + ing",rule:"be into = 对...感兴趣",ok:"I'm into reading.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+  {title:"be supposed to",rule:"表示应该/被期望做某事",ok:"You are supposed to arrive on time.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+  {title:"like + doing vs to do",rule:"like+doing 偏好习惯性动作；like+to do 偏好具体某次",ok:"I like reading. / I like to read this.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+  {title:"although / though / even if",rule:"表让步。although/though 后接事实，even if 后接假设",ok:"Although it rained, we went out.",no:null,cat:"连词对比",date:"2026-04-16 14:19"},
+  {title:"so...that / so that",rule:"so+adj+that = 如此...以至于。so that = 目的是为了",ok:"It was so hot that I couldn't sleep.",no:null,cat:"连词对比",date:"2026-04-16 14:19"},
+  {title:"unless = if not",rule:"除非/如果不",ok:"Unless you study, you will fail.",no:null,cat:"连词对比",date:"2026-04-16 14:19"},
+  {title:"时间从句连词",rule:"while=当时, before=之前, as soon as=一...就, until=直到, after=之后, since=自从",ok:"I took a shower while she was reading.",no:null,cat:"连词对比",date:"2026-04-16 14:19"},
+  {title:"e 结尾开音节发音",rule:"单词以 e 结尾且前面开音节→元音发长音 (make, tune, drive)",ok:null,no:null,cat:"发音规则",date:"2026-04-16 14:19"},
+  {title:"句子结构",rule:"完整句子: 主+谓+宾。最高级: ...est / the most...",ok:null,no:null,cat:"基础语法",date:"2026-04-16 14:19"},
+  {title:"should + be + p.p.",rule:"应该被... 用于表达建议/要求",ok:"The rules should be reviewed carefully.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+  {title:"条件句 If..., ... will...",rule:"真实条件句: If + 一般现在时, 主句用 will + 原形",ok:"If you work hard, you will succeed.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+];
+
+const PHRASES = [
+  {p:"I was born",zh:"我出生于...",ex:"I was born in 1995.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"a lot of",zh:"很多",ex:"I have a lot of homework.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"first few days",zh:"前几天",ex:"In the first few days...",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"that kind of thing",zh:"诸如此类",ex:"Books, pens, that kind of thing.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"worth + ing",zh:"值得做...",ex:"It's worth watching.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"I'm into + ing",zh:"我对...感兴趣",ex:"I'm into playing games.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"got a minute",zh:"有时间吗",ex:"Got a minute to talk?",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"by the way",zh:"顺便说一下",ex:"常用口语",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"on time",zh:"准时",ex:"The meeting started on time.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"in advance",zh:"提前",ex:"Book in advance.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"Thanks for having me",zh:"谢谢邀请",ex:"礼貌表达",cat:"礼貌",date:"2026-04-16 14:19"},
+  {p:"I'm sorry, but...",zh:"抱歉，但是...",ex:"礼貌转折",cat:"礼貌",date:"2026-04-16 14:19"},
+  {p:"Can I have...",zh:"我能要...",ex:"请求表达",cat:"礼貌",date:"2026-04-16 14:19"},
+  {p:"Can you help me find...",zh:"你能帮我找...",ex:"求助表达",cat:"礼貌",date:"2026-04-16 14:19"},
+  {p:"stuck in traffic",zh:"堵车了",ex:"I'm stuck in traffic.",cat:"出行",date:"2026-04-16 14:19"},
+  {p:"take a left/right",zh:"左转/右转",ex:"Take a left at the corner.",cat:"出行",date:"2026-04-16 14:19"},
+  {p:"keep going",zh:"继续前进",ex:"指路用语",cat:"出行",date:"2026-04-16 14:19"},
+  {p:"in front of",zh:"在...前面",ex:"The car is in front of the house.",cat:"出行",date:"2026-04-16 14:19"},
+  {p:"The art is stunning",zh:"画面太棒了",ex:"游戏/电影评价",cat:"评价",date:"2026-04-16 14:19"},
+  {p:"That could work",zh:"那可以行得通",ex:"建议回应",cat:"评价",date:"2026-04-16 14:19"},
+  {p:"sounds easy enough",zh:"听起来够简单",ex:"口语回应",cat:"评价",date:"2026-04-16 14:19"},
+  {p:"caught me off guard",zh:"让我措手不及",ex:"surprised",cat:"评价",date:"2026-04-16 14:19"},
+  {p:"early game",zh:"前期",ex:"游戏阶段",cat:"游戏",date:"2026-04-16 14:19"},
+  {p:"high scores",zh:"高分",ex:"游戏用语",cat:"游戏",date:"2026-04-16 14:19"},
+  {p:"sticking around",zh:"待在附近",ex:"口语表达",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"whole time",zh:"一直",ex:"I was there the whole time.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"like + doing",zh:"喜欢做...",ex:"I like reading books.",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"How does the heating work",zh:"暖气怎么用",ex:"生活询问",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"stop where you are",zh:"原地不动",ex:"指令表达",cat:"日常",date:"2026-04-16 14:19"},
+  {p:"If you work hard, you will succeed",zh:"努力就会成功",ex:"条件句",cat:"日常",date:"2026-04-16 14:19"},
+];
+
+const SOURCES = [
+  {name:"4756_001.pdf",desc:"电影类型、影视行业",ink:"red",l:"红色"},
+  {name:"4757_001.pdf",desc:"编程/游戏、形容词",ink:"blue",l:"蓝色"},
+  {name:"4758_001.pdf",desc:"学术词汇、句子结构",ink:"red",l:"红色(倒)"},
+  {name:"4759_001.pdf",desc:"被动语态、场景词汇",ink:"red",l:"红黑(倒)"},
+  {name:"4760_001.pdf",desc:"基础语法、道路短语",ink:"red",l:"红色"},
+  {name:"4765_001.pdf",desc:"交通出行、方向指引",ink:"red",l:"红色(倒)"},
+  {name:"4766_001.pdf",desc:"游戏、态度/难度",ink:"blue",l:"蓝黑"},
+  {name:"4767_001.pdf",desc:"连词语法、条件句",ink:"blue",l:"蓝红"},
+  {name:"4768_001.pdf",desc:"日常对话、礼貌表达",ink:"blue",l:"蓝红(倒)"},
+  {name:"4769_001.pdf",desc:"食物、游戏规则语法",ink:"red",l:"红蓝(倒)"},
+];
+
+// ============================================================
+// BUILD UI DYNAMICALLY
+// ============================================================
+function examH(arr){
+  if(!arr||!arr.length) return "";
+  const c={"高考":"gaokao","四级":"cet4","六级":"cet6","考研":"kaoyan","雅思":"ielts","托福":"toefl"};
+  return `<div class="exam-tags">${arr.map(e=>`<span class="exam-tag ${c[e]||''}">${e}</span>`).join("")}</div>`;
+}
+function formsH(w){
+  const p=[];
+  if(w.past)p.push(`<span class="form-item past"><span class="fl">Past</span>${w.past}</span>`);
+  if(w.pp&&w.pp!==w.past)p.push(`<span class="form-item pp"><span class="fl">P.P.</span>${w.pp}</span>`);
+  if(w.ing)p.push(`<span class="form-item ing"><span class="fl">-ing</span>${w.ing}</span>`);
+  if(w.future)p.push(`<span class="form-item future"><span class="fl">Will</span>${w.future}</span>`);
+  if(w.plural)p.push(`<span class="form-item plural"><span class="fl">Pl.</span>${w.plural}</span>`);
+  return p.length?`<div class="forms">${p.join("")}</div>`:"";
+}
+function tagH(t){
+  const m={verb:"动词",adj:"形容词",adv:"副词",prep:"介词",phrase:"短语"};
+  const bg={verb:"#D1FAE5",adj:"#FEF3C7",adv:"#FCE7F3",prep:"#E0E7FF",phrase:"#EDE9FE"};
+  const fg={verb:"#065F46",adj:"#92400E",adv:"#9D174D",prep:"#3730A3",phrase:"#5B21B6"};
+  return t?`<span style="display:inline-block;font-size:.65rem;padding:1px 6px;border-radius:4px;font-weight:700;background:${bg[t]||'#F3F4F6'};color:${fg[t]||'#4B5563'};margin-right:3px">${m[t]||t}</span>`:"";
+}
+function dictUrl(w){return `https://dict.eudic.net/dicts/en/${encodeURIComponent(w.split("/")[0].trim())}`}
+
+function vocabCard(w){
+  const word = w.en.split("/")[0].trim();
+  const ph = (w.uk||w.us) ? `<div class="pron-row">
+    ${w.uk?`<button class="pron-btn uk" onclick="speak('${word}','uk')"><span class="speaker">🔊</span>UK</button><span class="phonetic-text">${w.uk}</span>`:``}
+    ${w.us?`<button class="pron-btn us" onclick="speak('${word}','us')"><span class="speaker">🔊</span>US</button><span class="phonetic-text">${w.us}</span>`:``}
+  </div>` : "";
+  const df = w.defs?`<div class="defs">${w.defs.map(d=>`<div class="def-line">${d}</div>`).join("")}</div>`:"";
+  const dt = w.date?`<div style="font-size:.62rem;color:#C4B5FD;margin-top:6px">📅 ${w.date}</div>`:"";
+  const ss = `${w.en} ${w.zh} ${(w.defs||[]).join(" ")} ${(w.exam||[]).join(" ")} ${w.uk||""} ${w.us||""} ${w.past||""} ${w.plural||""} ${w.date||""}`;
+  return `<div class="vocab-card" data-search="${ss.replace(/"/g,"'")}" data-sub="${w.sub||w.cat}">
+    <div class="card-top"><div class="en">${w.en}</div><a class="dict-link" href="${dictUrl(w.en)}" target="_blank">🔍 词典</a></div>
+    ${ph}${df}${tagH(w.tag)}${examH(w.exam)}${w.note?`<div class="note">${w.note}</div>`:""}${formsH(w)}${dt}
+  </div>`;
+}
+
+// ========== IRIS 英语笔记 ==========
+function buildIris(){
+  const cats = [...new Set(ALL_VOCAB.map(v=>v.cat))];
+  const tabsEl = document.getElementById("irisSubTabs");
+  const contentEl = document.getElementById("irisContent");
+
+  // Add phrase & source tabs
+  const allTabs = [...cats, "常用短语", "扫描来源"];
+  tabsEl.innerHTML = allTabs.map((c,i) => {
+    const cnt = c==="常用短语"?PHRASES.length:c==="扫描来源"?SOURCES.length:ALL_VOCAB.filter(v=>v.cat===c).length;
+    return `<div class="sub-tab ${i===0?'active':''}" data-subtab="iris-${i}">${c} <span class="badge">${cnt}</span></div>`;
+  }).join("");
+
+  let html = "";
+  cats.forEach((c,i) => {
+    const words = ALL_VOCAB.filter(v=>v.cat===c);
+    html += `<div class="sub-section ${i===0?'active':''}" id="iris-${i}">
+      <div class="section-header"><h2>${c}</h2></div>
+      <div class="vocab-grid">${words.map(vocabCard).join("")}</div>
+    </div>`;
+  });
+
+  // Phrases section
+  html += `<div class="sub-section" id="iris-${cats.length}">
+    <div class="section-header"><h2>常用短语 & 表达</h2></div>
+    <table class="phrase-table"><thead><tr><th>Phrase</th><th>中文含义</th><th>Example</th><th>分类</th></tr></thead>
+    <tbody>${PHRASES.map(p=>`<tr data-search="${p.p} ${p.zh} ${p.ex}"><td>${p.p}</td><td>${p.zh}</td><td>${p.ex}</td><td>${p.cat}</td></tr>`).join("")}</tbody></table>
+  </div>`;
+
+  // Source section
+  html += `<div class="sub-section" id="iris-${cats.length+1}">
+    <div class="section-header"><h2>扫描件来源</h2></div>
+    <div class="source-grid">${SOURCES.map(s=>`<div class="source-card"><div class="fi ${s.ink}">📄</div><div><div class="fn">${s.name}</div><div class="fd">${s.desc}</div><span class="ink ${s.ink}">${s.l}</span></div></div>`).join("")}</div>
+  </div>`;
+
+  contentEl.innerHTML = html;
+  bindSubTabs(tabsEl, "iris");
+}
+
+// ========== 雅思笔记 ==========
+function buildIelts(){
+  document.getElementById("ieltsSubTabs").innerHTML = "";
+  document.getElementById("ieltsContent").innerHTML = `
+    <div style="text-align:center;padding:80px 20px">
+      <div style="font-size:4rem;margin-bottom:16px">🎯</div>
+      <h2 style="font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:10px">雅思笔记</h2>
+      <p style="color:var(--gray);font-size:.95rem;max-width:400px;margin:0 auto;line-height:1.7">暂无内容<br>上传雅思相关扫描件（写作范文、口语话题、听力词汇等）后，<br>跟我说「更新笔记，归雅思」即可自动归类到这里。</p>
+      <div style="margin-top:30px;padding:16px 24px;background:var(--purple-bg);border-radius:12px;display:inline-block;text-align:left">
+        <div style="font-size:.8rem;font-weight:700;color:var(--purple);margin-bottom:8px">📌 支持的雅思内容类型</div>
+        <div style="font-size:.8rem;color:var(--gray);line-height:1.8">
+          ✦ 雅思写作 Task 1 & Task 2 词汇<br>
+          ✦ 雅思口语 Part 1/2/3 话题词汇<br>
+          ✦ 雅思听力高频场景词汇<br>
+          ✦ 雅思阅读学术词汇<br>
+          ✦ 考试技巧 & 模板笔记
+        </div>
+      </div>
+    </div>`;
+}
+
+// ========== 语法笔记 ==========
+function buildGrammar(){
+  document.getElementById("grammarSubTabs").innerHTML = "";
+  document.getElementById("grammarContent").innerHTML = `
+    <div style="text-align:center;padding:80px 20px">
+      <div style="font-size:4rem;margin-bottom:16px">📐</div>
+      <h2 style="font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:10px">语法笔记</h2>
+      <p style="color:var(--gray);font-size:.95rem;max-width:400px;margin:0 auto;line-height:1.7">暂无内容<br>上传语法相关扫描件后，<br>跟我说「更新笔记，归语法」即可自动归类到这里。</p>
+      <div style="margin-top:30px;padding:16px 24px;background:var(--purple-bg);border-radius:12px;display:inline-block;text-align:left">
+        <div style="font-size:.8rem;font-weight:700;color:var(--purple);margin-bottom:8px">📌 支持的语法内容类型</div>
+        <div style="font-size:.8rem;color:var(--gray);line-height:1.8">
+          ✦ 时态对比（现在/过去/将来/完成）<br>
+          ✦ 句型结构（主从复合句、条件句）<br>
+          ✦ 连词用法对比<br>
+          ✦ 易错语法点 & 纠错<br>
+          ✦ 被动语态 / 虚拟语气 / 倒装句
+        </div>
+      </div>
+    </div>`;
+}
+
+// ========== TAB BINDING ==========
+function bindSubTabs(container, prefix){
+  container.querySelectorAll(".sub-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      container.querySelectorAll(".sub-tab").forEach(t=>t.classList.remove("active"));
+      const parent = container.nextElementSibling;
+      parent.querySelectorAll(".sub-section").forEach(s=>s.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.subtab).classList.add("active");
+    });
+  });
+}
+
+// BIG TABS
+document.querySelectorAll(".big-tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".big-tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".big-section").forEach(s=>s.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.big).classList.add("active");
+  });
+});
+
+// SEARCH
+const si=document.getElementById("searchInput"),sc=document.getElementById("searchCount");
+si.addEventListener("input",()=>{
+  const q=si.value.toLowerCase().trim();let t=0,v=0;
+  document.querySelectorAll("[data-search]").forEach(el=>{t++;
+    if(!q||el.dataset.search.toLowerCase().includes(q)){el.style.display="";v++}else{el.style.display="none"}
+  });
+  sc.textContent=q?`${v} / ${t} results`:"";
+  if(q){
+    document.querySelectorAll(".big-section").forEach(s=>s.classList.add("active"));
+    document.querySelectorAll(".sub-section").forEach(s=>s.classList.add("active"));
+    document.querySelectorAll(".big-tab").forEach(t=>t.classList.remove("active"));
+  } else {
+    document.querySelectorAll(".big-section").forEach(s=>s.classList.remove("active"));
+    document.querySelectorAll(".sub-section").forEach(s=>s.classList.remove("active"));
+    document.getElementById("iris").classList.add("active");
+    document.querySelector('.big-tab[data-big="iris"]').classList.add("active");
+    // Reactivate first sub-tabs
+    document.querySelectorAll(".sub-tabs").forEach(st=>{const first=st.querySelector(".sub-tab");if(first){first.click()}});
+  }
+});
+
+// INIT
+buildIris();
+buildIelts();
+buildGrammar();
+
+// UPDATE DATE FOOTER
+document.querySelector(".content").insertAdjacentHTML("beforeend", `
+  <div style="text-align:center;padding:40px 20px 20px;border-top:1px solid #E5E7EB;margin-top:40px">
+    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-16 16:39</strong></div>
+    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 258 条 &middot; 来自 10 份扫描件 &middot; Richie's English Study Notes</div>
+  </div>
+`);
+</script>
+</body>
+</html>
