@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Richie's English Study Notes</title>
+<title>小霸王 English Study Notes</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
@@ -126,13 +126,13 @@
 <body>
 
 <div class="hero">
-  <h1>Richie's English Notes</h1>
+  <h1>小霸王 English Notes</h1>
   <div class="sub">258 entries from 10 handwritten scans &mdash; with pronunciation, phonetics & exam levels</div>
   <div class="stats">
-    <div class="stat"><div class="n">258</div><div class="l">Total</div></div>
-    <div class="stat"><div class="n">198</div><div class="l">Vocab</div></div>
+    <div class="stat"><div class="n">328</div><div class="l">Total</div></div>
+    <div class="stat"><div class="n">228</div><div class="l">Vocab</div></div>
     <div class="stat"><div class="n">16</div><div class="l">Grammar</div></div>
-    <div class="stat"><div class="n">44</div><div class="l">Phrases</div></div>
+    <div class="stat"><div class="n">65</div><div class="l">Phrases</div></div>
   </div>
 </div>
 
@@ -265,6 +265,149 @@ const ALL_VOCAB = [
   {en:"popcorn",zh:"爆米花",date:"2026-04-16 15:30",uk:"/ˈpɒpkɔːn/",us:"/ˈpɑːpkɔːrn/",defs:["n. 爆米花"],exam:["四级"],cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
   {en:"grab",zh:"抓取/快吃",date:"2026-04-16 15:30",uk:"/ɡræb/",us:"/ɡræb/",defs:["v. 抓住；抢夺；赶紧吃"],exam:["四级","六级"],tag:"verb",past:"grabbed",pp:"grabbed",ing:"grabbing",future:"will grab",cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
   {en:"warm",zh:"温暖的",date:"2026-04-16 15:30",uk:"/wɔːm/",us:"/wɔːrm/",defs:["adj. 温暖的","v. 使变暖"],exam:["高考","四级"],tag:"adj",cat:"食物饮品",sub:"食物饮品",date:"2026-04-16 14:19"},
+  // === NEW from Iris 课程 docx (4.14) ===
+  {en:"combo",zh:"套餐",uk:"/ˈkɒmbəʊ/",us:"/ˈkɑːmboʊ/",defs:["n. 套餐；组合"],exam:[],plural:"combos",cat:"日常高频",sub:"点餐场景",date:"2026-04-14"},
+  {en:"receipt",zh:"收据/小票",uk:"/rɪˈsiːt/",us:"/rɪˈsiːt/",defs:["n. 收据；小票；收到"],exam:["四级","六级"],plural:"receipts",cat:"日常高频",sub:"点餐场景",date:"2026-04-14"},
+  {en:"payment method",zh:"付款方式",defs:["n. 付款方式"],exam:[],cat:"日常高频",sub:"点餐场景",date:"2026-04-14"},
+  {en:"credit card",zh:"信用卡",uk:"/ˈkredɪt kɑːd/",us:"/ˈkredɪt kɑːrd/",defs:["n. 信用卡"],exam:["高考","四级"],plural:"credit cards",cat:"日常高频",sub:"点餐场景",date:"2026-04-14"},
+  {en:"fries",zh:"薯条",uk:"/fraɪz/",us:"/fraɪz/",defs:["n. 薯条 (常用复数)"],exam:["高考"],cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"iced coffee",zh:"冰咖啡",defs:["n. 冰咖啡"],exam:[],cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"latte",zh:"拿铁",uk:"/ˈlɑːteɪ/",us:"/ˈlɑːteɪ/",defs:["n. 拿铁咖啡"],exam:[],plural:"lattes",cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"coke",zh:"可乐",uk:"/kəʊk/",us:"/koʊk/",defs:["n. 可乐；焦炭"],exam:[],plural:"cokes",cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"milk tea",zh:"奶茶",defs:["n. 奶茶"],exam:[],cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"snack",zh:"零食",uk:"/snæk/",us:"/snæk/",defs:["n. 零食；小吃","v. 吃零食"],exam:["高考","四级"],plural:"snacks",cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"puzzle game",zh:"解谜游戏",defs:["n. 解谜/益智游戏"],exam:[],plural:"puzzle games",cat:"游戏编程",sub:"游戏编程",date:"2026-04-14"},
+  {en:"racing game",zh:"赛车游戏",defs:["n. 赛车/竞速游戏"],exam:[],plural:"racing games",cat:"游戏编程",sub:"游戏编程",date:"2026-04-14"},
+  {en:"strategy game",zh:"策略游戏",defs:["n. 策略游戏"],exam:[],plural:"strategy games",cat:"游戏编程",sub:"游戏编程",date:"2026-04-14"},
+  {en:"platform game",zh:"平台游戏",defs:["n. 平台游戏 (如超级马里奥)"],exam:[],plural:"platform games",cat:"游戏编程",sub:"游戏编程",date:"2026-04-14"},
+  {en:"programmer",zh:"程序员",uk:"/ˈprəʊɡræmə/",us:"/ˈproʊɡræmər/",defs:["n. 程序员；编程人员"],exam:["四级"],plural:"programmers",cat:"游戏编程",sub:"游戏编程",date:"2026-04-14"},
+  {en:"teamwork",zh:"团队合作",uk:"/ˈtiːmwɜːk/",us:"/ˈtiːmwɜːrk/",defs:["n. 团队合作；协作"],exam:["高考","四级"],cat:"游戏编程",sub:"游戏编程",date:"2026-04-14"},
+  {en:"satisfying",zh:"令人满意的",uk:"/ˈsætɪsfaɪɪŋ/",us:"/ˈsætɪsfaɪɪŋ/",defs:["adj. 令人满意的；令人满足的"],exam:["四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"sequel",zh:"续集",uk:"/ˈsiːkwəl/",us:"/ˈsiːkwəl/",defs:["n. 续集；续篇；后续"],exam:["六级"],plural:"sequels",cat:"电影影视",sub:"影视行业",date:"2026-04-14"},
+  {en:"twist",zh:"反转/扭转",uk:"/twɪst/",us:"/twɪst/",defs:["n. 反转；扭曲","v. 扭转；歪曲"],exam:["四级","六级","考研"],tag:"verb",past:"twisted",pp:"twisted",ing:"twisting",future:"will twist",plural:"twists",cat:"电影影视",sub:"影视行业",date:"2026-04-14"},
+  {en:"scream",zh:"尖叫",uk:"/skriːm/",us:"/skriːm/",defs:["v. 尖叫","n. 尖叫声"],exam:["四级","六级"],tag:"verb",past:"screamed",pp:"screamed",ing:"screaming",future:"will scream",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"disgusting",zh:"恶心的",uk:"/dɪsˈɡʌstɪŋ/",us:"/dɪsˈɡʌstɪŋ/",defs:["adj. 令人恶心的；令人厌恶的"],exam:["四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"sudden",zh:"突然的",uk:"/ˈsʌdn/",us:"/ˈsʌdn/",defs:["adj. 突然的；意外的"],exam:["高考","四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"focused",zh:"专注的",uk:"/ˈfəʊkəst/",us:"/ˈfoʊkəst/",defs:["adj. 专注的；集中的"],exam:["四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"stolen",zh:"被偷的",uk:"/ˈstəʊlən/",us:"/ˈstoʊlən/",defs:["adj. 被盗的","v. steal 的过去分词"],exam:["高考","四级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"degree",zh:"度/学位",uk:"/dɪˈɡriː/",us:"/dɪˈɡriː/",defs:["n. 度；学位；程度"],exam:["高考","四级","六级","考研"],plural:"degrees",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"cloudy",zh:"多云的",uk:"/ˈklaʊdi/",us:"/ˈklaʊdi/",defs:["adj. 多云的；阴天的"],exam:["高考"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"sunny",zh:"晴朗的",uk:"/ˈsʌni/",us:"/ˈsʌni/",defs:["adj. 晴朗的；阳光充足的"],exam:["高考"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"rainy",zh:"多雨的",uk:"/ˈreɪni/",us:"/ˈreɪni/",defs:["adj. 下雨的；多雨的"],exam:["高考"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"expected",zh:"预期的",uk:"/ɪkˈspektɪd/",us:"/ɪkˈspektɪd/",defs:["adj. 预期的","v. expect 的过去式"],exam:["四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"realize",zh:"意识到",uk:"/ˈrɪəlaɪz/",us:"/ˈriːəlaɪz/",defs:["v. 意识到；实现"],exam:["高考","四级","六级","考研"],tag:"verb",past:"realized",pp:"realized",ing:"realizing",future:"will realize",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+];
+
+// ============================================================
+// SCENE DIALOGUES (场景对话)
+// ============================================================
+const DIALOGUES = [
+  {title:"场景1: 快餐店点餐",cat:"点餐",date:"2026-04-14",lines:[
+    {r:"A",t:"Can I help you?",zh:"需要什么？"},
+    {r:"B",t:"Can I have an iced coffee?",zh:"我能要一杯冰咖啡吗？"},
+    {r:"A",t:"What kind of soft drink do you like?",zh:"你喜欢什么饮料？"},
+    {r:"B",t:"I would like a coke.",zh:"我想要一杯可乐。"},
+    {r:"A",t:"What size?",zh:"要什么尺寸？"},
+    {r:"B",t:"Large, please.",zh:"大杯，谢谢。"},
+    {r:"A",t:"What else do you want?",zh:"还要别的吗？"},
+    {r:"B",t:"Can I also get a fries?",zh:"再来份薯条。"},
+    {r:"A",t:"We have combo 3 that contains all of them. It will be cheaper.",zh:"我们有3号套餐包含这些，更便宜。"},
+    {r:"B",t:"Yes, of course.",zh:"好的，没问题。"},
+    {r:"A",t:"For here or to go?",zh:"在这吃还是带走？"},
+    {r:"B",t:"For here, please.",zh:"在这吃。"},
+    {r:"A",t:"It will be 12 dollars in total.",zh:"一共12美元。"},
+    {r:"B",t:"By credit card.",zh:"刷信用卡。"},
+    {r:"A",t:"Here you go!",zh:"给您！"},
+    {r:"B",t:"Thanks!",zh:"谢谢！"},
+    {r:"A",t:"Have a nice day!",zh:"祝您愉快！"}
+  ]},
+  {title:"场景2: 谈天气 & 约咖啡",cat:"天气/社交",date:"2026-04-14",lines:[
+    {r:"A",t:"Good morning! It's a nice day, isn't it?",zh:"早上好！天气不错，是吧？"},
+    {r:"B",t:"Yes, it is. I feel so good about today's weather. It's sunny and warm.",zh:"是的，今天天气真好，又晴又暖。"},
+    {r:"A",t:"Yeah, it was a little bit cold yesterday. What are you going to do later?",zh:"昨天有点冷。你待会打算做什么？"},
+    {r:"B",t:"Nothing.",zh:"没什么安排。"},
+    {r:"A",t:"How about having a coffee together?",zh:"一起喝杯咖啡怎么样？"},
+    {r:"B",t:"Good idea!",zh:"好主意！"},
+    {r:"A",t:"Let's go, coffee is on me.",zh:"走吧，我请客。"},
+    {r:"B",t:"Thanks then!",zh:"那谢啦！"},
+    {r:"A",t:"What coffee do you want?",zh:"你要什么咖啡？"},
+    {r:"B",t:"I'd like a hot latte, small size.",zh:"我要一杯小杯热拿铁。"}
+  ]},
+  {title:"场景3: 谈天气（要下雨）",cat:"天气/社交",date:"2026-04-14",lines:[
+    {r:"A",t:"Hi! How are you!",zh:"嗨！你好吗！"},
+    {r:"B",t:"I'm good, thanks. What do you think about the weather today? It's looking pretty cloudy.",zh:"我很好。你觉得今天天气怎么样？看着挺多云的。"},
+    {r:"A",t:"Yeah, looks like it is going to rain later.",zh:"是啊，看起来待会要下雨。"},
+    {r:"B",t:"Do you think it will be a heavy rain?",zh:"你觉得会是大雨吗？"},
+    {r:"A",t:"I'm not sure. But I think it's going to clear up soon.",zh:"不确定。但我觉得很快会放晴。"}
+  ]},
+  {title:"游戏对话1: PC vs 手机游戏",cat:"游戏",date:"2026-04-14",lines:[
+    {r:"C",t:"Do you prefer PC games or mobile games?",zh:"你更喜欢电脑游戏还是手机游戏？"},
+    {r:"D",t:"I think I like PC games more. The screen is bigger.",zh:"我更喜欢电脑游戏，屏幕更大。"},
+    {r:"C",t:"True. But mobile games are so easy to play anywhere.",zh:"没错。但手机游戏在哪都能玩。"},
+    {r:"D",t:"Yeah, like on the bus or during a break.",zh:"是啊，比如在公交车上或休息时。"},
+    {r:"C",t:"What PC games do you play?",zh:"你玩什么电脑游戏？"},
+    {r:"D",t:"I play Minecraft with my friends. We build things together.",zh:"我和朋友玩《我的世界》，一起建东西。"},
+    {r:"C",t:"What mobile games do you play?",zh:"你玩什么手机游戏？"},
+    {r:"D",t:"Mostly puzzle games, like Candy Crush. It helps me kill time.",zh:"主要是解谜游戏，帮我打发时间。"}
+  ]},
+  {title:"游戏对话2: 游戏类型偏好",cat:"游戏",date:"2026-04-14",lines:[
+    {r:"A",t:"What kind of games do you like?",zh:"你喜欢什么类型的游戏？"},
+    {r:"B",t:"I love action games. I like fighting and moving fast.",zh:"我爱动作游戏，喜欢战斗和快速移动。"},
+    {r:"A",t:"Cool. Like Devil May Cry or something?",zh:"酷，像《鬼泣》那样？"},
+    {r:"B",t:"Yeah, exactly! I also like racing games a lot.",zh:"对！我也很喜欢赛车游戏。"},
+    {r:"A",t:"I'm more into strategy games, though.",zh:"不过我更喜欢策略游戏。"},
+    {r:"B",t:"Strategy games? Like chess?",zh:"策略游戏？像国际象棋？"},
+    {r:"A",t:"Kind of. Like Civilization or StarCraft. You need to think a lot.",zh:"差不多，像《文明》或《星际争霸》，需要想很多。"},
+    {r:"B",t:"That sounds hard. My brain would hurt!",zh:"听起来很难，我脑子会疼的！"},
+    {r:"A",t:"Haha, you get used to it. It's satisfying when your plan works.",zh:"哈哈习惯就好，计划成功时很有成就感。"}
+  ]},
+  {title:"游戏对话3: 游戏设计师采访",cat:"游戏",date:"2026-04-14",lines:[
+    {r:"Alex",t:"Hi Jamie! I love playing video games, and I want to make them one day.",zh:"我爱玩游戏，将来想做游戏。"},
+    {r:"Jamie",t:"That's great! What kind of games do you like?",zh:"太好了！你喜欢什么类型的？"},
+    {r:"Alex",t:"I really like platform games, like Super Mario.",zh:"我喜欢平台游戏，像超级马里奥。"},
+    {r:"Jamie",t:"My job is to think about the rules of the game. I decide how the player moves, what the goals are, and if the game is fun.",zh:"我的工作是设计游戏规则——玩家怎么动、目标是什么、好不好玩。"},
+    {r:"Alex",t:"So you don't draw the characters?",zh:"那你不画角色吗？"},
+    {r:"Jamie",t:"No, that's a different job. Artists draw the characters. We also have programmers who write the code.",zh:"不，那是美术的工作。我们还有程序员写代码。"},
+    {r:"Alex",t:"It sounds like a lot of teamwork.",zh:"听起来需要很多团队合作。"},
+    {r:"Jamie",t:"Yes, teamwork is very important.",zh:"是的，团队合作非常重要。"}
+  ]},
+  {title:"电影对话1: 看恐怖片后",cat:"电影",date:"2026-04-14",lines:[
+    {r:"A",t:"So, what do you think of the movie?",zh:"你觉得这部电影怎么样？"},
+    {r:"B",t:"It was scary, but not too disgusting. I quite liked the atmosphere.",zh:"挺吓人的，但不恶心。我很喜欢那个氛围。"},
+    {r:"A",t:"I thought the middle part was a little slow, but the last 30 minutes were super tense.",zh:"中间有点慢，但最后30分钟超紧张。"},
+    {r:"B",t:"True. Some scenes made me hold my breath the whole time.",zh:"是的，有些场景让我一直屏住呼吸。"},
+    {r:"A",t:"Did you jump at that sudden sound effect? I almost screamed.",zh:"你被那个突然的音效吓到了吗？我差点尖叫。"},
+    {r:"B",t:"Of course I did! I hate jump scares, but they were used really well here.",zh:"当然了！我讨厌jump scare，但这里用得真好。"},
+    {r:"A",t:"By the way, are you free next Saturday? There's a comedy coming out.",zh:"对了，下周六有空吗？有个喜剧要上映。"},
+    {r:"B",t:"Sounds perfect. I need something light and funny after this.",zh:"太好了，看完这个我需要点轻松搞笑的。"},
+    {r:"A",t:"Let's buy tickets in advance. The cinema is usually crowded on weekends.",zh:"我们提前买票吧，周末影院通常很挤。"}
+  ]},
+  {title:"电影对话2: 看完好电影",cat:"电影",date:"2026-04-14",lines:[
+    {r:"A",t:"Wow, that movie was way better than I expected.",zh:"哇，这电影比我预期好太多了。"},
+    {r:"B",t:"Right? I thought it was just another action movie, but the story was actually really deep.",zh:"对吧？我以为又是个普通动作片，但故事真的很深刻。"},
+    {r:"A",t:"The plot twists totally caught me off guard. I didn't see that ending coming at all.",zh:"剧情反转完全出乎意料，我完全没猜到结局。"},
+    {r:"B",t:"Me neither. And the main actor's performance was amazing. I almost teared up.",zh:"我也没有。主角的表演太棒了，我差点哭了。"},
+    {r:"A",t:"Same here. The cinematography was stunning too.",zh:"我也是。摄影也太美了。"},
+    {r:"B",t:"By the way, did you finish your popcorn? I ate mine in the first 30 minutes.",zh:"对了，你爆米花吃完了吗？我前30分钟就吃完了。"},
+    {r:"A",t:"Yeah, I was so focused on the movie I didn't even realize.",zh:"吃完了，我太专注电影都没意识到。"},
+    {r:"B",t:"Wanna grab some milk tea before we go home? My treat.",zh:"回家前喝杯奶茶？我请。"},
+    {r:"A",t:"Sure! And we should watch the sequel together when it comes out.",zh:"好！续集出来我们一起看。"},
+    {r:"B",t:"Definitely. I'm already looking forward to it.",zh:"必须的，我已经期待了。"}
+  ]}
+];
+
+// ============================================================
+// PASSIVE VOICE EXERCISES (被动语态练习)
+// ============================================================
+const EXERCISES = [
+  {zh:"我的手机昨晚被偷了。",en:"My phone was stolen last night.",key:"stolen",date:"2026-04-14"},
+  {zh:"这些信件明天会被寄出。",en:"These letters are going to be sent tomorrow.",key:"sent",date:"2026-04-14"},
+  {zh:"这辆车是我爸爸买的。",en:"The car was bought by my father.",key:"bought",date:"2026-04-14"},
+  {zh:"厨房正在被打扫。",en:"The kitchen is being cleaned now.",key:"cleaned/being",date:"2026-04-14"},
+  {zh:"这款游戏是在2023年发行的。",en:"This game was released in 2023.",key:"released",date:"2026-04-14"},
+  {zh:"这个角色由一位著名演员扮演。",en:"This role was played by a famous actor.",key:"played",date:"2026-04-14"},
+  {zh:"游戏规则应该被仔细阅读。",en:"The game rules should be read carefully.",key:"should be + p.p.",date:"2026-04-14"},
+  {zh:"这个场景是在上海拍摄的。",en:"This scene was filmed in Shanghai.",key:"filmed",date:"2026-04-14"}
 ];
 
 const GRAMMAR = [
@@ -284,6 +427,11 @@ const GRAMMAR = [
   {title:"句子结构",rule:"完整句子: 主+谓+宾。最高级: ...est / the most...",ok:null,no:null,cat:"基础语法",date:"2026-04-16 14:19"},
   {title:"should + be + p.p.",rule:"应该被... 用于表达建议/要求",ok:"The rules should be reviewed carefully.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
   {title:"条件句 If..., ... will...",rule:"真实条件句: If + 一般现在时, 主句用 will + 原形",ok:"If you work hard, you will succeed.",no:null,cat:"常用句型",date:"2026-04-16 14:19"},
+  // NEW from docx 4.14
+  {title:"u 发音: /v/",rule:"字母 u 在某些单词中发 /v/ 音（尖角音）",ok:"university, umbrella",no:null,cat:"发音规则",date:"2026-04-14"},
+  {title:"sc 发音: c→g",rule:"sc 组合中 c 有时浊化为 /g/ 音",ok:"scan, scare",no:null,cat:"发音规则",date:"2026-04-14"},
+  {title:"sk 发音: k→g",rule:"sk 组合中 k 有时浊化为 /g/ 音",ok:"skate, skill, sky",no:null,cat:"发音规则",date:"2026-04-14"},
+  {title:"st 发音: t→d",rule:"st 组合中 t 有时浊化为 /d/ 音",ok:"star, stop, student",no:null,cat:"发音规则",date:"2026-04-14"},
 ];
 
 const PHRASES = [
@@ -317,6 +465,28 @@ const PHRASES = [
   {p:"How does the heating work",zh:"暖气怎么用",ex:"生活询问",cat:"日常",date:"2026-04-16 14:19"},
   {p:"stop where you are",zh:"原地不动",ex:"指令表达",cat:"日常",date:"2026-04-16 14:19"},
   {p:"If you work hard, you will succeed",zh:"努力就会成功",ex:"条件句",cat:"日常",date:"2026-04-16 14:19"},
+  // === NEW from Iris 课程 docx (4.14) ===
+  {p:"Can I have/get an iced coffee?",zh:"我能要一杯冰咖啡吗？",ex:"点餐用语",cat:"点餐",date:"2026-04-14"},
+  {p:"I would like a...",zh:"我想要一个...",ex:"I would like a coke.",cat:"点餐",date:"2026-04-14"},
+  {p:"What size?",zh:"要什么尺寸？",ex:"Large/Medium/Small, please.",cat:"点餐",date:"2026-04-14"},
+  {p:"For here or to go?",zh:"在这吃还是带走？",ex:"For here, please.",cat:"点餐",date:"2026-04-14"},
+  {p:"Here you are / Here you go",zh:"给您",ex:"递东西时说",cat:"点餐",date:"2026-04-14"},
+  {p:"Have a nice day!",zh:"祝您愉快！",ex:"告别用语",cat:"礼貌",date:"2026-04-14"},
+  {p:"No worries / You're welcome",zh:"不客气/没关系",ex:"回应感谢",cat:"礼貌",date:"2026-04-14"},
+  {p:"What are your plans?",zh:"你有什么计划？",ex:"询问安排",cat:"日常",date:"2026-04-14"},
+  {p:"be going to do",zh:"打算做某事",ex:"I'm going to sleep at 9pm.",cat:"日常",date:"2026-04-14"},
+  {p:"How about + doing?",zh:"...怎么样？（提建议）",ex:"How about having a coffee?",cat:"日常",date:"2026-04-14"},
+  {p:"Coffee is on me / My treat",zh:"我请客",ex:"请客表达",cat:"日常",date:"2026-04-14"},
+  {p:"It's going to clear up",zh:"天要放晴了",ex:"谈天气",cat:"日常",date:"2026-04-14"},
+  {p:"kill time",zh:"打发时间",ex:"It helps me kill time.",cat:"日常",date:"2026-04-14"},
+  {p:"I'm more into...",zh:"我更喜欢...",ex:"I'm more into strategy games.",cat:"评价",date:"2026-04-14"},
+  {p:"You get used to it",zh:"你会习惯的",ex:"安慰/鼓励",cat:"日常",date:"2026-04-14"},
+  {p:"way better than",zh:"比...好多了",ex:"That movie was way better than I expected.",cat:"评价",date:"2026-04-14"},
+  {p:"plot twist",zh:"剧情反转",ex:"The plot twists caught me off guard.",cat:"评价",date:"2026-04-14"},
+  {p:"teared up",zh:"流泪/感动哭了",ex:"I almost teared up in that scene.",cat:"评价",date:"2026-04-14"},
+  {p:"looking forward to",zh:"期待...",ex:"I'm looking forward to it.",cat:"日常",date:"2026-04-14"},
+  {p:"Me neither / Me too",zh:"我也没有 / 我也是",ex:"附和用语",cat:"日常",date:"2026-04-14"},
+  {p:"not at all",zh:"一点也不/根本不",ex:"I didn't see that coming at all.",cat:"日常",date:"2026-04-14"},
 ];
 
 const SOURCES = [
@@ -378,10 +548,16 @@ function buildIris(){
   const tabsEl = document.getElementById("irisSubTabs");
   const contentEl = document.getElementById("irisContent");
 
-  // Add phrase & source tabs
-  const allTabs = [...cats, "常用短语", "扫描来源"];
+  // Add dialogue, exercises, phrase, grammar & source tabs
+  const allTabs = [...cats, "场景对话", "被动语态练习", "语法笔记", "常用短语", "扫描来源"];
   tabsEl.innerHTML = allTabs.map((c,i) => {
-    const cnt = c==="常用短语"?PHRASES.length:c==="扫描来源"?SOURCES.length:ALL_VOCAB.filter(v=>v.cat===c).length;
+    let cnt = 0;
+    if(c==="场景对话") cnt=DIALOGUES.length;
+    else if(c==="被动语态练习") cnt=EXERCISES.length;
+    else if(c==="常用短语") cnt=PHRASES.length;
+    else if(c==="扫描来源") cnt=SOURCES.length;
+    else if(c==="语法笔记") cnt=GRAMMAR.length;
+    else cnt=ALL_VOCAB.filter(v=>v.cat===c).length;
     return `<div class="sub-tab ${i===0?'active':''}" data-subtab="iris-${i}">${c} <span class="badge">${cnt}</span></div>`;
   }).join("");
 
@@ -394,15 +570,64 @@ function buildIris(){
     </div>`;
   });
 
+  // Dialogues section
+  const dlgIdx = cats.length;
+  html += `<div class="sub-section" id="iris-${dlgIdx}">
+    <div class="section-header"><h2>场景对话</h2></div>
+    ${DIALOGUES.map(d => `
+      <div class="grammar-card" data-search="${d.title} ${d.cat} ${d.lines.map(l=>l.t+' '+l.zh).join(' ')}">
+        <h3>${d.title} <span style="font-size:.7rem;font-weight:400;color:var(--gray-light);margin-left:8px">${d.cat} | 📅 ${d.date}</span></h3>
+        <div style="margin-top:8px">
+          ${d.lines.map(l => `<div style="padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:.88rem;display:flex;gap:8px">
+            <span style="font-weight:700;color:var(--purple);min-width:40px">${l.r}:</span>
+            <span><span style="color:var(--dark)">${l.t}</span><br><span style="color:var(--gray-light);font-size:.78rem">${l.zh}</span></span>
+          </div>`).join("")}
+        </div>
+      </div>
+    `).join("")}
+  </div>`;
+
+  // Exercises section
+  const exIdx = dlgIdx + 1;
+  html += `<div class="sub-section" id="iris-${exIdx}">
+    <div class="section-header"><h2>被动语态练习</h2></div>
+    <div style="margin-bottom:12px;font-size:.85rem;color:var(--gray)">📝 中文→英文翻译练习 | 来源: Iris 课程 4.14</div>
+    ${EXERCISES.map((e,i) => `
+      <div class="grammar-card" data-search="${e.zh} ${e.en} ${e.key}" style="cursor:pointer" onclick="this.querySelector('.ans').style.display=this.querySelector('.ans').style.display==='none'?'block':'none'">
+        <div style="font-size:.9rem;font-weight:600;color:var(--dark)">${i+1}. ${e.zh}</div>
+        <div style="margin-top:4px;font-size:.75rem;color:var(--gray-light)">关键词: <strong>${e.key}</strong> | 点击显示答案 👇</div>
+        <div class="ans" style="display:none;margin-top:10px;padding:10px 14px;background:#ECFDF5;border-radius:8px;border-left:3px solid var(--green);color:var(--green);font-size:.9rem">
+          ✓ ${e.en}
+        </div>
+      </div>
+    `).join("")}
+  </div>`;
+
+  // Grammar section inside Iris
+  const gramIdx = exIdx + 1;
+  const gramCats = [...new Set(GRAMMAR.map(g=>g.cat))];
+  html += `<div class="sub-section" id="iris-${gramIdx}">
+    <div class="section-header"><h2>语法笔记</h2></div>
+    ${gramCats.map(gc => {
+      const items = GRAMMAR.filter(g=>g.cat===gc);
+      return `<h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin:20px 0 10px">${gc}</h3>
+      ${items.map(g=>`<div class="grammar-card" data-search="${g.title} ${g.rule} ${g.ok||''} ${g.no||''}">
+        <h3>${g.title}</h3><div class="rule">${g.rule}</div>
+        ${g.no?`<div class="ex no"><span class="m">✗</span>${g.no}</div>`:''}
+        ${g.ok?`<div class="ex ok"><span class="m">✓</span>${g.ok}</div>`:''}
+      </div>`).join("")}`;
+    }).join("")}
+  </div>`;
+
   // Phrases section
-  html += `<div class="sub-section" id="iris-${cats.length}">
+  html += `<div class="sub-section" id="iris-${gramIdx+1}">
     <div class="section-header"><h2>常用短语 & 表达</h2></div>
     <table class="phrase-table"><thead><tr><th>Phrase</th><th>中文含义</th><th>Example</th><th>分类</th></tr></thead>
     <tbody>${PHRASES.map(p=>`<tr data-search="${p.p} ${p.zh} ${p.ex}"><td>${p.p}</td><td>${p.zh}</td><td>${p.ex}</td><td>${p.cat}</td></tr>`).join("")}</tbody></table>
   </div>`;
 
   // Source section
-  html += `<div class="sub-section" id="iris-${cats.length+1}">
+  html += `<div class="sub-section" id="iris-${gramIdx+2}">
     <div class="section-header"><h2>扫描件来源</h2></div>
     <div class="source-grid">${SOURCES.map(s=>`<div class="source-card"><div class="fi ${s.ink}">📄</div><div><div class="fn">${s.name}</div><div class="fd">${s.desc}</div><span class="ink ${s.ink}">${s.l}</span></div></div>`).join("")}</div>
   </div>`;
@@ -506,8 +731,8 @@ buildGrammar();
 // UPDATE DATE FOOTER
 document.querySelector(".content").insertAdjacentHTML("beforeend", `
   <div style="text-align:center;padding:40px 20px 20px;border-top:1px solid #E5E7EB;margin-top:40px">
-    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-16 16:39</strong></div>
-    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 258 条 &middot; 来自 10 份扫描件 &middot; Richie's English Study Notes</div>
+    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-16 17:22</strong></div>
+    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 328 条 &middot; 来自 10 份扫描件 + 2 份课程文档 &middot; 小霸王 English Study Notes</div>
   </div>
 `);
 </script>
