@@ -129,10 +129,10 @@
   <h1>小霸王 English Notes</h1>
   <div class="sub">258 entries from 10 handwritten scans &mdash; with pronunciation, phonetics & exam levels</div>
   <div class="stats">
-    <div class="stat"><div class="n">328</div><div class="l">Total</div></div>
-    <div class="stat"><div class="n">228</div><div class="l">Vocab</div></div>
-    <div class="stat"><div class="n">16</div><div class="l">Grammar</div></div>
-    <div class="stat"><div class="n">65</div><div class="l">Phrases</div></div>
+    <div class="stat"><div class="n">430</div><div class="l">Total</div></div>
+    <div class="stat"><div class="n">270</div><div class="l">Vocab</div></div>
+    <div class="stat"><div class="n">20</div><div class="l">Grammar</div></div>
+    <div class="stat"><div class="n">98</div><div class="l">Phrases</div></div>
   </div>
 </div>
 
@@ -296,6 +296,57 @@ const ALL_VOCAB = [
   {en:"rainy",zh:"多雨的",uk:"/ˈreɪni/",us:"/ˈreɪni/",defs:["adj. 下雨的；多雨的"],exam:["高考"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
   {en:"expected",zh:"预期的",uk:"/ɪkˈspektɪd/",us:"/ɪkˈspektɪd/",defs:["adj. 预期的","v. expect 的过去式"],exam:["四级","六级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
   {en:"realize",zh:"意识到",uk:"/ˈrɪəlaɪz/",us:"/ˈriːəlaɪz/",defs:["v. 意识到；实现"],exam:["高考","四级","六级","考研"],tag:"verb",past:"realized",pp:"realized",ing:"realizing",future:"will realize",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  // === 春节/节日词汇 ===
+  {en:"reunion dinner",zh:"团圆饭",defs:["n. 团圆饭；家庭聚餐"],exam:[],cat:"日常高频",sub:"春节/节日",date:"2026-04-14"},
+  {en:"relative",zh:"亲戚",uk:"/ˈrelətɪv/",us:"/ˈrelətɪv/",defs:["n. 亲戚；亲属","adj. 相对的"],exam:["高考","四级","六级"],plural:"relatives",cat:"日常高频",sub:"春节/节日",date:"2026-04-14"},
+  {en:"dumpling",zh:"饺子",uk:"/ˈdʌmplɪŋ/",us:"/ˈdʌmplɪŋ/",defs:["n. 饺子；汤团"],exam:["高考"],plural:"dumplings",cat:"食物饮品",sub:"食物饮品",date:"2026-04-14"},
+  {en:"firework",zh:"烟花",uk:"/ˈfaɪəwɜːk/",us:"/ˈfaɪərwɜːrk/",defs:["n. 烟花；烟火"],exam:["高考","四级"],plural:"fireworks",cat:"日常高频",sub:"春节/节日",date:"2026-04-14"},
+  {en:"red packet",zh:"红包",defs:["n. 红包；红封"],exam:[],plural:"red packets",cat:"日常高频",sub:"春节/节日",date:"2026-04-14"},
+  {en:"routine",zh:"日常/作息",uk:"/ruːˈtiːn/",us:"/ruːˈtiːn/",defs:["n. 日常事务；常规","adj. 例行的"],exam:["四级","六级","考研"],plural:"routines",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"refreshed",zh:"精神焕发的",uk:"/rɪˈfreʃt/",us:"/rɪˈfreʃt/",defs:["adj. 精神焕发的；恢复精力的"],exam:["四级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"recover",zh:"恢复",uk:"/rɪˈkʌvə/",us:"/rɪˈkʌvər/",defs:["v. 恢复；康复；找回"],exam:["高考","四级","六级","考研"],tag:"verb",past:"recovered",pp:"recovered",ing:"recovering",future:"will recover",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"complain",zh:"抱怨",uk:"/kəmˈpleɪn/",us:"/kəmˈpleɪn/",defs:["v. 抱怨；投诉"],exam:["高考","四级","六级"],tag:"verb",past:"complained",pp:"complained",ing:"complaining",future:"will complain",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  {en:"freezing",zh:"极冷的",uk:"/ˈfriːzɪŋ/",us:"/ˈfriːzɪŋ/",defs:["adj. 极冷的；冰冻的"],exam:["四级"],tag:"adj",cat:"日常高频",sub:"日常高频",date:"2026-04-14"},
+  // === 旅行/机场词汇 ===
+  {en:"passport",zh:"护照",uk:"/ˈpɑːspɔːt/",us:"/ˈpæspɔːrt/",defs:["n. 护照"],exam:["高考","四级"],plural:"passports",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"boarding pass",zh:"登机牌",defs:["n. 登机牌；登机证"],exam:[],plural:"boarding passes",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"suitcase",zh:"行李箱",uk:"/ˈsuːtkeɪs/",us:"/ˈsuːtkeɪs/",defs:["n. 手提箱；行李箱"],exam:["高考","四级"],plural:"suitcases",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"aisle",zh:"过道",uk:"/aɪl/",us:"/aɪl/",defs:["n. 过道；通道；走廊"],exam:["四级","六级"],plural:"aisles",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"security",zh:"安检/安全",uk:"/sɪˈkjʊərəti/",us:"/sɪˈkjʊrəti/",defs:["n. 安全；保障；安检"],exam:["高考","四级","六级","考研"],cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"customs",zh:"海关",uk:"/ˈkʌstəmz/",us:"/ˈkʌstəmz/",defs:["n. 海关；关税"],exam:["四级","六级"],cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"declare",zh:"申报",uk:"/dɪˈkleə/",us:"/dɪˈkler/",defs:["v. 申报；宣布；声明"],exam:["四级","六级","考研"],tag:"verb",past:"declared",pp:"declared",ing:"declaring",future:"will declare",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"shuttle bus",zh:"摆渡车",defs:["n. 穿梭巴士；摆渡车"],exam:[],plural:"shuttle buses",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"terminal",zh:"航站楼",uk:"/ˈtɜːmɪnl/",us:"/ˈtɜːrmɪnl/",defs:["n. 航站楼；终端；终点"],exam:["四级","六级","考研"],plural:"terminals",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"turbulence",zh:"气流/颠簸",uk:"/ˈtɜːbjələns/",us:"/ˈtɜːrbjələns/",defs:["n. 湍流；颠簸；动荡"],exam:["六级","考研"],cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"seatbelt",zh:"安全带",uk:"/ˈsiːtbelt/",us:"/ˈsiːtbelt/",defs:["n. 安全带"],exam:["高考"],plural:"seatbelts",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"jet-lagged",zh:"时差反应的",defs:["adj. 有时差反应的"],exam:[],tag:"adj",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"takeoff",zh:"起飞",uk:"/ˈteɪkɒf/",us:"/ˈteɪkɔːf/",defs:["n. 起飞"],exam:["四级"],plural:"takeoffs",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"direct flight",zh:"直飞航班",defs:["n. 直飞航班"],exam:[],plural:"direct flights",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"economy class",zh:"经济舱",defs:["n. 经济舱"],exam:[],cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"business class",zh:"商务舱",defs:["n. 商务舱"],exam:[],cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  {en:"carry-on",zh:"随身行李",defs:["n. 随身携带的行李"],exam:[],plural:"carry-ons",cat:"交通出行",sub:"旅行/机场",date:"2026-04-14"},
+  // === 酒店/住宿词汇 ===
+  {en:"reservation",zh:"预订",uk:"/ˌrezəˈveɪʃn/",us:"/ˌrezərˈveɪʃn/",defs:["n. 预订；预约；保留意见"],exam:["四级","六级"],plural:"reservations",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"check-in",zh:"登记入住",defs:["n. 登记入住；办理手续"],exam:[],cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"checkout",zh:"退房/结账",defs:["n. 退房；结账"],exam:[],cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"deposit",zh:"押金/存款",uk:"/dɪˈpɒzɪt/",us:"/dɪˈpɑːzɪt/",defs:["n. 押金；存款；定金","v. 存放；储蓄"],exam:["四级","六级","考研"],tag:"verb",past:"deposited",pp:"deposited",ing:"depositing",future:"will deposit",plural:"deposits",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"towel",zh:"毛巾",uk:"/ˈtaʊəl/",us:"/ˈtaʊəl/",defs:["n. 毛巾；手巾"],exam:["高考","四级"],plural:"towels",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"closet",zh:"衣柜/壁橱",uk:"/ˈklɒzɪt/",us:"/ˈklɑːzɪt/",defs:["n. 衣柜；壁橱；储藏室"],exam:["四级"],plural:"closets",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"brochure",zh:"小册子",uk:"/ˈbrəʊʃə/",us:"/broʊˈʃʊr/",defs:["n. 小册子；宣传册"],exam:["四级","六级"],plural:"brochures",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"souvenir",zh:"纪念品",uk:"/ˌsuːvəˈnɪə/",us:"/ˌsuːvəˈnɪr/",defs:["n. 纪念品；纪念物"],exam:["四级","六级"],plural:"souvenirs",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"laundry",zh:"洗衣服务/洗衣店",uk:"/ˈlɔːndri/",us:"/ˈlɔːndri/",defs:["n. 洗衣服务；洗衣店；待洗衣物"],exam:["四级"],cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"blanket",zh:"毯子",uk:"/ˈblæŋkɪt/",us:"/ˈblæŋkɪt/",defs:["n. 毯子；毛毯"],exam:["高考","四级"],plural:"blankets",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  {en:"pillow",zh:"枕头",uk:"/ˈpɪləʊ/",us:"/ˈpɪloʊ/",defs:["n. 枕头"],exam:["高考","四级"],plural:"pillows",cat:"交通出行",sub:"旅行/酒店",date:"2026-04-14"},
+  // === 交通场景词汇 ===
+  {en:"pedestrian",zh:"行人",uk:"/pəˈdestriən/",us:"/pəˈdestriən/",defs:["n. 行人；步行者"],exam:["四级","六级"],plural:"pedestrians",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"bench",zh:"长椅",uk:"/bentʃ/",us:"/bentʃ/",defs:["n. 长椅；工作台"],exam:["高考","四级"],plural:"benches",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"parking lot",zh:"停车场",defs:["n. 停车场"],exam:["高考"],plural:"parking lots",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"jaywalk",zh:"横穿马路",defs:["v. 乱穿马路"],exam:[],tag:"verb",past:"jaywalked",pp:"jaywalked",ing:"jaywalking",future:"will jaywalk",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"beggar",zh:"乞丐",uk:"/ˈbeɡə/",us:"/ˈbeɡər/",defs:["n. 乞丐；叫花子"],exam:["四级"],plural:"beggars",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"traffic jam",zh:"堵车/交通堵塞",defs:["n. 交通堵塞；堵车"],exam:["高考"],plural:"traffic jams",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"parking ticket",zh:"罚单/停车票",defs:["n. 违停罚单；停车票"],exam:[],plural:"parking tickets",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"neighborhood",zh:"街区/社区",uk:"/ˈneɪbəhʊd/",us:"/ˈneɪbərhʊd/",defs:["n. 社区；街区；附近"],exam:["高考","四级","六级"],plural:"neighborhoods",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
+  {en:"traffic light",zh:"红绿灯",defs:["n. 交通信号灯；红绿灯"],exam:["高考"],plural:"traffic lights",cat:"交通出行",sub:"交通出行",date:"2026-04-14"},
 ];
 
 // ============================================================
@@ -393,6 +444,123 @@ const DIALOGUES = [
     {r:"B",t:"Wanna grab some milk tea before we go home? My treat.",zh:"回家前喝杯奶茶？我请。"},
     {r:"A",t:"Sure! And we should watch the sequel together when it comes out.",zh:"好！续集出来我们一起看。"},
     {r:"B",t:"Definitely. I'm already looking forward to it.",zh:"必须的，我已经期待了。"}
+  ]},
+  // === 打招呼+约饭 ===
+  {title:"打招呼对话3: 约饭（被拒绝）",cat:"社交",date:"2026-04-14",lines:[
+    {r:"A",t:"Hello! FangQi, what's up!",zh:"你好！方奇，怎么样！"},
+    {r:"B",t:"Not bad. What about you?",zh:"还行，你呢？"},
+    {r:"A",t:"I'm great. But the weather is crazy today, isn't it?",zh:"我挺好。但今天天气太疯狂了，对吧？"},
+    {r:"B",t:"Right! It was summer yesterday, now it's like winter.",zh:"对！昨天还像夏天，现在像冬天。"},
+    {r:"A",t:"Yeah, I'm freezing. Do you have any plans later? How about having a meal together.",zh:"是啊我快冻死了。待会有安排吗？一起吃个饭怎么样。"},
+    {r:"B",t:"I would like to do so, but I really have a busy day. I'm afraid I have to work.",zh:"我很想，但今天真的很忙，恐怕得工作。"},
+    {r:"A",t:"No worries, let's talk later/next time. Hope you have a good day at work!",zh:"没事，下次吧。祝你工作顺利！"},
+    {r:"B",t:"You too! Let's keep in touch, okay?",zh:"你也是！保持联络好吗？"},
+    {r:"A",t:"Sure! See you!",zh:"好的！再见！"}
+  ]},
+  // === 春节 ===
+  {title:"春节对话: 新年问候 & 假期生活",cat:"节日",date:"2026-04-14",lines:[
+    {r:"A",t:"Happy New Year! Long time no see.",zh:"新年快乐！好久不见。"},
+    {r:"B",t:"Happy New Year! Yes, how was your Spring Festival holiday?",zh:"新年快乐！你春节假期过得怎么样？"},
+    {r:"A",t:"It was great, thanks. I went back to my hometown and spent time with my family. We had a family reunion dinner with relatives.",zh:"很好，谢谢。我回了老家，跟家人一起吃了团圆饭。"},
+    {r:"B",t:"That's nice. Did you eat lots of dumplings?",zh:"真好。吃了很多饺子吗？"},
+    {r:"A",t:"Of course! My mom made them every day. How about you? Did you do anything special?",zh:"当然！我妈每天都包。你呢？做了什么特别的？"},
+    {r:"B",t:"I stayed in the city and caught up on some movies. It was very quiet, but I got a lot of rest.",zh:"我留在城里补了些电影。很安静，但休息得很好。"},
+    {r:"A",t:"That sounds relaxing, too. So, are you ready to get back to work?",zh:"听起来也很放松。准备好回去上班了吗？"},
+    {r:"B",t:"It's hard to get back into the routine. I think I need another vacation to recover!",zh:"很难恢复作息。我觉得我需要再来一个假期！"},
+    {r:"A",t:"Good luck with the first day back!",zh:"第一天上班加油！"}
+  ]},
+  // === 机场值机 ===
+  {title:"旅行对话1: 机场值机 (Check-in)",cat:"旅行/机场",date:"2026-04-14",lines:[
+    {r:"Agent",t:"Good morning. May I have your passport and ticket, please?",zh:"早上好，请出示护照和机票。"},
+    {r:"You",t:"Here you are. I'd like to check in for flight CX888 to Vietnam.",zh:"给您。我要办理飞越南的CX888航班值机。"},
+    {r:"Agent",t:"Do you have any bags to check in?",zh:"有行李要托运吗？"},
+    {r:"You",t:"Yes, two suitcases.",zh:"有，两个行李箱。"},
+    {r:"Agent",t:"Please put them on the scale. Your baggage is 23kg, that's fine.",zh:"请放到秤上。23公斤，没问题。"},
+    {r:"Agent",t:"Would you prefer a window or an aisle seat?",zh:"您想要靠窗还是靠过道的座位？"},
+    {r:"You",t:"Window seat, please.",zh:"靠窗的，谢谢。"},
+    {r:"Agent",t:"OK, here's your boarding pass. Your gate is Gate 23, boarding at 10:30 AM.",zh:"好的，这是您的登机牌。23号登机口，10:30开始登机。"},
+    {r:"You",t:"Which way is Gate 23?",zh:"23号登机口怎么走？"},
+    {r:"Agent",t:"Turn left after security, follow the signs.",zh:"过了安检后左转，跟着指示牌走。"}
+  ]},
+  // === 飞机上填申报卡 ===
+  {title:"旅行对话2: 飞机上填申报卡",cat:"旅行/机场",date:"2026-04-14",lines:[
+    {r:"FA",t:"We will be landing in Auckland soon. Here is a New Zealand Passenger Arrival Card. Please fill it out before you land.",zh:"我们即将降落奥克兰。这是新西兰入境卡，请在降落前填好。"},
+    {r:"You",t:"Oh, thank you. Do I need to fill it out in English?",zh:"谢谢。需要用英文填吗？"},
+    {r:"FA",t:"Yes, please use English. If you need help, just ask us.",zh:"是的，请用英文。需要帮助随时叫我们。"},
+    {r:"You",t:"OK. I have some food in my bag, like snacks. Do I need to declare that?",zh:"好的。我包里有些零食，需要申报吗？"},
+    {r:"FA",t:"If it's just packaged snacks like chips or chocolate, it's usually fine. But fresh fruit, meat, seeds or honey are not allowed. You must declare any food.",zh:"如果只是薯片巧克力这种包装零食，一般没问题。但新鲜水果、肉类、种子或蜂蜜不行。所有食物都必须申报。"},
+    {r:"You",t:"Got it. Thanks for the help.",zh:"明白了，谢谢。"}
+  ]},
+  // === 海关入境 ===
+  {title:"旅行对话3: 海关入境检查",cat:"旅行/机场",date:"2026-04-14",lines:[
+    {r:"Officer",t:"Hello. Welcome to New Zealand. May I have your passport and arrival card, please?",zh:"你好，欢迎来到新西兰。请出示护照和入境卡。"},
+    {r:"You",t:"Here you go.",zh:"给您。"},
+    {r:"Officer",t:"I see you checked 'Yes' for food. What food do you have with you?",zh:"我看你食物项勾了'是'。你带了什么食物？"},
+    {r:"You",t:"Yes, I have some cookies and chocolate bars for snacks. They are store-bought and packaged.",zh:"有，一些饼干和巧克力棒当零食。是商店买的包装食品。"},
+    {r:"Officer",t:"That should be fine. Any fresh fruit, like apples or oranges?",zh:"那没问题。有新鲜水果吗，比如苹果或橙子？"},
+    {r:"You",t:"No fresh fruit.",zh:"没有新鲜水果。"},
+    {r:"Officer",t:"Do you have any hiking shoes or sports shoes in your luggage?",zh:"行李里有登山鞋或运动鞋吗？"},
+    {r:"You",t:"Yes, I have a pair of hiking boots. I used them in a forest last month.",zh:"有，一双登山靴。上个月在森林里穿过。"},
+    {r:"Officer",t:"OK. Please put your bag here. We need to check the boots for soil or seeds.",zh:"好的，请把包放这里。我们需要检查靴子上有没有泥土或种子。"},
+    {r:"Officer",t:"They look clean. You're all set. Enjoy your trip in New Zealand!",zh:"看起来很干净。没问题了。祝在新西兰旅途愉快！"},
+    {r:"You",t:"Thank you so much!",zh:"非常感谢！"}
+  ]},
+  // === 飞机上对话 - 飞机餐 ===
+  {title:"旅行对话4: 飞机上点餐",cat:"旅行/机场",date:"2026-04-14",lines:[
+    {r:"FA",t:"Would you like chicken or beef for your meal?",zh:"您的餐食要鸡肉还是牛肉？"},
+    {r:"You",t:"Beef, please. And could I have some water as well?",zh:"牛肉，谢谢。再来杯水行吗？"},
+    {r:"FA",t:"Sure. Here you are. Would you like any coffee or tea later?",zh:"当然。给您。一会儿要咖啡或茶吗？"},
+    {r:"You",t:"Maybe after the meal. Thanks!",zh:"吃完再说吧，谢谢！"}
+  ]},
+  // === 酒店 Check-in ===
+  {title:"酒店对话1: Check-in 登记入住",cat:"旅行/酒店",date:"2026-04-14",lines:[
+    {r:"You",t:"Hello, I have a reservation under the name Fangqi.",zh:"你好，我预订了房间，名字是方奇。"},
+    {r:"Rcpt",t:"Welcome. Can I see your passport, please?",zh:"欢迎。请出示护照。"},
+    {r:"You",t:"Sure. Here you go.",zh:"好的，给您。"},
+    {r:"Rcpt",t:"Thank you. You booked a double room for 3 nights, is that correct?",zh:"谢谢。您预订了双人房3晚，对吗？"},
+    {r:"You",t:"Yes, that's right.",zh:"是的，没错。"},
+    {r:"Rcpt",t:"How would you like to pay? Can I take a deposit?",zh:"您想怎么付款？可以先收押金吗？"},
+    {r:"You",t:"I'll pay by credit card.",zh:"我刷信用卡。"},
+    {r:"Rcpt",t:"Here is your room key. Your room number is 302 on the 3rd floor. Breakfast is served from 7 to 10 am in the lobby restaurant.",zh:"这是您的房卡。302房间在3楼。早餐7-10点在大堂餐厅。"},
+    {r:"You",t:"Great. What time is check-out?",zh:"好的。几点退房？"},
+    {r:"Rcpt",t:"It's at 11 am.",zh:"11点。"},
+    {r:"You",t:"Got it. Thank you!",zh:"明白了，谢谢！"}
+  ]},
+  // === 酒店 Checkout ===
+  {title:"酒店对话2: Checkout 退房",cat:"旅行/酒店",date:"2026-04-14",lines:[
+    {r:"You",t:"Hi, I'm checking out. Room 302. Here's the key.",zh:"你好，我退房。302房间，这是房卡。"},
+    {r:"Rcpt",t:"Thank you. I hope you enjoyed your stay. I'll just print your final bill.",zh:"谢谢。希望您住得愉快。我打印一下最终账单。"},
+    {r:"You",t:"Everything looks good.",zh:"看起来没问题。"},
+    {r:"Rcpt",t:"All set! Have a safe trip home.",zh:"好了！一路平安。"},
+    {r:"You",t:"Thank you, goodbye!",zh:"谢谢，再见！"}
+  ]},
+  // === 民宿 Homestay ===
+  {title:"民宿对话: Homestay 入住",cat:"旅行/住宿",date:"2026-04-14",lines:[
+    {r:"You",t:"Hi, are you Iris? I'm Fangqi. I booked the apartment through the website.",zh:"嗨，你是Iris吗？我是方奇，在网站上订了房间。"},
+    {r:"Host",t:"Nice to meet you! Come on in. Let me show you around.",zh:"很高兴见到你！请进，我带你看看。"},
+    {r:"You",t:"Thank you. This place looks lovely!",zh:"谢谢，这地方看起来真好！"},
+    {r:"Host",t:"Thanks. The Wi-Fi password is on the table. If you need extra towels, they are in the closet. There are also some maps and brochures for local attractions over there.",zh:"谢谢。Wi-Fi密码在桌上。需要额外毛巾在衣柜里。那边还有一些本地景点的地图和小册子。"},
+    {r:"You",t:"Awesome. How does the heating/air conditioning work?",zh:"太好了。暖气/空调怎么用？"},
+    {r:"Host",t:"There's the remote control. If you have any problems, just text me.",zh:"遥控器在那里。有问题随时给我发消息。"},
+    {r:"You",t:"Perfect. Thanks for having me!",zh:"太好了，谢谢你的招待！"}
+  ]},
+  // === 问路+指路 ===
+  {title:"交通对话: 问路+指路+闲聊",cat:"交通/问路",date:"2026-04-14",lines:[
+    {r:"A",t:"Excuse me, could you help me?",zh:"打扰一下，能帮个忙吗？"},
+    {r:"B",t:"Sure! What can I do for you?",zh:"当然！有什么可以帮你的？"},
+    {r:"A",t:"I'm new here. I'm trying to get to the Central Library. Do you know how to get there?",zh:"我刚来这里，想去中央图书馆。你知道怎么走吗？"},
+    {r:"B",t:"The Central Library? Yes, it's not far. Just go straight along this street for about two blocks. Then turn left at the first traffic light. You'll see a big park on your right. The library is right across from the park. You can't miss it.",zh:"中央图书馆？不远。沿这条街直走两个路口，在第一个红绿灯左转。你会看到右边有个大公园，图书馆就在公园对面，不会错过的。"},
+    {r:"A",t:"Is it within walking distance?",zh:"走路能到吗？"},
+    {r:"B",t:"Definitely. It'll take you about ten minutes on foot. If you don't want to walk, you can take Bus No. 12 and get off at Park Station.",zh:"肯定能。步行大约十分钟。不想走路可以坐12路公交，在公园站下车。"},
+    {r:"A",t:"Thank you so much. By the way, is there a good café or restaurant nearby? I feel a little hungry.",zh:"太感谢了。顺便问一下，附近有好的咖啡馆或餐厅吗？我有点饿。"},
+    {r:"B",t:"Oh, there's a nice coffee shop just around the corner. They have great sandwiches and smoothies. Lots of people go there.",zh:"哦，拐角就有一家不错的咖啡馆。三明治和冰沙很好吃，很多人去。"},
+    {r:"A",t:"Sounds nice. And is the area safe around here?",zh:"听起来不错。这附近安全吗？"},
+    {r:"B",t:"Very safe. It's a busy neighborhood, so there are always people around.",zh:"很安全。这是个热闹的街区，总有人来来往往。"},
+    {r:"A",t:"Great. One more question — do you know what time the library closes?",zh:"好的。再问一个——你知道图书馆几点关门吗？"},
+    {r:"B",t:"I think it closes at 8 p.m. on weekdays. But you'd better check the door when you arrive, just in case.",zh:"工作日好像8点关门。不过你到了最好看一下门上的告示，以防万一。"},
+    {r:"A",t:"Thank you very much. You've been really helpful.",zh:"非常感谢。你帮了大忙。"},
+    {r:"B",t:"No problem at all. Enjoy your day!",zh:"不客气！祝你愉快！"},
+    {r:"A",t:"You too!",zh:"你也是！"}
   ]}
 ];
 
@@ -487,6 +655,43 @@ const PHRASES = [
   {p:"looking forward to",zh:"期待...",ex:"I'm looking forward to it.",cat:"日常",date:"2026-04-14"},
   {p:"Me neither / Me too",zh:"我也没有 / 我也是",ex:"附和用语",cat:"日常",date:"2026-04-14"},
   {p:"not at all",zh:"一点也不/根本不",ex:"I didn't see that coming at all.",cat:"日常",date:"2026-04-14"},
+  // === 春节/问候 ===
+  {p:"Long time no see",zh:"好久不见",ex:"Happy New Year! Long time no see.",cat:"问候",date:"2026-04-14"},
+  {p:"How was your holiday/break?",zh:"你假期怎么样？",ex:"How was your Spring Festival holiday?",cat:"问候",date:"2026-04-14"},
+  {p:"What did you get up to?",zh:"你做了些什么？",ex:"假期活动询问",cat:"问候",date:"2026-04-14"},
+  {p:"I went back to my hometown",zh:"我回了老家",ex:"过去时表达",cat:"春节",date:"2026-04-14"},
+  {p:"catch up on sleep/movies",zh:"补觉/补电影",ex:"I caught up on some movies.",cat:"日常",date:"2026-04-14"},
+  {p:"set off fireworks",zh:"放烟花",ex:"We set off fireworks on New Year's Eve.",cat:"春节",date:"2026-04-14"},
+  {p:"get back into the routine",zh:"恢复日常作息",ex:"It's hard to get back into the routine.",cat:"日常",date:"2026-04-14"},
+  {p:"I could use another week off",zh:"我还需要再放一周假",ex:"委婉表达想休息",cat:"日常",date:"2026-04-14"},
+  {p:"keep in touch",zh:"保持联络",ex:"Let's keep in touch, okay?",cat:"社交",date:"2026-04-14"},
+  {p:"I would like to do so, but...",zh:"我很想，但是...",ex:"委婉拒绝用语",cat:"社交",date:"2026-04-14"},
+  {p:"Better doing/to do",zh:"最好做某事",ex:"You'd better have a rest.",cat:"语法",date:"2026-04-14"},
+  // === 旅行/机场 ===
+  {p:"I'd like to check in for flight...",zh:"我要办理...航班的值机",ex:"I'd like to check in for flight CX888.",cat:"旅行",date:"2026-04-14"},
+  {p:"Window seat / Aisle seat, please",zh:"靠窗/靠过道的座位",ex:"选座用语",cat:"旅行",date:"2026-04-14"},
+  {p:"Which way is Gate...?",zh:"...号登机口怎么走？",ex:"Which way is Gate 23?",cat:"旅行",date:"2026-04-14"},
+  {p:"Please fasten your seatbelt",zh:"请系好安全带",ex:"飞机广播用语",cat:"旅行",date:"2026-04-14"},
+  {p:"We will be landing in approximately...",zh:"我们将在大约...后降落",ex:"机组广播用语",cat:"旅行",date:"2026-04-14"},
+  {p:"I'm feeling really jet-lagged",zh:"我时差反应好严重",ex:"长途飞行后的感受",cat:"旅行",date:"2026-04-14"},
+  {p:"Could I have some water as well?",zh:"能再来杯水吗？",ex:"飞机上点餐/要东西",cat:"旅行",date:"2026-04-14"},
+  {p:"Do I need to declare that?",zh:"这个需要申报吗？",ex:"海关申报询问",cat:"旅行",date:"2026-04-14"},
+  {p:"You're all set",zh:"你没问题了/搞定了",ex:"All set! Have a safe trip.",cat:"日常",date:"2026-04-14"},
+  // === 酒店/住宿 ===
+  {p:"I have a reservation under the name...",zh:"我用...的名字预订了房间",ex:"酒店登记入住用语",cat:"酒店",date:"2026-04-14"},
+  {p:"I'm checking out. Room...",zh:"我退房，...号房间",ex:"酒店退房用语",cat:"酒店",date:"2026-04-14"},
+  {p:"Let me show you around",zh:"我带你看看（参观）",ex:"民宿/酒店接待用语",cat:"酒店",date:"2026-04-14"},
+  {p:"Thanks for having me!",zh:"谢谢你的招待！",ex:"感谢邀请/招待",cat:"礼貌",date:"2026-04-14"},
+  {p:"How does the heating work?",zh:"暖气怎么用？",ex:"住宿设施询问",cat:"酒店",date:"2026-04-14"},
+  {p:"I'm sorry, but... is not working",zh:"不好意思，...坏了",ex:"投诉/报修表达",cat:"酒店",date:"2026-04-14"},
+  // === 问路 ===
+  {p:"I'm trying to get to...",zh:"我想去...",ex:"I'm trying to get to the Central Library.",cat:"问路",date:"2026-04-14"},
+  {p:"Go straight along this street",zh:"沿这条街直走",ex:"指路用语",cat:"问路",date:"2026-04-14"},
+  {p:"Turn left/right at the traffic light",zh:"在红绿灯左转/右转",ex:"指路用语",cat:"问路",date:"2026-04-14"},
+  {p:"Is it within walking distance?",zh:"走路能到吗？",ex:"询问距离",cat:"问路",date:"2026-04-14"},
+  {p:"You can't miss it",zh:"你不会错过的",ex:"指路时安慰对方",cat:"问路",date:"2026-04-14"},
+  {p:"just around the corner",zh:"就在拐角处",ex:"There's a coffee shop just around the corner.",cat:"问路",date:"2026-04-14"},
+  {p:"get off at... Station",zh:"在...站下车",ex:"You can get off at Park Station.",cat:"交通",date:"2026-04-14"},
 ];
 
 const SOURCES = [
@@ -731,8 +936,8 @@ buildGrammar();
 // UPDATE DATE FOOTER
 document.querySelector(".content").insertAdjacentHTML("beforeend", `
   <div style="text-align:center;padding:40px 20px 20px;border-top:1px solid #E5E7EB;margin-top:40px">
-    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-16 17:22</strong></div>
-    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 328 条 &middot; 来自 10 份扫描件 + 2 份课程文档 &middot; 小霸王 English Study Notes</div>
+    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-16 18:36</strong></div>
+    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 430 条 &middot; 来自 10 份扫描件 + 2 份课程文档 &middot; 小霸王 English Study Notes</div>
   </div>
 `);
 </script>
