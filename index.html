@@ -1256,6 +1256,96 @@ const ARTICLES = [
   ]}
 ];
 
+
+// ============================================================
+// GRAMMAR LESSONS (语法课笔记)
+// ============================================================
+const GRAMMAR_LESSONS = [
+  {id:1,title:"名词短语",source:"语法课 3.28-3.29",sections:[
+    {sub:"什么是名词短语",content:"作用：即名词，在句子中充当<b>主语、宾语、表语</b><br>构成：<span style='color:var(--purple);font-weight:700'>限定词 + 修饰词(adj/n) + 核心名词</span>"},
+    {sub:"完整结构",items:[
+      {label:"限定词",detail:"冠词 (a/an/the)、所有格 (one's/Tom's)、物主代词 (my/your)、指示代词 (this/that)、不定代词 (some/every)、数词 (one/two)、疑问代词 (what/which)"},
+      {label:"修饰词",detail:"形容词 (new/busy/productive)、名词 (marketing/design)"},
+      {label:"核心名词",detail:"plan / week / app / team / email"}
+    ]},
+    {sub:"例子拆解",examples:[
+      {parts:["a","new marketing","plan"],labels:["限定词","形容词+名词","核心名词"]},
+      {parts:["the","busy","week"],labels:["限定词","形容词","核心名词"]},
+      {parts:["the","design","team"],labels:["限定词","名词","核心名词"]},
+      {parts:["an","","email"],labels:["限定词","","核心名词"]}
+    ],note:"限定词和核心名词<b>不能省</b>，修饰词<b>可以省略</b>"}
+  ]},
+  {id:2,title:"冠词 a/an/the",source:"语法课 3.28-3.29",sections:[
+    {sub:"不定冠词 a / an",content:"泛指「一个」，第一次提到<br>a client, a meeting, <b>an</b> email, <b>an</b> app, <b>an</b> hour"},
+    {sub:"定冠词 the",content:"特指「这个/那个」，双方都知道、上文提过、独一无二<br>the plan, the manager, the app"},
+    {sub:"零冠词（不加冠词）",content:"复数泛指：I like apps.<br>不可数名词：work, feedback, data, information<br>三餐/球类/语言：have breakfast, play football"},
+    {sub:"核心规则",content:"<b>a/an 只用于单数可数，the 表特指，不可数名词不加</b>"},
+    {sub:"练习",quiz:[
+      {q:"I have _____ new app.",a:"a"},
+      {q:"This is _____ email from my manager.",a:"an"},
+      {q:"_____ week was busy.",a:"The"},
+      {q:"We need _____ information.",a:"/(不填)"},
+      {q:"He is _____ engineer.",a:"an"}
+    ]}
+  ]},
+  {id:3,title:"名词所有格",source:"语法课 3.28-3.29",sections:[
+    {sub:"规则",items:[
+      {label:"单数名词 + 's",detail:"the manager's idea, the client's email"},
+      {label:"复数名词(s结尾) + '",detail:"the clients' requests, the teachers' room"},
+      {label:"复数名词(不以s结尾) + 's",detail:"children's toys, men's clothes"},
+      {label:"无生命 → 用 of",detail:"the end of the day, the name of the app"}
+    ],note:"有生命：多用 <b>'s</b>，无生命：多用 <b>of</b>"}
+  ]},
+  {id:4,title:"人称代词 & 指示代词",source:"语法课 3.28-3.29",sections:[
+    {sub:"人称代词 5 种形式",content:"主格 / 宾格 / 形容词性物主代词 / 名词性物主代词 / 反身代词<br><br>铁规则：物主代词 + 名词，中间<b>不能加 a/an</b><br>✅ my app &nbsp;&nbsp; ❌ my a app"},
+    {sub:"its vs it's（超级易混）",content:"<b>its</b>：它的（物主代词）→ The app has its advantages.<br><b>it's</b> = it is / it has（缩写）→ It's a good app."},
+    {sub:"指示代词",items:[
+      {label:"this + 单数",detail:"这个 (近)"},
+      {label:"that + 单数",detail:"那个 (远)"},
+      {label:"these + 复数",detail:"这些 (近)"},
+      {label:"those + 复数",detail:"那些 (远)"}
+    ]}
+  ]},
+  {id:5,title:"不定代词 & 数词",source:"语法课 3.28-3.29",sections:[
+    {sub:"some / any",content:"<b>some</b>：肯定句 → I have some feedback.<br><b>any</b>：否定句/疑问句 → Do you have any questions?"},
+    {sub:"many / much",content:"<b>many</b> + 可数复数：many clients<br><b>much</b> + 不可数：much data"},
+    {sub:"few / a few / little / a little",content:"<b>a few</b> + 可数：有几个（肯定）<br><b>few</b> + 可数：几乎没有（否定）<br><b>a little</b> + 不可数：有一点<br><b>little</b> + 不可数：几乎没有"},
+    {sub:"数词",items:[
+      {label:"基数词",detail:"one, two, three... → two meetings, three clients"},
+      {label:"小数",detail:"小数点读 point → 0.5 = zero point five"},
+      {label:"分数",detail:"分子基数/分母序数 → 1/3 = one third, 2/3 = two thirds"},
+      {label:"百分数",detail:"% 读 percent → 50% = fifty percent"},
+      {label:"序数词",detail:"first, second, third → the first day"}
+    ]}
+  ]},
+  {id:6,title:"可数 vs 不可数名词",source:"语法课 3.28-3.29",sections:[
+    {sub:"核心区分",items:[
+      {label:"可数名词 C.n.",detail:"能数清数量，有单复数 → meeting(s), plan(s), email(s), client(s)"},
+      {label:"不可数名词 U.n.",detail:"不能数清，无复数，不能加 a/an → work, research, data, feedback, information"}
+    ]},
+    {sub:"关键规则",content:"可数：用 many/few 修饰，单数不能单独出现<br>✅ a meeting / many plans &nbsp; ❌ meeting<br><br>不可数：用 much/little/some 修饰，谓语动词用单数<br>✅ some work / much research &nbsp; ❌ a work"},
+    {sub:"兼类词（可数可不可数，意思不同）",content:"<b>time</b>：时间(U) / 次数(C)<br><b>work</b>：工作(U) / 作品(C)"}
+  ]},
+  {id:7,title:"三种长名词",source:"语法课 4.6",sections:[
+    {sub:"不定式 to do（当名词）",content:"结构：to + 动词原形<br>特点：具体、一次性、将来要做<br>① 主语：To learn English is important.<br>② 宾语：I want to learn English.<br>③ 表语：My plan is to launch the app."},
+    {sub:"动名词 doing（当名词）",content:"结构：动词 + ing<br>特点：抽象、习惯、泛指、已发生<br>① 主语：Learning English takes time.<br>② 宾语：I enjoy learning English.<br>③ 表语：My job is developing apps."},
+    {sub:"从句（句子当名词）",content:"结构：that / whether / wh- 词 + 完整句子<br>① 主语从句：That he worked hard is true.<br>② 宾语从句：I know that he is busy.<br>③ 表语从句：The problem is that we have no time."}
+  ]},
+  {id:8,title:"形式主语 it",source:"语法课 4.6",sections:[
+    {sub:"概念",content:"当主语是 to do / doing / 从句 时太长，用 <b>it</b> 占位，真正主语放后面<br>结构：<b>It + be + 形容词/名词 + 真正主语</b>"},
+    {sub:"三种用法",content:"① it 代替不定式：It is important <b>to learn</b> English.<br>② it 代替动名词：It is no use <b>worrying</b> too much.<br>③ it 代替从句：It is true <b>that he did a good job</b>."},
+    {sub:"只接 to do 的动词",content:"want, would like, decide, hope, wish, plan, need, promise, learn<br><span style='color:var(--gray);font-size:.78rem'>to do = 要去做、还没做、想要做</span>"},
+    {sub:"只接 doing 的动词",content:"enjoy, finish, like, mind, avoid, suggest, practice, keep<br><span style='color:var(--gray);font-size:.78rem'>doing = 正在做、已在做、习惯、享受</span>"},
+    {sub:"练习",quiz:[
+      {q:"To learn grammar is useful. → 改写",a:"It is useful to learn grammar."},
+      {q:"That he is late is clear. → 改写",a:"It is clear that he is late."},
+      {q:"I like _____ (watch) movies.",a:"watching"},
+      {q:"She wants _____ (go) shopping.",a:"to go"},
+      {q:"He finished _____ (do) his homework.",a:"doing"}
+    ]}
+  ]}
+];
+
 const SOURCES = [
   {name:"4756_001.pdf",desc:"电影类型、影视行业",ink:"red",l:"红色"},
   {name:"4757_001.pdf",desc:"编程/游戏、形容词",ink:"blue",l:"蓝色"},
@@ -1533,23 +1623,42 @@ function buildIelts(){
 
 // ========== 语法笔记 ==========
 function buildGrammar(){
-  document.getElementById("grammarSubTabs").innerHTML = "";
-  document.getElementById("grammarContent").innerHTML = `
-    <div style="text-align:center;padding:80px 20px">
-      <div style="font-size:4rem;margin-bottom:16px">📐</div>
-      <h2 style="font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:10px">语法笔记</h2>
-      <p style="color:var(--gray);font-size:.95rem;max-width:400px;margin:0 auto;line-height:1.7">暂无内容<br>上传语法相关扫描件后，<br>跟我说「更新笔记，归语法」即可自动归类到这里。</p>
-      <div style="margin-top:30px;padding:16px 24px;background:var(--purple-bg);border-radius:12px;display:inline-block;text-align:left">
-        <div style="font-size:.8rem;font-weight:700;color:var(--purple);margin-bottom:8px">📌 支持的语法内容类型</div>
-        <div style="font-size:.8rem;color:var(--gray);line-height:1.8">
-          ✦ 时态对比（现在/过去/将来/完成）<br>
-          ✦ 句型结构（主从复合句、条件句）<br>
-          ✦ 连词用法对比<br>
-          ✦ 易错语法点 & 纠错<br>
-          ✦ 被动语态 / 虚拟语气 / 倒装句
-        </div>
-      </div>
-    </div>`;
+  const tabsEl = document.getElementById("grammarSubTabs");
+  const contentEl = document.getElementById("grammarContent");
+
+  tabsEl.innerHTML = GRAMMAR_LESSONS.map((l,i) =>
+    `<div class="sub-tab ${i===0?'active':''}" data-subtab="gram-${i}">${l.title}</div>`
+  ).join("");
+
+  contentEl.innerHTML = GRAMMAR_LESSONS.map((l,i) => `<div class="sub-section ${i===0?'active':''}" id="gram-${i}">
+    <div class="section-header"><h2>📐 ${l.title}</h2><span class="count">${l.source}</span></div>
+    ${l.sections.map(s => `<div style="background:white;border-radius:10px;padding:14px;margin-bottom:10px;box-shadow:var(--card-shadow);border-left:3px solid var(--purple)" data-search="${s.sub} ${s.content||''}" class="grammar-card">
+      <div style="font-size:.88rem;font-weight:700;color:var(--purple);margin-bottom:8px">${s.sub}</div>
+      ${s.content?`<div style="font-size:.84rem;color:var(--dark);line-height:1.8">${s.content}</div>`:''}
+      ${s.items?`<div style="margin-top:6px">${s.items.map(it =>
+        `<div style="display:flex;gap:8px;padding:6px 8px;margin:3px 0;border-radius:6px;background:#F5F3FF;font-size:.82rem">
+          <span style="color:var(--purple);font-weight:600;min-width:140px;flex-shrink:0">${it.label}</span>
+          <span style="color:var(--dark)">${it.detail}</span>
+        </div>`
+      ).join("")}${s.note?`<div style="font-size:.78rem;color:var(--gray);margin-top:6px;font-style:italic">${s.note}</div>`:''}</div>`:''}
+      ${s.examples?`<div style="margin-top:8px">${s.examples.map(ex =>
+        `<div style="display:flex;gap:4px;margin:6px 0;align-items:flex-end">
+          ${ex.parts.map((p,pi) => `<div style="text-align:center">
+            <div style="font-size:.9rem;font-weight:700;color:var(--dark);padding:4px 10px;background:#EDE9FE;border-radius:6px">${p||'—'}</div>
+            <div style="font-size:.65rem;color:var(--gray);margin-top:2px">${ex.labels[pi]||''}</div>
+          </div>`).join('<span style="color:#C4B5FD;font-size:.8rem">+</span>')}
+        </div>`
+      ).join("")}${s.note?`<div style="font-size:.78rem;color:var(--red);margin-top:8px;font-weight:500">${s.note}</div>`:''}</div>`:''}
+      ${s.quiz?`<div style="margin-top:8px">${s.quiz.map((q,qi) =>
+        `<div style="padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:.82rem;cursor:pointer" onclick="this.querySelector('.ga').style.display=this.querySelector('.ga').style.display==='none'?'inline':'none'">
+          <span style="color:var(--gray)">${qi+1}.</span> ${q.q} <span class="ga" style="display:none;color:#059669;font-weight:600;background:#ECFDF5;padding:2px 8px;border-radius:4px;margin-left:6px">${q.a}</span>
+          <span style="font-size:.7rem;color:#C4B5FD;margin-left:4px">👆点击看答案</span>
+        </div>`
+      ).join("")}</div>`:''}
+    </div>`).join("")}
+  </div>`).join("");
+
+  bindSubTabs(tabsEl, "gram");
 }
 
 // ========== TAB BINDING ==========
