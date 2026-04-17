@@ -1332,20 +1332,49 @@ function buildIris(){
     `).join("")}
   </div>`;
 
-  // Pronunciation rules section (发音规则)
+  // Pronunciation rules section (发音规则) - 专业排版
   const pronIdx = exIdx + 1;
   const pronRules = GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音"||g.cat==="发音规则");
   const pronCats = [...new Set(pronRules.map(g=>g.cat))];
   html += `<div class="sub-section" id="iris-${pronIdx}">
     <div class="section-header"><h2>🔤 发音规则</h2></div>
+    <div style="margin-bottom:12px;font-size:.85rem;color:var(--gray)">来源: Iris 课程 4.16 | 点击音标可朗读示例单词</div>
     ${pronCats.map(pc => {
       const items = pronRules.filter(g=>g.cat===pc);
-      return `<h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin:20px 0 10px">${pc}</h3>
-      ${items.map(g=>`<div class="grammar-card" data-search="${g.title} ${g.rule} ${g.ok||''} ${g.no||''}">
-        <h3>${g.title}</h3><div class="rule">${g.rule}</div>
-        ${g.no?`<div class="ex no"><span class="m">✗</span>${g.no}</div>`:''}
-        ${g.ok?`<div class="ex ok"><span class="m">✓</span>${g.ok}</div>`:''}
-      </div>`).join("")}`;
+      const icon = pc==="元音发音"?"🅰️":pc==="特殊发音"?"🔇":"🔤";
+      return `<div style="margin:20px 0">
+        <h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--purple-bg)">${icon} ${pc}</h3>
+        ${items.map(g=>{
+          // Parse the rule into structured rows
+          const rules = g.rule.split(/[①②③④⑤]/).filter(r=>r.trim());
+          const examples = (g.ok||"").split(",").map(e=>e.trim()).filter(e=>e);
+          return `<div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:var(--card-shadow);border-left:4px solid var(--purple)" data-search="${g.title} ${g.rule} ${g.ok||''}" class="grammar-card">
+            <div style="font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:10px">${g.title}</div>
+            ${rules.length > 1 ? rules.map((r,ri) => {
+              // Each sub-rule as a row
+              const parts = r.split(":");
+              const condition = parts[0]||"";
+              const phonetic = parts.slice(1).join(":").trim();
+              return `<div style="display:flex;gap:10px;padding:8px 10px;margin:4px 0;border-radius:8px;background:${ri%2===0?'#F5F3FF':'#FAFAFA'};align-items:flex-start">
+                <span style="font-size:.75rem;background:var(--purple);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">${ri+1}</span>
+                <div style="flex:1">
+                  <div style="font-size:.82rem;color:var(--gray);font-weight:500">${condition.trim()}</div>
+                  ${phonetic?`<div style="font-size:.88rem;color:var(--dark);font-weight:600;margin-top:2px">${phonetic}</div>`:''}
+                </div>
+              </div>`;
+            }).join("") : `<div style="font-size:.85rem;color:var(--dark);line-height:1.8;padding:6px 0">${g.rule}</div>`}
+            ${examples.length > 0 ? `<div style="margin-top:10px;padding:10px 12px;background:#ECFDF5;border-radius:8px;border-left:3px solid #059669">
+              <div style="font-size:.7rem;font-weight:600;color:#059669;margin-bottom:4px">📖 示例</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                ${examples.map(ex => {
+                  const word = ex.split("/")[0].split("(")[0].trim();
+                  return `<span style="padding:4px 10px;background:#D1FAE5;border-radius:6px;font-size:.82rem;color:#065F46;cursor:pointer;font-family:monospace" onclick="speakText('${word}')">${ex}</span>`;
+                }).join("")}
+              </div>
+            </div>` : ''}
+          </div>`;
+        }).join("")}
+      </div>`;
     }).join("")}
   </div>`;
 
