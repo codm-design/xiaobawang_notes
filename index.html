@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7C3AED">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7C3AED">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>小霸王 English Study Notes</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -159,6 +165,28 @@
   .progress-fill{height:100%;background:var(--purple);border-radius:3px;transition:width .5s}
   .progress-text{font-size:.7rem;color:var(--gray-light);margin-top:4px;text-align:right}
 
+
+  .review-panel{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9999;display:none;align-items:center;justify-content:center}
+  .review-panel.show{display:flex}
+  .review-box{background:#fff;border-radius:16px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  body.dark .review-box{background:#1F2937;color:#E5E7EB}
+  .quiz-option{display:block;width:100%;padding:12px;margin:6px 0;border-radius:8px;border:2px solid #E5E7EB;background:transparent;font-size:.9rem;cursor:pointer;text-align:left;transition:all .2s}
+  .quiz-option:hover{border-color:var(--purple);background:var(--purple-bg)}
+  .quiz-option.correct{border-color:#059669;background:#ECFDF5;color:#065F46}
+  .quiz-option.wrong{border-color:#DC2626;background:#FEF2F2;color:#991B1B}
+  .quiz-score{text-align:center;font-size:2rem;font-weight:800;color:var(--purple);margin:20px 0}
+
+
+  .review-panel{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9999;display:none;align-items:center;justify-content:center}
+  .review-panel.show{display:flex}
+  .review-box{background:#fff;border-radius:16px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  body.dark .review-box{background:#1F2937;color:#E5E7EB}
+  .quiz-option{display:block;width:100%;padding:12px;margin:6px 0;border-radius:8px;border:2px solid #E5E7EB;background:transparent;font-size:.9rem;cursor:pointer;text-align:left;transition:all .2s}
+  .quiz-option:hover{border-color:var(--purple);background:var(--purple-bg)}
+  .quiz-option.correct{border-color:#059669;background:#ECFDF5;color:#065F46}
+  .quiz-option.wrong{border-color:#DC2626;background:#FEF2F2;color:#991B1B}
+  .quiz-score{text-align:center;font-size:2rem;font-weight:800;color:var(--purple);margin:20px 0}
+
 </style>
 </head>
 <body>
@@ -226,10 +254,90 @@
 </div>
 
 
+
+<div class="review-panel" id="reviewPanel" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="review-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">📋 复习清单</h2>
+      <button onclick="document.getElementById('reviewPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <div id="reviewList"></div>
+    <div style="margin-top:16px;display:flex;gap:8px">
+      <button onclick="exportUnknown()" style="flex:1;padding:10px;border-radius:8px;border:1.5px solid var(--purple);background:var(--purple-bg);color:var(--purple);font-size:.82rem;font-weight:600;cursor:pointer">📥 导出不认识的词</button>
+      <button onclick="document.getElementById('reviewPanel').classList.remove('show')" style="flex:1;padding:10px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-size:.82rem;font-weight:600;cursor:pointer">关闭</button>
+    </div>
+  </div>
+</div>
+<div class="review-panel" id="quizPanel" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="review-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">🎯 随机测试</h2>
+      <button onclick="document.getElementById('quizPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <div id="quizContent"></div>
+  </div>
+</div>
+<div class="review-panel" id="syncPanel" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="review-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">💾 数据同步</h2>
+      <button onclick="document.getElementById('syncPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px">导出学习进度，在其他设备导入恢复。</p>
+    <button onclick="exportData()" style="width:100%;padding:12px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer;margin-bottom:8px">📤 导出数据</button>
+    <label style="display:block;width:100%;padding:12px;border-radius:8px;border:2px dashed #C4B5FD;text-align:center;font-size:.85rem;color:var(--purple);cursor:pointer;font-weight:600">
+      📥 导入数据 <input type="file" accept=".json" onchange="importData(event)" style="display:none">
+    </label>
+  </div>
+</div>
+
+
+<div class="review-panel" id="reviewPanel" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="review-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">📋 复习清单</h2>
+      <button onclick="document.getElementById('reviewPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <div id="reviewList"></div>
+    <div style="margin-top:16px;display:flex;gap:8px">
+      <button onclick="exportUnknown()" style="flex:1;padding:10px;border-radius:8px;border:1.5px solid var(--purple);background:var(--purple-bg);color:var(--purple);font-size:.82rem;font-weight:600;cursor:pointer">📥 导出不认识的词</button>
+      <button onclick="document.getElementById('reviewPanel').classList.remove('show')" style="flex:1;padding:10px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-size:.82rem;font-weight:600;cursor:pointer">关闭</button>
+    </div>
+  </div>
+</div>
+<div class="review-panel" id="quizPanel" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="review-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">🎯 随机测试</h2>
+      <button onclick="document.getElementById('quizPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <div id="quizContent"></div>
+  </div>
+</div>
+<div class="review-panel" id="syncPanel" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="review-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">💾 数据同步</h2>
+      <button onclick="document.getElementById('syncPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px">导出学习进度，在其他设备导入恢复。</p>
+    <button onclick="exportData()" style="width:100%;padding:12px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer;margin-bottom:8px">📤 导出数据</button>
+    <label style="display:block;width:100%;padding:12px;border-radius:8px;border:2px dashed #C4B5FD;text-align:center;font-size:.85rem;color:var(--purple);cursor:pointer;font-weight:600">
+      📥 导入数据 <input type="file" accept=".json" onchange="importData(event)" style="display:none">
+    </label>
+  </div>
+</div>
+
 <!-- TOOLBAR -->
 <div class="toolbar">
   <button class="tool-btn" id="darkToggle" onclick="toggleDark()" title="深色模式" style="background:#1F2937;color:#FCD34D">🌙</button>
   <button class="tool-btn" id="transToggle" onclick="toggleTranslation()" title="隐藏/显示翻译" style="background:var(--purple);color:#fff">译</button>
+  <button class="tool-btn" onclick="openReview()" title="复习清单" style="background:#DC2626;color:#fff">📋</button>
+  <button class="tool-btn" onclick="startQuiz()" title="随机测试" style="background:#059669;color:#fff">🎯</button>
+  <button class="tool-btn" onclick="document.getElementById('syncPanel').classList.add('show')" title="数据同步" style="background:#3B82F6;color:#fff">💾</button>
+  <button class="tool-btn" onclick="openReview()" title="复习清单" style="background:#DC2626;color:#fff">📋</button>
+  <button class="tool-btn" onclick="startQuiz()" title="随机测试" style="background:#059669;color:#fff">🎯</button>
+  <button class="tool-btn" onclick="document.getElementById('syncPanel').classList.add('show')" title="数据同步" style="background:#3B82F6;color:#fff">💾</button>
   <button class="tool-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部" style="background:var(--purple);color:#fff">↑</button>
 </div>
 <script>
@@ -1223,7 +1331,7 @@ function buildIris(){
         <div style="margin-top:8px">
           ${d.lines.map(l => `<div style="padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:.88rem;display:flex;gap:8px">
             <span style="font-weight:700;color:var(--purple);min-width:40px">${l.r}:</span>
-            <span><span style="color:var(--dark)">${l.t}</span><br><span style="color:var(--gray-light);font-size:.78rem">${l.zh}</span></span>
+            <span><span style="color:var(--dark);cursor:pointer" onclick="speakText(this.textContent)" title="点击朗读">${l.t}</span><br><span style="color:var(--gray-light);font-size:.78rem">${l.zh}</span></span>
           </div>`).join("")}
         </div>
       </div>
@@ -1566,6 +1674,100 @@ function speakText(text, accent){
   speechSynthesis.speak(u);
 }
 
+
+// ========== REVIEW LIST ==========
+function openReview(){
+  const list = document.getElementById("reviewList");
+  const unknown = Object.entries(wordStatus).filter(([k,v])=>v==="unknown");
+  if(unknown.length===0){
+    list.innerHTML = '<div style="text-align:center;padding:30px;color:var(--gray)"><div style="font-size:2rem;margin-bottom:8px">🎉</div>没有标记为「不认识」的词！<br>在词汇卡片上点 ✗ 标记不认识的词</div>';
+  } else {
+    const allWords = [...ALL_VOCAB, ...IELTS_VOCAB];
+    list.innerHTML = '<div style="font-size:.8rem;color:var(--gray);margin-bottom:8px">共 ' + unknown.length + ' 个不认识的词</div>' +
+    unknown.map(([word]) => {
+      const w = allWords.find(v=>v.en.split("/")[0].trim()===word);
+      return '<div style="padding:10px;border-bottom:1px solid #F3F4F6;display:flex;justify-content:space-between;align-items:center">' +
+        '<div><strong style="color:var(--purple)">' + word + '</strong>' +
+        (w?' <span style="color:var(--gray);font-size:.8rem">'+(w.uk||'')+'</span>':'') +
+        '<br><span style="font-size:.82rem;color:var(--gray)">'+(w?w.zh:'')+'</span></div>' +
+        '<button onclick="markWord(\''+word.replace(/'/g,"")+'\',\'known\');openReview()" style="padding:4px 8px;border-radius:4px;border:1px solid #059669;background:#ECFDF5;color:#059669;font-size:.7rem;cursor:pointer;flex-shrink:0">✓ 掌握了</button></div>';
+    }).join("");
+  }
+  document.getElementById("reviewPanel").classList.add("show");
+}
+
+// ========== RANDOM QUIZ ==========
+let quizWords=[], quizIdx=0, quizScore=0;
+function startQuiz(){
+  const aw=[...ALL_VOCAB,...IELTS_VOCAB].filter(w=>w.zh&&w.en);
+  if(aw.length<10){alert("词汇不足");return}
+  quizWords=aw.sort(()=>Math.random()-.5).slice(0,10);
+  quizIdx=0;quizScore=0;
+  showQ();
+  document.getElementById("quizPanel").classList.add("show");
+}
+function showQ(){
+  const box=document.getElementById("quizContent");
+  if(quizIdx>=quizWords.length){
+    const p=Math.round(quizScore/quizWords.length*100);
+    const e=p>=80?"🎉":p>=60?"👍":"💪";
+    box.innerHTML='<div class="quiz-score">'+e+' '+quizScore+'/'+quizWords.length+'</div>'+
+      '<div style="text-align:center;color:var(--gray);margin-bottom:20px">'+(p>=80?'太棒了！':p>=60?'不错！':'继续加油！')+'</div>'+
+      '<button onclick="startQuiz()" style="width:100%;padding:12px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-weight:600;cursor:pointer;margin-bottom:8px">🔄 再来一轮</button>'+
+      '<button onclick="document.getElementById(\'quizPanel\').classList.remove(\'show\')" style="width:100%;padding:12px;border-radius:8px;border:1.5px solid #E5E7EB;background:transparent;color:var(--gray);cursor:pointer">关闭</button>';
+    return;
+  }
+  const w=quizWords[quizIdx];
+  const aw=[...ALL_VOCAB,...IELTS_VOCAB].filter(v=>v.zh&&v.en&&v.en!==w.en);
+  const opts=[...aw.sort(()=>Math.random()-.5).slice(0,3).map(v=>v.zh),w.zh].sort(()=>Math.random()-.5);
+  const correct=w.zh.replace(/'/g,"&#39;");
+  box.innerHTML='<div style="font-size:.8rem;color:var(--gray);margin-bottom:8px">第 '+(quizIdx+1)+' / '+quizWords.length+' 题</div>'+
+    '<div style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:4px">'+w.en+'</div>'+
+    (w.uk?'<div style="font-size:.8rem;color:var(--gray-light);margin-bottom:16px">'+w.uk+'</div>':'<div style="margin-bottom:16px"></div>')+
+    opts.map(o=>{
+      const oe=o.replace(/'/g,"&#39;");
+      return '<button class="quiz-option" onclick="chkAns(this,\''+oe+'\',\''+correct+'\')">'+o+'</button>';
+    }).join("");
+}
+function chkAns(btn,sel,cor){
+  if(sel===cor)quizScore++;
+  document.querySelectorAll(".quiz-option").forEach(b=>{
+    b.disabled=true;b.style.cursor="default";
+    if(b.textContent===cor.replace(/&#39;/g,"'"))b.classList.add("correct");
+    if(b===btn&&sel!==cor)b.classList.add("wrong");
+  });
+  setTimeout(()=>{quizIdx++;showQ()},1200);
+}
+
+// ========== EXPORT ==========
+function exportUnknown(){
+  const unk=Object.entries(wordStatus).filter(([k,v])=>v==="unknown");
+  const aw=[...ALL_VOCAB,...IELTS_VOCAB];
+  let t="复习清单 ("+new Date().toLocaleDateString()+")\n\n";
+  unk.forEach(([word])=>{
+    const w=aw.find(v=>v.en.split("/")[0].trim()===word);
+    t+=word+(w?" "+w.uk:"")+"\n  "+(w?w.zh:"")+"\n\n";
+  });
+  const b=new Blob([t],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(b);
+  a.download="复习清单_"+new Date().toISOString().slice(0,10)+".txt";a.click();
+}
+function exportData(){
+  const d={wordStatus,darkMode:localStorage.getItem("darkMode"),date:new Date().toISOString()};
+  const b=new Blob([JSON.stringify(d,null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(b);
+  a.download="xiaobawang_data_"+new Date().toISOString().slice(0,10)+".json";a.click();
+}
+function importData(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=function(ev){
+    try{const d=JSON.parse(ev.target.result);
+      if(d.wordStatus){Object.assign(wordStatus,d.wordStatus);localStorage.setItem("wordStatus",JSON.stringify(wordStatus));updateProgress();alert("导入成功！恢复了 "+Object.keys(d.wordStatus).length+" 个词汇标记。")}
+    }catch(err){alert("文件格式错误")}
+  };r.readAsText(f);
+}
+
 // INIT
 buildIris();
 buildIelts();
@@ -1580,5 +1782,9 @@ document.querySelector(".content").insertAdjacentHTML("beforeend", `
   </div>
 `);
 
+
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
 </script>
 </body></html>
