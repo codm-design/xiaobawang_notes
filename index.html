@@ -193,11 +193,11 @@
 
 <div class="hero">
   <h1>小霸王 English Notes</h1>
-  <div class="sub">258 entries from 10 handwritten scans &mdash; with pronunciation, phonetics & exam levels</div>
+  <div class="sub">666 entries from 22 handwritten scans + 5 course docs &mdash; with pronunciation, phonetics & exam levels</div>
   <div class="stats">
-    <div class="stat"><div class="n">630</div><div class="l">Total</div></div>
-    <div class="stat"><div class="n">326</div><div class="l">Vocab</div></div>
-    <div class="stat"><div class="n">29</div><div class="l">Grammar</div></div>
+    <div class="stat"><div class="n">666</div><div class="l">Total</div></div>
+    <div class="stat"><div class="n">355</div><div class="l">Vocab</div></div>
+    <div class="stat"><div class="n">36</div><div class="l">Grammar</div></div>
     <div class="stat"><div class="n">112</div><div class="l">Phrases</div></div>
   </div>
 </div>
@@ -825,6 +825,41 @@ const DIALOGUES = [
     {r:"A",t:"Me too! Let's make sure we get enough rest tonight, so we have enough energy for tomorrow's trip. Maybe we can go to bed a little earlier than usual.",zh:"我也是！今晚好好休息，明天才有精力。也许可以比平时早点睡。"},
     {r:"B",t:"Sure! Let's do that. It's going to be an amazing day tomorrow.",zh:"好！就这么办。明天会是精彩的一天。"}
   ]}
+
+  // === 2026-04-18 新增对话 (4.15 & 4.16) ===
+  {title:"Games 游戏 (1)",cat:"场景对话",lines:[
+    {s:"C",en:"Do you prefer PC games or mobile games?",zh:"你更喜欢电脑游戏还是手机游戏？"},
+    {s:"D",en:"I think I like PC games more. The screen is bigger.",zh:"我想我更喜欢电脑游戏。屏幕更大。"},
+    {s:"C",en:"True. But mobile games are so easy to play anywhere.",zh:"没错。但是手机游戏在哪都能玩，太方便了。"},
+    {s:"D",en:"Yeah, like on the bus or during a break.",zh:"是啊，比如在公交车上或者休息的时候。"},
+    {s:"C",en:"What PC games do you play?",zh:"你玩什么电脑游戏？"},
+    {s:"D",en:'I play "Minecraft" with my friends. We build things together.',zh:"我和朋友玩《我的世界》。我们一起建东西。"}
+  ],date:"2026-04-18"},
+  {title:"Games 游戏 (2) - 游戏类型",cat:"场景对话",lines:[
+    {s:"A",en:"What kind of games do you like?",zh:"你喜欢什么类型的游戏？"},
+    {s:"B",en:"I love action games. I like fighting and moving fast.",zh:"我爱动作游戏。我喜欢战斗和快速移动。"},
+    {s:"A",en:'Kind of. Like \"Civilization\" or \"StarCraft.\" You need to think a lot and make plans.',zh:"差不多。比如《文明》或者《星际争霸》。你需要想很多，制定计划。"},
+    {s:"B",en:"That sounds hard. My brain would hurt!",zh:"听起来很难。我的脑子会疼的！"},
+    {s:"A",en:"Haha, you get used to it. It's satisfying when your plan works.",zh:"哈哈，习惯了就好。当你的计划成功时会很有成就感。"}
+  ],date:"2026-04-18"},
+  {title:"Movies 看电影",cat:"场景对话",lines:[
+    {s:"A",en:"Hey! That movie was amazing! I didn't expect the ending at all.",zh:"嘿！那电影太棒了！我完全没想到那个结局。"},
+    {s:"B",en:"Yeah, I know! The plot twist totally surprised me.",zh:"是啊！剧情反转完全出乎我的意料。"},
+    {s:"A",en:"And the soundtrack was so good. I want to download it.",zh:"而且配乐太好了。我想下载它。"},
+    {s:"B",en:"Me too. Wanna grab some milk tea before we go home? My treat.",zh:"我也是。回家前要不要买杯奶茶？我请客。"},
+    {s:"A",en:"Sure! And we should watch the sequel together when it comes out.",zh:"好啊！续集出来的时候我们一起看吧。"},
+    {s:"B",en:"Definitely. I'm already looking forward to it.",zh:"当然。我已经期待了。"}
+  ],date:"2026-04-18"},
+  {title:"Travel Abroad 出国旅行",cat:"场景对话",lines:[
+    {s:"A",en:"I just finished planning our trip for tomorrow. We can go to the national park in the morning, then have lunch at a local farm restaurant.",zh:"我刚规划好明天的行程。上午去国家公园，然后在当地农庄餐厅吃午饭。"},
+    {s:"B",en:"That sounds like a wonderful plan! How do we get there? Is it far from our hotel?",zh:"听起来是个好计划！怎么去？离酒店远吗？"},
+    {s:"A",en:"It's a little far, about 40 minutes by bus. The bus departs from the station near our hotel every hour.",zh:"有点远，坐公交大约40分钟。公交车从酒店附近的车站每小时发一班。"},
+    {s:"B",en:"What's the weather like tomorrow? The forecast said it will be sunny with a little wind.",zh:"明天天气怎么样？天气预报说会晴天有点风。"},
+    {s:"A",en:"Perfect weather for traveling! We should bring a light jacket, just in case.",zh:"旅行的完美天气！我们带件薄外套以防万一。"},
+    {s:"B",en:"What about the farm restaurant? Is the food authentic?",zh:"农庄餐厅怎么样？食物正宗吗？"},
+    {s:"A",en:"Very authentic! Fresh ingredients from the farm. About 20 dollars per person.",zh:"非常正宗！用的是农场新鲜食材。大约每人20美元。"},
+    {s:"B",en:"After lunch, the art museum is only a 15-minute walk. It has many famous paintings and sculptures.",zh:"午饭后步行15分钟就到美术馆。那里有很多名画和雕塑。"}
+  ],date:"2026-04-18"},
 ];
 
 // ============================================================
@@ -929,6 +964,53 @@ const GRAMMAR = [
     {cond:"sc/sk → [sg]",words:"scar 读作 [sgɑːr]、sky 读作 [sgaɪ]"},
     {cond:"str → [sdr]",words:"street 读作 [sdriːt]"},
     {cond:"school 中 ch → /g/",words:"school"}
+  ]},
+
+  // === 2026-04-18 新增发音规则 (对话+语法 4.16) ===
+  {cat:"元音发音",title:"A 的发音规则",rows:[
+    {cond:"前后有辅音",ipa:"/æ/",words:"apple, cat, bat, map"},
+    {cond:"a 在结尾",ipa:"/ə/",words:"China, panda, sofa"},
+    {cond:"e 在结尾(本身音)",ipa:"/eɪ/",words:"cake, name"}
+  ]},
+  {cat:"元音发音",title:"E 的发音规则",rows:[
+    {cond:"前后有辅音",ipa:"/e/",words:"egg, pen, red, desk"},
+    {cond:"e 在结尾(本身音)",ipa:"/iː/",words:"bee, she, we, me, see"},
+    {cond:"e 在结尾但前面有元音",ipa:"不发音",words:"cake, bike"}
+  ]},
+  {cat:"元音发音",title:"I 的发音规则",rows:[
+    {cond:"前后有辅音",ipa:"/ɪ/",words:"pig, fish, Tim"},
+    {cond:"结尾有 e(本身音)",ipa:"/aɪ/",words:"bike, five, time"},
+    {cond:"i + nd",ipa:"/aɪ/",words:"mind, find"}
+  ]},
+  {cat:"元音发音",title:"O 的发音规则",rows:[
+    {cond:"前后有辅音",ipa:"/ɒ/",words:"dog, hot"},
+    {cond:"o 在结尾",ipa:"/əʊ/",words:"go, no, so, hello"},
+    {cond:"结尾有 e(本身音)",ipa:"/əʊ/",words:"home, rose, clothes"},
+    {cond:"wh + o",ipa:"/uː/",words:"who, whose"},
+    {cond:"m/n/th/ve 前",ipa:"/ʌ/",words:"son, some, love"}
+  ]},
+  {cat:"元音发音",title:"U 的发音规则",rows:[
+    {cond:"前后有辅音",ipa:"/ʌ/",words:"bus, cup, us"},
+    {cond:"结尾有 e(本身音)",ipa:"/juː/",words:"use, student"},
+    {cond:"特殊",ipa:"/uː/",words:"June, super"},
+    {cond:"P + u",ipa:"/ʊ/",words:"pull, push, put"}
+  ]},
+  {cat:"特殊发音",title:"不发音字母组合",rows:[
+    {cond:"kn 开头 k 不发音",words:"know"},
+    {cond:"rh 开头 h 不发音",words:"rhino"},
+    {cond:"wr 开头 w 不发音",words:"write, wrong"},
+    {cond:"wh 开头 h 不发音",words:"why, white"},
+    {cond:"wh+o 中 w 不发音",words:"who, whose"},
+    {cond:"mb 结尾 b 不发音",words:"climb"},
+    {cond:"mn 结尾 n 不发音",words:"autumn"},
+    {cond:"sten/stle 结尾 t 不发音",words:"listen, castle"},
+    {cond:"bt 结尾 b 不发音",words:"debt"}
+  ]},
+  {cat:"特殊发音",title:"清辅音浊化规则",rows:[
+    {cond:"sp → [sb]",words:"sport"},
+    {cond:"st → [sd]",words:"star, street"},
+    {cond:"sc/sk → [sg]",words:"scar, sky, school"},
+    {cond:"str → [sdr]",words:"street"}
   ]},
 ];
 
@@ -1050,6 +1132,35 @@ const IELTS_SPEAKING = [
   {topic:"Topic 4: Something bought never used",part:"Part 1 Interview",questions:["What is your full name?","What can you tell me about your hometown?","How long have you lived in your hometown?","What places in your hometown do you like best?","What can you tell me about your neighbors?","Do you prefer to have young or old people as neighbors? Why?","What season do you like?"],cueCard:"Describe something that you have bought and never used, please say:\n- Where did you buy it?\n- What was the item?\n- Why didn't you use the item?",discussion:["Do you usually buy things that you don't use?","What do you think about recycling?","Do you think that people recycle more now than in the past?","Is recycling important? Why?"],date:"2026-04-17"},
   {topic:"Topic 5: Way to relax",part:"Part 1 Interview",questions:["ID verification","What is your full name?","Where do you come from?","Will you recommend anyone to visit your town or village?","What places will you recommend a tourist to visit in your hometown?"],cueCard:"Talk about the way you like to relax, when you are not at work. Please say:\n- Where did you go recently to relax?\n- Who was with you?\n- How did you relax?",discussion:["Do you think that sleeping and relaxing are the same?","Do you like to travel?","Where did you last travel to and what for?"],date:"2026-04-17"},
   {topic:"Topic 6: A piece of household equipment",part:"Part 1 Interview",questions:["Tell me your name.","Where do you live?","Do you work or study?","Is your job common in your country?","What is your favorite color?","Why is that your favorite color?","Do you often wear clothes in your favorite color?","Which color do you think has a special meaning to people in your country?","Would you paint the walls in your home in a color you like, and what would that look like?"],cueCard:"Describe a piece of equipment in your household (not a computer) which you find useful. Please say:\n- What it is\n- Where and when you bought it\n- Why you find it useful",discussion:["What benefit do people get from using modern equipment in the household?","Do you think modern equipment is difficult to operate for older people?","Do you think that employers should train their employees to use modern equipment?"],date:"2026-04-17"}
+
+  // === 2026-04-18 新增 (对话+语法 4.15 & 4.16) ===
+  {en:"graphics",zh:"图形；画面",uk:"/ˈɡræfɪks/",us:"/ˈɡræfɪks/",defs:["n. 图形；画面；图像处理"],exam:["四级", "六级", "雅思"],cat:"游戏类",sub:"游戏类",date:"2026-04-18",plural:"graphics"},
+  {en:"sequel",zh:"续集",uk:"/ˈsiːkwəl/",us:"/ˈsiːkwəl/",defs:["n. 续集；续篇"],exam:["四级", "六级", "雅思"],cat:"游戏类",sub:"游戏类",date:"2026-04-18",plural:"sequels"},
+  {en:"puzzle",zh:"解谜；拼图",uk:"/ˈpʌzl/",us:"/ˈpʌzl/",defs:["n. 谜；难题；拼图", "v. 使困惑"],exam:["高考", "四级", "雅思"],cat:"游戏类",sub:"游戏类",date:"2026-04-18",plural:"puzzles"},
+  {en:"strategy",zh:"策略；战略",uk:"/ˈstrætədʒi/",us:"/ˈstrætədʒi/",defs:["n. 策略；战略；计谋"],exam:["四级", "六级", "考研", "雅思"],cat:"游戏类",sub:"游戏类",date:"2026-04-18",plural:"strategies"},
+  {en:"satisfying",zh:"令人满意的",uk:"/ˈsætɪsfaɪɪŋ/",us:"/ˈsætɪsfaɪɪŋ/",defs:["adj. 令人满意的；令人满足的"],exam:["四级", "雅思"],tag:"adj",cat:"游戏类",sub:"游戏类",date:"2026-04-18"},
+  {en:"platform game",zh:"平台游戏",defs:["n. 平台跳跃游戏（如超级马里奥）"],cat:"游戏类",sub:"游戏类",date:"2026-04-18"},
+  {en:"programmer",zh:"程序员",uk:"/ˈprəʊɡræmə/",us:"/ˈproʊɡræmər/",defs:["n. 程序员"],exam:["高考", "四级", "雅思"],cat:"游戏类",sub:"游戏类",date:"2026-04-18",plural:"programmers"},
+  {en:"competitive",zh:"竞争性的；好胜的",uk:"/kəmˈpetətɪv/",us:"/kəmˈpetətɪv/",defs:["adj. 竞争的；好胜的"],exam:["四级", "六级", "雅思"],tag:"adj",cat:"游戏类",sub:"游戏类",date:"2026-04-18"},
+  {en:"achievement",zh:"成就；成绩",uk:"/əˈtʃiːvmənt/",us:"/əˈtʃiːvmənt/",defs:["n. 成就；成绩；达到"],exam:["高考", "四级", "六级", "雅思"],cat:"游戏类",sub:"游戏类",date:"2026-04-18",plural:"achievements"},
+  {en:"trailer",zh:"预告片",uk:"/ˈtreɪlə/",us:"/ˈtreɪlər/",defs:["n. 预告片；拖车"],exam:["四级", "雅思"],cat:"电影类",sub:"电影类",date:"2026-04-18",plural:"trailers"},
+  {en:"cinematographer",zh:"电影摄影师",uk:"/ˌsɪnəməˈtɒɡrəfə/",us:"/ˌsɪnəməˈtɑːɡrəfər/",defs:["n. 电影摄影师"],exam:["雅思"],cat:"电影类",sub:"电影类",date:"2026-04-18"},
+  {en:"soundtrack",zh:"原声带；配乐",uk:"/ˈsaʊndtræk/",us:"/ˈsaʊndtræk/",defs:["n. 电影原声带；配乐"],exam:["四级", "雅思"],cat:"电影类",sub:"电影类",date:"2026-04-18",plural:"soundtracks"},
+  {en:"plot",zh:"情节；剧情",uk:"/plɒt/",us:"/plɑːt/",defs:["n. 情节；阴谋；小块土地", "v. 密谋"],exam:["四级", "六级", "雅思"],cat:"电影类",sub:"电影类",date:"2026-04-18",plural:"plots"},
+  {en:"scene",zh:"场景；镜头",uk:"/siːn/",us:"/siːn/",defs:["n. 场景；场面；景色"],exam:["高考", "四级", "雅思"],cat:"电影类",sub:"电影类",date:"2026-04-18",plural:"scenes"},
+  {en:"forecast",zh:"预报；预测",uk:"/ˈfɔːkɑːst/",us:"/ˈfɔːrkæst/",defs:["n. 预报；预测", "v. 预报"],exam:["四级", "六级", "雅思"],tag:"verb",cat:"旅行类",sub:"旅行类",date:"2026-04-18",plural:"forecasts",past:"forecast",pp:"forecast",ing:"forecasting",future:"will forecast"},
+  {en:"authentic",zh:"正宗的；真实的",uk:"/ɔːˈθentɪk/",us:"/ɔːˈθentɪk/",defs:["adj. 正宗的；地道的；真实的"],exam:["四级", "六级", "雅思"],tag:"adj",cat:"旅行类",sub:"旅行类",date:"2026-04-18"},
+  {en:"ingredient",zh:"食材；成分",uk:"/ɪnˈɡriːdiənt/",us:"/ɪnˈɡriːdiənt/",defs:["n. 食材；原料；成分"],exam:["四级", "六级", "雅思"],cat:"旅行类",sub:"旅行类",date:"2026-04-18",plural:"ingredients"},
+  {en:"sculpture",zh:"雕塑",uk:"/ˈskʌlptʃə/",us:"/ˈskʌlptʃər/",defs:["n. 雕塑；雕刻品"],exam:["四级", "六级", "雅思"],cat:"旅行类",sub:"旅行类",date:"2026-04-18",plural:"sculptures"},
+  {en:"tourist",zh:"游客",uk:"/ˈtʊərɪst/",us:"/ˈtʊrɪst/",defs:["n. 游客；旅行者"],exam:["高考", "四级", "雅思"],cat:"旅行类",sub:"旅行类",date:"2026-04-18",plural:"tourists"},
+  {en:"depart",zh:"出发；离开",uk:"/dɪˈpɑːt/",us:"/dɪˈpɑːrt/",defs:["v. 出发；离开"],exam:["四级", "六级", "雅思"],tag:"verb",cat:"旅行类",sub:"旅行类",date:"2026-04-18",past:"departed",pp:"departed",ing:"departing",future:"will depart"},
+  {en:"mine",zh:"我的（名词性物主代词）",uk:"/maɪn/",us:"/maɪn/",defs:["pron. 我的", "n. 矿；矿山"],exam:["高考"],cat:"代词类",sub:"代词类",date:"2026-04-18"},
+  {en:"kill time",zh:"打发时间",defs:["phr. 打发时间；消磨时间"],tag:"phrase",cat:"游戏类",sub:"游戏类",date:"2026-04-18"},
+  {en:"treat",zh:"请客；招待",uk:"/triːt/",us:"/triːt/",defs:["v. 请客；对待；治疗", "n. 款待"],exam:["高考", "四级", "六级", "雅思"],tag:"verb",cat:"日常对话",sub:"日常对话",date:"2026-04-18",past:"treated",pp:"treated",ing:"treating",future:"will treat"},
+  {en:"it's on me",zh:"我请客",defs:["phr. 我来付钱；我请客"],tag:"phrase",cat:"日常对话",sub:"日常对话",date:"2026-04-18"},
+  {en:"look forward to",zh:"期待",defs:["phr. 期待；盼望（后接名词/动名词）"],exam:["高考", "四级", "雅思"],tag:"phrase",cat:"日常对话",sub:"日常对话",date:"2026-04-18"},
+  {en:"abroad",zh:"国外",uk:"/əˈbrɔːd/",us:"/əˈbrɔːd/",defs:["adv. 在国外；到国外"],exam:["高考", "四级", "雅思"],tag:"adv",cat:"旅行类",sub:"旅行类",date:"2026-04-18"},
+  {en:"national park",zh:"国家公园",defs:["n. 国家公园"],exam:["高考", "雅思"],cat:"旅行类",sub:"旅行类",date:"2026-04-18"},
 ];
 
 // 雅思口语分类题库 (Part 1 高频问题)
@@ -1175,6 +1286,12 @@ const IELTS_VOCAB = [
   {en:"stadium",zh:"体育场",uk:"/ˈsteɪdiəm/",us:"/ˈsteɪdiəm/",defs:["n. 体育场；运动场"],exam:["高考","四级","雅思"],plural:"stadiums",date:"2026-04-17"},
   {en:"in charge of",zh:"负责",defs:["phr. 负责；掌管"],exam:["高考","四级","雅思"],date:"2026-04-17"},
   {en:"MOBA",zh:"多人在线战术竞技",defs:["n. Multiplayer Online Battle Arena 多人在线战术竞技游戏"],exam:[],note:"There are two teams and each team has five people.",date:"2026-04-17"}
+
+  // === 2026-04-18 新增 (雅思手写笔记 4782) ===
+  {en:"goal",zh:"目标；进球",uk:"/ɡəʊl/",us:"/ɡoʊl/",defs:["n. 目标；进球"],exam:["高考","四级","六级","雅思"],plural:"goals",date:"2026-04-18"},
+  {en:"breathtaking",zh:"激动人心的；令人惊叹的",uk:"/ˈbreθteɪkɪŋ/",us:"/ˈbreθteɪkɪŋ/",defs:["adj. 惊人的；激动人心的；令人惊叹的"],exam:["六级","雅思"],tag:"adj",date:"2026-04-18"},
+  {en:"impressive",zh:"令人印象深刻的",uk:"/ɪmˈpresɪv/",us:"/ɪmˈpresɪv/",defs:["adj. 令人印象深刻的；壮观的"],exam:["四级","六级","雅思"],tag:"adj",date:"2026-04-18"},
+  {en:"open word",zh:"开放性词汇",defs:["n. 开放性词汇/话题"],exam:["雅思"],date:"2026-04-18"},
 ];
 
 // ============================================================
@@ -1949,8 +2066,8 @@ buildArticles();
 // UPDATE DATE FOOTER
 document.querySelector(".content").insertAdjacentHTML("beforeend", `
   <div style="text-align:center;padding:40px 20px 20px;border-top:1px solid #E5E7EB;margin-top:40px">
-    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-17 12:18</strong></div>
-    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 630 条 &middot; 来自 10+10 份扫描件 + 3 份课程文档 &middot; 小霸王 English Study Notes</div>
+    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-18 03:00</strong></div>
+    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 666 条 &middot; 来自 20+10 份扫描件 + 5 份课程文档 &middot; 小霸王 English Study Notes</div>
   </div>
 `);
 
