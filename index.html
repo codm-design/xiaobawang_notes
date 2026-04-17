@@ -867,6 +867,39 @@ const IELTS_SPEAKING = [
 ];
 
 // 雅思口语分类题库 (Part 1 高频问题)
+// 雅思口语范文 (Sample Answers)
+const IELTS_SAMPLES = [
+  {topic:"Topic 1: What you did last weekend",date:"2026-04-17",parts:[
+    {part:"Part 1",question:"Do you spend much time with your family?",
+     answer:[
+       {en:"No, not really.",zh:"不，并不是很多。"},
+       {en:"I wish I could spend more time with my family, but I can't right now.",zh:"我希望能多陪陪家人，但现在做不到。"},
+       {en:"I work in Shenzhen, while my whole family lives in my hometown, Hangzhou, Zhejiang.",zh:"我在深圳工作，而我的家人都在家乡浙江杭州。"},
+       {en:"The only time we can have a full reunion is during the Lunar New Year, when I have a long holiday.",zh:"我们唯一能全家团聚的时间就是农历新年，那时候我才有长假。"},
+       {en:"I have an elder brother who also lives there, and he has two children, a boy and a girl.",zh:"我有一个哥哥也住在老家，他有两个孩子，一个男孩和一个女孩。"},
+       {en:"We have a big feast together, exchange blessings and share our stories, which is always a cheerful and enjoyable celebration for the whole family.",zh:"我们会一起吃一顿丰盛的家宴，互相送上祝福，分享彼此的故事，对全家来说，这永远是一场欢乐又愉快的庆典。"},
+       {en:"I really miss them and hope to spend more time together in the future.",zh:"我很想念他们，希望以后能有更多时间在一起。"}
+     ]},
+    {part:"Part 2",question:"I'd like to talk about what I did last weekend.",
+     answer:[
+       {en:"I went to Dameisha Beach, a famous scenic spot in the east of Shenzhen, which is a popular resort for locals.",zh:"我去了大梅沙海滩，它位于深圳东部，是一个很有名的景点，也是当地很受欢迎的度假胜地。"},
+       {en:"I went there with one of my best companions. We have known each other for around seven years.",zh:"我是和我最好的一个同伴一起去的。我们认识大约七年了。"},
+       {en:"He is a bit overweight, and he is a very enthusiastic person full of energy.",zh:"他身材微胖，但却是一个非常热情、充满活力的人。"},
+       {en:"He always looks on the bright side of life and cheers me up when I feel down, so hanging out with him is always enjoyable.",zh:"他总是看到生活积极的一面，在我低落的时候鼓励我，所以和他一起相处总是很开心。"},
+       {en:"We chose independent travel instead of a package tour, so we set off early in the morning by car, and the journey took us about two hours.",zh:"我们选择了自助游，而不是跟团游。所以我们一大早开车出发，全程大约花了两个小时。"},
+       {en:"On the way, we listened to music and chatted casually, so time passed really quickly.",zh:"路上我们一边听音乐一边随意聊天，时间过得非常快。"},
+       {en:"When we arrived, I saw wide, golden beaches, clean blue seawater, and a lot of tourists going sightseeing. The landscape was absolutely breathtaking.",zh:"到达之后，我看到了宽阔的金色沙滩、清澈湛蓝的海水，还有许多正在观光的游客。那里的风景简直令人惊叹。"},
+       {en:"There were many exciting water activities, such as surfing, waterboarding and jet skiing.",zh:"那里有很多刺激的水上活动，比如冲浪、水上滑板和摩托艇。"},
+       {en:"We tried jet skiing together, and it was really thrilling and fun.",zh:"我们一起玩了摩托艇，真的非常刺激好玩。"},
+       {en:"In the evening, we had delicious seafood barbecue by the sea.",zh:"晚上，我们在海边吃了美味的海鲜烧烤。"},
+       {en:"After dinner, we walked along the beach, enjoying the cool sea breeze.",zh:"饭后，我们沿着沙滩散步，享受凉爽的海风。"},
+       {en:"We talked about our work, life and future plans.",zh:"我们聊了聊工作、生活和未来的计划。"},
+       {en:"Overall, it was a relaxing and unforgettable weekend. I really enjoyed the beautiful scenery and the time with my friend.",zh:"总的来说，这是一个轻松又难忘的周末。我非常喜欢那里的美景，也很享受和朋友在一起的时光。"},
+       {en:"I hope we can have more trips like this in the future.",zh:"希望未来我们能有更多这样的旅行。"}
+     ]}
+  ]}
+];
+
 const IELTS_QUESTION_BANK = [
   {cat:"人物类 People",questions:["Do you spend much time with your family?","Who do you usually talk to when you have a problem?","Do you have a close friend from childhood?"],date:"2026-04-17"},
   {cat:"物体类 Objects",questions:["Do you often use any special equipment or tools?","Is there a gadget you can't live without?","Do you keep things that are meaningful to you?"],date:"2026-04-17"},
@@ -1109,8 +1142,8 @@ function buildIris(){
 function buildIelts(){
   const tabsEl = document.getElementById("ieltsSubTabs");
   const contentEl = document.getElementById("ieltsContent");
-  const tabs = ["口语话题","口语题库","写作连接词","雅思词汇"];
-  const counts = [IELTS_SPEAKING.length, IELTS_QUESTION_BANK.length, IELTS_CONNECTORS.length, IELTS_VOCAB.length];
+  const tabs = ["口语话题","口语范文","口语题库","写作连接词","雅思词汇"];
+  const counts = [IELTS_SPEAKING.length, IELTS_SAMPLES.length, IELTS_QUESTION_BANK.length, IELTS_CONNECTORS.length, IELTS_VOCAB.length];
 
   tabsEl.innerHTML = tabs.map((t,i) => `<div class="sub-tab ${i===0?'active':''}" data-subtab="ielts-${i}">${t} <span class="badge">${counts[i]}</span></div>`).join("");
 
@@ -1137,8 +1170,32 @@ function buildIelts(){
     </div>`).join("")}
   </div>`;
 
-  // 口语题库
+  // 口语范文
   html += `<div class="sub-section" id="ielts-1">
+    <div class="section-header"><h2>📖 雅思口语范文 (Sample Answers)</h2></div>
+    ${IELTS_SAMPLES.map(s => `
+      <div class="grammar-card" data-search="${s.topic} ${s.parts.map(p=>p.answer.map(a=>a.en+' '+a.zh).join(' ')).join(' ')}">
+        <h3 style="color:var(--purple);margin-bottom:12px">${s.topic}</h3>
+        ${s.parts.map(p => `
+          <div style="margin:16px 0">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+              <span style="padding:4px 12px;background:var(--purple);color:white;border-radius:20px;font-size:.75rem;font-weight:700">${p.part}</span>
+              <span style="font-size:.85rem;font-weight:600;color:var(--dark)">${p.question}</span>
+            </div>
+            ${p.answer.map(a => `
+              <div style="padding:8px 0;border-bottom:1px solid #F3F4F6">
+                <div style="font-size:.88rem;color:var(--dark);line-height:1.6">${a.en}</div>
+                <div style="font-size:.78rem;color:var(--gray-light);margin-top:2px">${a.zh}</div>
+              </div>
+            `).join("")}
+          </div>
+        `).join("")}
+      </div>
+    `).join("")}
+  </div>`;
+
+  // 口语题库
+  html += `<div class="sub-section" id="ielts-2">
     <div class="section-header"><h2>📚 雅思口语 Part 1 分类题库</h2></div>
     ${IELTS_QUESTION_BANK.map(c => `<div class="grammar-card" data-search="${c.cat} ${c.questions.join(' ')}">
       <h3 style="color:var(--purple)">${c.cat}</h3>
@@ -1147,7 +1204,7 @@ function buildIelts(){
   </div>`;
 
   // 写作连接词
-  html += `<div class="sub-section" id="ielts-2">
+  html += `<div class="sub-section" id="ielts-3">
     <div class="section-header"><h2>✍️ 雅思写作连接词大全</h2></div>
     ${IELTS_CONNECTORS.map(g => `<div class="grammar-card" data-search="${g.cat} ${g.words.map(w=>w.en+' '+w.zh).join(' ')}">
       <h3 style="color:var(--purple);font-size:.95rem">${g.cat}</h3>
@@ -1160,7 +1217,7 @@ function buildIelts(){
   </div>`;
 
   // 雅思词汇
-  html += `<div class="sub-section" id="ielts-3">
+  html += `<div class="sub-section" id="ielts-4">
     <div class="section-header"><h2>📝 雅思手写词汇笔记</h2></div>
     <div class="vocab-grid">${IELTS_VOCAB.map(vocabCard).join("")}</div>
   </div>`;
