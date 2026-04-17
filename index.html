@@ -28,7 +28,7 @@
   .big-tab .count{font-size:.7rem;color:var(--gray-light);font-weight:500}
 
   /* SUB TABS */
-  .sub-tabs{display:flex;flex-wrap:wrap;gap:4px;max-width:1200px;margin:0 auto;padding:8px 20px;background:#fff;border-bottom:1px solid #F3F4F6}
+  .sub-tabs{display:flex;flex-wrap:wrap;gap:0;max-width:1200px;margin:0 auto;padding:4px 20px 0;background:#fff;border-bottom:2px solid #F3F4F6}
   .sub-tabs::-webkit-scrollbar{display:none}
   .sub-tab{flex-shrink:0;white-space:nowrap}
   .sub-tabs::-webkit-scrollbar{display:none}
@@ -1385,11 +1385,20 @@ function buildArticles(){
   const tabsEl = document.getElementById("articlesSubTabs");
   const contentEl = document.getElementById("articlesContent");
 
-  tabsEl.innerHTML = ARTICLES.map((a,i) =>
-    `<div class="sub-tab ${i===0?'active':''}" data-subtab="art-${i}">${a.title} <span class="badge">${a.words.replace('~','')}</span></div>`
-  ).join("");
+  // 使用网格选择器而不是 tab，彻底避免溢出问题
+  tabsEl.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;padding:12px 0;width:100%">
+    ${ARTICLES.map((a,i) => `
+      <div class="art-btn ${i===0?'art-btn-active':''}" data-idx="${i}" onclick="switchArticle(${i})" style="
+        padding:8px 14px;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:600;
+        background:${i===0?'var(--purple)':'var(--purple-bg)'};
+        color:${i===0?'#fff':'var(--purple)'};
+        border:1.5px solid ${i===0?'var(--purple)':'transparent'};
+        transition:all .18s;white-space:nowrap
+      ">第${a.id}篇 ${a.title}</div>
+    `).join("")}
+  </div>`;
 
-  contentEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-section ${i===0?'active':''}" id="art-${i}">
+  contentEl.innerHTML = ARTICLES.map((a,i) => `<div class="art-section" id="art-sec-${i}" style="display:${i===0?'block':'none'}">
     <div class="section-header"><h2>第${a.id}篇：${a.title}</h2><span class="count">${a.enTitle} | ${a.words} 词</span></div>
     <div style="background:white;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);margin-top:12px">
       <h3 style="font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:16px">${a.enTitle}</h3>
@@ -1401,8 +1410,21 @@ function buildArticles(){
       `).join("")}
     </div>
   </div>`).join("");
+}
 
-  bindSubTabs(tabsEl, "art");
+function switchArticle(idx){
+  // Update button styles
+  document.querySelectorAll(".art-btn").forEach((btn,i) => {
+    if(i===idx){
+      btn.style.background="var(--purple)";btn.style.color="#fff";btn.style.border="1.5px solid var(--purple)";
+    } else {
+      btn.style.background="var(--purple-bg)";btn.style.color="var(--purple)";btn.style.border="1.5px solid transparent";
+    }
+  });
+  // Show/hide sections
+  document.querySelectorAll(".art-section").forEach((sec,i) => {
+    sec.style.display = i===idx?"block":"none";
+  });
 }
 
   bindSubTabs(tabsEl, "art");
