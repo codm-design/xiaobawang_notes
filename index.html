@@ -1489,7 +1489,7 @@ function buildIris(){
               ${g.rows.map((r,ri) => `<tr style="border-bottom:1px solid #F3F4F6">
                 <td style="padding:6px 4px;color:var(--gray);white-space:nowrap;vertical-align:top;width:1%;font-weight:500">${ri+1}.</td>
                 <td style="padding:6px 4px;color:var(--dark);vertical-align:top;min-width:100px"><span style="color:var(--red);font-weight:500">${r.cond}</span></td>
-                ${r.ipa?`<td style="padding:6px 4px;vertical-align:top;white-space:nowrap"><strong style="color:var(--purple);font-size:.85rem">${r.ipa}</strong></td>`:''}
+                ${r.ipa?`<td style="padding:6px 4px;vertical-align:top;white-space:nowrap"><strong style="color:var(--purple);font-size:.85rem">${r.ipa}</strong></td><td style="padding:6px 2px;vertical-align:top"><button onclick="speakText('${r.words.split('/')[0].split('、')[0].trim()}')" style="padding:2px 6px;border-radius:4px;border:1px solid var(--purple);background:var(--purple-bg);color:var(--purple);font-size:.6rem;cursor:pointer">🔊</button></td>`:''}
                 <td style="padding:6px 4px;color:var(--dark);font-family:monospace;font-size:.76rem;line-height:1.6">${r.words}</td>
               </tr>`).join("")}
             </table>
