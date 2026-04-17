@@ -1563,9 +1563,6 @@ function buildArticles(){
       <h2>第${a.id}篇：${a.title}</h2>
       <span class="count">${a.enTitle} | ${a.words} 词</span>
     </div>
-    <div style="margin:8px 0;display:flex;gap:8px;flex-wrap:wrap">
-      <button onclick="speechSynthesis.cancel()" style="padding:6px 14px;border-radius:6px;border:1.5px solid var(--red);background:#FEF2F2;color:var(--red);font-size:.78rem;font-weight:600;cursor:pointer">⏹ 停止朗读</button>
-    </div>
     <div style="background:white;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);margin-top:12px">
       <h3 style="font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:16px">${a.enTitle}</h3>
       ${a.paras.map((p,j) => `
@@ -1573,6 +1570,7 @@ function buildArticles(){
           <div style="display:flex;gap:6px;margin-bottom:6px">
             <button onclick="speakText(this.parentElement.nextElementSibling.textContent,'uk')" style="padding:2px 8px;border-radius:4px;border:1px solid #3B82F6;background:#EFF6FF;color:#3B82F6;font-size:.65rem;font-weight:600;cursor:pointer">🔊 UK</button>
             <button onclick="speakText(this.parentElement.nextElementSibling.textContent,'us')" style="padding:2px 8px;border-radius:4px;border:1px solid #F59E0B;background:#FFFBEB;color:#92400E;font-size:.65rem;font-weight:600;cursor:pointer">🔊 US</button>
+            <button onclick="speechSynthesis.cancel()" style="padding:2px 8px;border-radius:4px;border:1px solid #DC2626;background:#FEF2F2;color:#DC2626;font-size:.65rem;font-weight:600;cursor:pointer">⏹</button>
           </div>
           <div style="font-size:.9rem;color:var(--dark);line-height:1.8">${p.en}</div>
           <div class="art-zh" style="font-size:.82rem;color:var(--gray);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed #E5E7EB">${p.zh}</div>
@@ -1723,7 +1721,12 @@ function showQ(){
   const correct=w.zh.replace(/'/g,"&#39;");
   box.innerHTML='<div style="font-size:.8rem;color:var(--gray);margin-bottom:8px">第 '+(quizIdx+1)+' / '+quizWords.length+' 题</div>'+
     '<div style="font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:4px">'+w.en+'</div>'+
-    (w.uk?'<div style="font-size:.8rem;color:var(--gray-light);margin-bottom:16px">'+w.uk+'</div>':'<div style="margin-bottom:16px"></div>')+
+    '<div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">'+
+    '<button onclick="speakText(\''+w.en+'\',\'uk\')" style="padding:3px 10px;border-radius:5px;border:1px solid #3B82F6;background:#EFF6FF;color:#3B82F6;font-size:.7rem;font-weight:600;cursor:pointer">🔊 UK</button>'+
+    '<button onclick="speakText(\''+w.en+'\',\'us\')" style="padding:3px 10px;border-radius:5px;border:1px solid #F59E0B;background:#FFFBEB;color:#92400E;font-size:.7rem;font-weight:600;cursor:pointer">🔊 US</button>'+
+    '<button onclick="speechSynthesis.cancel()" style="padding:3px 10px;border-radius:5px;border:1px solid #DC2626;background:#FEF2F2;color:#DC2626;font-size:.7rem;font-weight:600;cursor:pointer">⏹</button>'+
+    '</div>'+
+    (w.uk?'<div style="font-size:.8rem;color:var(--gray-light);margin-bottom:12px">'+w.uk+'</div>':'<div style="margin-bottom:12px"></div>')+
     opts.map(o=>{
       const oe=o.replace(/'/g,"&#39;");
       return '<button class="quiz-option" onclick="chkAns(this,\''+oe+'\',\''+correct+'\')">'+o+'</button>';
