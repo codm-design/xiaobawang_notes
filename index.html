@@ -1332,48 +1332,41 @@ function buildIris(){
     `).join("")}
   </div>`;
 
-  // Pronunciation rules section (发音规则) - 专业排版
+  // Pronunciation rules section (发音规则) - 多列紧凑排版
   const pronIdx = exIdx + 1;
   const pronRules = GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音"||g.cat==="发音规则");
   const pronCats = [...new Set(pronRules.map(g=>g.cat))];
   html += `<div class="sub-section" id="iris-${pronIdx}">
     <div class="section-header"><h2>🔤 发音规则</h2></div>
-    <div style="margin-bottom:12px;font-size:.85rem;color:var(--gray)">来源: Iris 课程 4.16 | 点击音标可朗读示例单词</div>
     ${pronCats.map(pc => {
       const items = pronRules.filter(g=>g.cat===pc);
-      const icon = pc==="元音发音"?"🅰️":pc==="特殊发音"?"🔇":"🔤";
-      return `<div style="margin:20px 0">
-        <h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--purple-bg)">${icon} ${pc}</h3>
+      const icon = pc==="元音发音"?"🅰️":"🔇";
+      return `<div style="margin:16px 0">
+        <h3 style="font-size:.95rem;font-weight:700;color:var(--purple);margin-bottom:10px">${icon} ${pc}</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px">
         ${items.map(g=>{
-          // Parse the rule into structured rows
           const rules = g.rule.split(/[①②③④⑤]/).filter(r=>r.trim());
           const examples = (g.ok||"").split(",").map(e=>e.trim()).filter(e=>e);
-          return `<div style="background:white;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:var(--card-shadow);border-left:4px solid var(--purple)" data-search="${g.title} ${g.rule} ${g.ok||''}" class="grammar-card">
-            <div style="font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:10px">${g.title}</div>
+          return `<div style="background:white;border-radius:10px;padding:12px;box-shadow:var(--card-shadow);border-left:3px solid var(--purple)" data-search="${g.title} ${g.rule} ${g.ok||''}" class="grammar-card">
+            <div style="font-size:.85rem;font-weight:700;color:var(--purple);margin-bottom:8px">${g.title}</div>
             ${rules.length > 1 ? rules.map((r,ri) => {
-              // Each sub-rule as a row
               const parts = r.split(":");
-              const condition = parts[0]||"";
-              const phonetic = parts.slice(1).join(":").trim();
-              return `<div style="display:flex;gap:10px;padding:8px 10px;margin:4px 0;border-radius:8px;background:${ri%2===0?'#F5F3FF':'#FAFAFA'};align-items:flex-start">
-                <span style="font-size:.75rem;background:var(--purple);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">${ri+1}</span>
-                <div style="flex:1">
-                  <div style="font-size:.82rem;color:var(--gray);font-weight:500">${condition.trim()}</div>
-                  ${phonetic?`<div style="font-size:.88rem;color:var(--dark);font-weight:600;margin-top:2px">${phonetic}</div>`:''}
-                </div>
+              const cond = parts[0]||"";
+              const phon = parts.slice(1).join(":").trim();
+              return `<div style="display:flex;gap:6px;padding:4px 6px;margin:2px 0;border-radius:5px;background:${ri%2===0?'#F5F3FF':'#FAFAFA'};font-size:.78rem">
+                <span style="font-size:.6rem;background:var(--purple);color:#fff;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">${ri+1}</span>
+                <div><span style="color:var(--gray)">${cond.trim()}</span>${phon?` <strong style="color:var(--dark)">${phon}</strong>`:''}</div>
               </div>`;
-            }).join("") : `<div style="font-size:.85rem;color:var(--dark);line-height:1.8;padding:6px 0">${g.rule}</div>`}
-            ${examples.length > 0 ? `<div style="margin-top:10px;padding:10px 12px;background:#ECFDF5;border-radius:8px;border-left:3px solid #059669">
-              <div style="font-size:.7rem;font-weight:600;color:#059669;margin-bottom:4px">📖 示例</div>
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
-                ${examples.map(ex => {
-                  const word = ex.split("/")[0].split("(")[0].trim();
-                  return `<span style="padding:4px 10px;background:#D1FAE5;border-radius:6px;font-size:.82rem;color:#065F46;cursor:pointer;font-family:monospace" onclick="speakText('${word}')">${ex}</span>`;
-                }).join("")}
-              </div>
+            }).join("") : `<div style="font-size:.8rem;color:var(--dark);line-height:1.7">${g.rule}</div>`}
+            ${examples.length > 0 ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">
+              ${examples.map(ex => {
+                const word = ex.split("/")[0].split("(")[0].trim();
+                return `<span style="padding:2px 8px;background:#D1FAE5;border-radius:4px;font-size:.72rem;color:#065F46;cursor:pointer" onclick="speakText('${word}')">${ex}</span>`;
+              }).join("")}
             </div>` : ''}
           </div>`;
         }).join("")}
+        </div>
       </div>`;
     }).join("")}
   </div>`;
