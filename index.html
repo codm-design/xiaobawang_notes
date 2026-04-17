@@ -1632,30 +1632,34 @@ function buildGrammar(){
 
   contentEl.innerHTML = GRAMMAR_LESSONS.map((l,i) => `<div class="sub-section ${i===0?'active':''}" id="gram-${i}">
     <div class="section-header"><h2>📐 ${l.title}</h2><span class="count">${l.source}</span></div>
-    ${l.sections.map(s => `<div style="background:white;border-radius:10px;padding:14px;margin-bottom:10px;box-shadow:var(--card-shadow);border-left:3px solid var(--purple)" data-search="${s.sub} ${s.content||''}" class="grammar-card">
-      <div style="font-size:.88rem;font-weight:700;color:var(--purple);margin-bottom:8px">${s.sub}</div>
-      ${s.content?`<div style="font-size:.84rem;color:var(--dark);line-height:1.8">${s.content}</div>`:''}
-      ${s.items?`<div style="margin-top:6px">${s.items.map(it =>
-        `<div style="display:flex;gap:8px;padding:6px 8px;margin:3px 0;border-radius:6px;background:#F5F3FF;font-size:.82rem">
-          <span style="color:var(--purple);font-weight:600;min-width:140px;flex-shrink:0">${it.label}</span>
-          <span style="color:var(--dark)">${it.detail}</span>
-        </div>`
-      ).join("")}${s.note?`<div style="font-size:.78rem;color:var(--gray);margin-top:6px;font-style:italic">${s.note}</div>`:''}</div>`:''}
-      ${s.examples?`<div style="margin-top:8px">${s.examples.map(ex =>
-        `<div style="display:flex;gap:4px;margin:6px 0;align-items:flex-end">
-          ${ex.parts.map((p,pi) => `<div style="text-align:center">
-            <div style="font-size:.9rem;font-weight:700;color:var(--dark);padding:4px 10px;background:#EDE9FE;border-radius:6px">${p||'—'}</div>
-            <div style="font-size:.65rem;color:var(--gray);margin-top:2px">${ex.labels[pi]||''}</div>
-          </div>`).join('<span style="color:#C4B5FD;font-size:.8rem">+</span>')}
-        </div>`
-      ).join("")}${s.note?`<div style="font-size:.78rem;color:var(--red);margin-top:8px;font-weight:500">${s.note}</div>`:''}</div>`:''}
-      ${s.quiz?`<div style="margin-top:8px">${s.quiz.map((q,qi) =>
-        `<div style="padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:.82rem;cursor:pointer" onclick="this.querySelector('.ga').style.display=this.querySelector('.ga').style.display==='none'?'inline':'none'">
-          <span style="color:var(--gray)">${qi+1}.</span> ${q.q} <span class="ga" style="display:none;color:#059669;font-weight:600;background:#ECFDF5;padding:2px 8px;border-radius:4px;margin-left:6px">${q.a}</span>
-          <span style="font-size:.7rem;color:#C4B5FD;margin-left:4px">👆点击看答案</span>
-        </div>`
-      ).join("")}</div>`:''}
-    </div>`).join("")}
+    <div style="background:white;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);margin-top:8px" data-search="${l.sections.map(s=>s.sub+' '+(s.content||'')).join(' ')}" class="grammar-card">
+    ${l.sections.map((s,si) => `
+      <div style="${si>0?'margin-top:14px;padding-top:14px;border-top:2px solid #F3F4F6':''}">
+        <div style="font-size:.85rem;font-weight:700;color:var(--purple);margin-bottom:6px">${s.sub}</div>
+        ${s.content?`<div style="font-size:.82rem;color:var(--dark);line-height:1.8">${s.content}</div>`:''}
+        ${s.items?`<div style="margin-top:4px">${s.items.map(it =>
+          `<div style="display:flex;gap:8px;padding:5px 8px;margin:2px 0;border-radius:5px;background:#F5F3FF;font-size:.8rem">
+            <span style="color:var(--purple);font-weight:600;min-width:130px;flex-shrink:0">${it.label}</span>
+            <span style="color:var(--dark)">${it.detail}</span>
+          </div>`
+        ).join("")}${s.note?`<div style="font-size:.76rem;color:var(--gray);margin-top:4px;font-style:italic">${s.note}</div>`:''}</div>`:''}
+        ${s.examples?`<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:8px">${s.examples.map(ex =>
+          `<div style="display:flex;gap:3px;align-items:flex-end">
+            ${ex.parts.map((p,pi) => `<div style="text-align:center">
+              <div style="font-size:.82rem;font-weight:700;color:var(--dark);padding:3px 8px;background:#EDE9FE;border-radius:5px">${p||'—'}</div>
+              <div style="font-size:.58rem;color:var(--gray);margin-top:1px">${ex.labels[pi]||''}</div>
+            </div>`).join('<span style="color:#C4B5FD;font-size:.7rem">+</span>')}
+          </div>`
+        ).join("")}</div>${s.note?`<div style="font-size:.76rem;color:var(--red);margin-top:6px;font-weight:500">${s.note}</div>`:''}`:''}
+        ${s.quiz?`<div style="margin-top:6px;background:#FAFAFA;border-radius:8px;padding:10px">${s.quiz.map((q,qi) =>
+          `<div style="padding:5px 0;border-bottom:1px solid #F3F4F6;font-size:.8rem;cursor:pointer" onclick="this.querySelector('.ga').style.display=this.querySelector('.ga').style.display==='none'?'inline':'none'">
+            <span style="color:var(--gray)">${qi+1}.</span> ${q.q} <span class="ga" style="display:none;color:#059669;font-weight:600;background:#ECFDF5;padding:1px 6px;border-radius:3px;margin-left:4px;font-size:.78rem">${q.a}</span>
+            <span style="font-size:.65rem;color:#C4B5FD;margin-left:2px">点击看答案</span>
+          </div>`
+        ).join("")}</div>`:''}
+      </div>
+    `).join("")}
+    </div>
   </div>`).join("");
 
   bindSubTabs(tabsEl, "gram");
