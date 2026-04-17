@@ -28,7 +28,9 @@
   .big-tab .count{font-size:.7rem;color:var(--gray-light);font-weight:500}
 
   /* SUB TABS */
-  .sub-tabs{display:flex;max-width:1200px;margin:0 auto;overflow-x:auto;scrollbar-width:none;padding:0 20px;background:#fff;border-bottom:1px solid #F3F4F6}
+  .sub-tabs{display:flex;flex-wrap:nowrap;max-width:1200px;margin:0 auto;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:0 20px;background:#fff;border-bottom:1px solid #F3F4F6}
+  .sub-tabs::-webkit-scrollbar{display:none}
+  .sub-tab{flex-shrink:0}
   .sub-tabs::-webkit-scrollbar{display:none}
   .sub-tab{padding:10px 16px;font-size:.8rem;font-weight:600;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
   .sub-tab:hover{color:var(--purple)}.sub-tab.active{color:var(--purple);border-bottom-color:var(--purple)}
@@ -1002,78 +1004,78 @@ const IELTS_VOCAB = [
 // 3500 ARTICLES (3500单词文章)
 // ============================================================
 const ARTICLES = [
-  {id:1,title:"日常生活类",enTitle:"A Week of Simple Things",words:"~240",unique:"~140",paras:[
-    "This week has been full of small things. On Monday, I got up early and had a quick breakfast with bread and a cup of tea. The weather was nice, so I decided to walk to the office instead of taking the bus.",
-    "Tuesday was a busy day at work. I had a meeting with my team to talk about a new project. The <b>discussion</b>(讨论) was long but useful, and I felt <b>confident</b>(自信) about the result.",
-    "On Wednesday, I went to the supermarket to buy some fruit and vegetables. The price of milk was a little high, but I still got a bottle because my mom needs it.",
-    "Thursday was rainy, so I stayed inside and read a book about health. I learned that drinking more water and sleeping well are important for the body.",
-    "On Friday, I met a friend for lunch at a small restaurant. We ordered noodles and chicken, and we talked about our plans for the weekend.",
-    "Saturday was a relaxing day. I cleaned the house and cooked a big meal for the family. In the evening, we watched a movie together.",
-    "Sunday is usually a quiet day. I will stay at home, maybe do some shopping online, and get ready for the next week.",
-    "I think this <b>kind of</b>(这一种，这一类) life is simple but happy."
+  {id:1,title:"日常生活类",enTitle:"A Week of Simple Things",words:"~240",paras:[
+    {en:"This week has been full of small things. On Monday, I got up early and had a quick breakfast with bread and a cup of tea. The weather was nice, so I decided to walk to the office instead of taking the bus.",zh:"这周充满了小事。周一，我起得很早，快速吃了面包和一杯茶当早餐。天气很好，所以我决定走路去办公室而不是坐公交。"},
+    {en:"Tuesday was a busy day at work. I had a meeting with my team to talk about a new project. The <b>discussion</b>(讨论) was long but useful, and I felt <b>confident</b>(自信) about the result.",zh:"周二工作很忙。我和团队开会讨论一个新项目。讨论时间很长但很有用，我对结果感到自信。"},
+    {en:"On Wednesday, I went to the supermarket to buy some fruit and vegetables. The price of milk was a little high, but I still got a bottle because my mom needs it.",zh:"周三我去超市买了一些水果和蔬菜。牛奶价格有点高，但我还是买了一瓶，因为我妈需要。"},
+    {en:"Thursday was rainy, so I stayed inside and read a book about health. I learned that drinking more water and sleeping well are important for the body.",zh:"周四下雨了，所以我待在室内读了一本关于健康的书。我了解到多喝水和睡好觉对身体很重要。"},
+    {en:"On Friday, I met a friend for lunch at a small restaurant. We ordered noodles and chicken, and we talked about our plans for the weekend.",zh:"周五，我和一个朋友在小餐馆吃午饭。我们点了面条和鸡肉，聊了聊周末的计划。"},
+    {en:"Saturday was a relaxing day. I cleaned the house and cooked a big meal for the family. In the evening, we watched a movie together.",zh:"周六是放松的一天。我打扫了房子，给家人做了一顿大餐。晚上我们一起看了电影。"},
+    {en:"Sunday is usually a quiet day. I will stay at home, maybe do some shopping online, and get ready for the next week.",zh:"周日通常是安静的一天。我会待在家里，也许网上购物，为下周做准备。"},
+    {en:"I think this <b>kind of</b>(这一种) life is simple but happy.",zh:"我觉得这种生活简单但快乐。"}
   ]},
-  {id:2,title:"校园与教育",enTitle:"A Semester in College",words:"~230",unique:"~135",paras:[
-    "This semester is going well. I have four classes every weekday: English, math, history, and computer science. My favorite is English because the teacher is kind and the lessons are interesting.",
-    "The classroom is big and bright, and we can see the playground from the window. Sometimes, after the lesson, I stay there to talk with my classmates about our homework or the exam next week.",
-    "On Tuesdays and Thursdays, I go to the library to study and borrow books. The <b>librarian</b>(图书管理员) is helpful, and I can find almost every <b>textbook</b>(课本) I need. I also use the computer there to search for information for my project.",
-    "Last week, we had a group <b>discussion</b>(讨论) in history class. We worked together to <b>prepare</b>(准备) a <b>report</b>(报告) about an old city in our country. Our teacher said it was <b>excellent</b>(优秀，极好), and gave us high <b>scores</b>(高分).",
-    "The final exam is in two weeks. I am a little nervous, but I think I can do well if I review the notes and <b>practice</b>(练习) more. I also plan to ask the teacher for some advice this afternoon.",
-    "I hope this <b>semester</b>(学期) will be successful and helpful for my future <b>career</b>(职业)."
+  {id:2,title:"校园与教育",enTitle:"A Semester in College",words:"~230",paras:[
+    {en:"This semester is going well. I have four classes every weekday: English, math, history, and computer science. My favorite is English because the teacher is kind and the lessons are interesting.",zh:"这学期进展顺利。我每个工作日有四节课：英语、数学、历史和计算机科学。我最喜欢英语，因为老师很和蔼，课程很有趣。"},
+    {en:"The classroom is big and bright, and we can see the playground from the window. Sometimes, after the lesson, I stay there to talk with my classmates about our homework or the exam next week.",zh:"教室又大又亮，从窗户可以看到操场。有时候下课后我会留下来和同学聊作业或下周的考试。"},
+    {en:"On Tuesdays and Thursdays, I go to the library to study and borrow books. The <b>librarian</b>(图书管理员) is helpful, and I can find almost every <b>textbook</b>(课本) I need.",zh:"每周二和周四我去图书馆学习和借书。图书管理员很热心，我几乎能找到需要的每本课本。"},
+    {en:"Last week, we had a group <b>discussion</b>(讨论) in history class. We worked together to <b>prepare</b>(准备) a <b>report</b>(报告) about an old city. Our teacher said it was <b>excellent</b>(优秀), and gave us high <b>scores</b>(高分).",zh:"上周我们在历史课上进行了小组讨论。我们合作准备了一份关于古城的报告。老师说很优秀，给了我们高分。"},
+    {en:"The final exam is in two weeks. I am a little nervous, but I think I can do well if I review the notes and <b>practice</b>(练习) more.",zh:"期末考试还有两周。我有点紧张，但我觉得如果复习笔记并多练习就能考好。"},
+    {en:"I hope this <b>semester</b>(学期) will be successful and helpful for my future <b>career</b>(职业).",zh:"我希望这个学期会成功，对我未来的职业有帮助。"}
   ]},
-  {id:3,title:"职场与工作",enTitle:"A Busy Week at Work",words:"~240",unique:"~140",paras:[
-    "This week at the company has been busy but <b>productive</b>(效率高). On Monday, I had a meeting with my manager to <b>discuss</b>(讨论) the new marketing plan.",
-    "He was happy with my ideas and told me to start working on the <b>details</b>(细节) right away.",
-    "On Tuesday, I sent an email to a <b>client</b>(客户) to <b>confirm</b>(确认) the <b>schedule</b>(日程) for the <b>presentation</b>(演讲) on Friday. The <b>response</b>(回复) was quick, and I felt <b>relieved</b>(放松) because I had been worried about the time difference.",
-    "Wednesday was spent in the office doing <b>research</b>(研究) and <b>preparing</b>(准备) the <b>materials</b>(材料) we would need. I also checked the <b>data</b>(数据) to make sure it was <b>accurate</b>(准确).",
-    "On Thursday, I met with the design team to review the <b>drafts</b>(草稿) of the poster and the <b>brochure</b>(宣传册). They made a few changes to make the layout more clear and <b>professional</b>(专业).",
-    "Friday finally came, and the presentation went well. The <b>audience</b>(观众) seemed interested in our product, and we answered all their questions <b>confidently</b>(自信地).",
-    "At the end of the day, my manager said I had done a great job and that I would be <b>in charge of</b>(负责) the next project. I was <b>proud</b>(骄傲) of myself and <b>motivated</b>(有动力) to keep going."
+  {id:3,title:"职场与工作",enTitle:"A Busy Week at Work",words:"~240",paras:[
+    {en:"This week at the company has been busy but <b>productive</b>(高效). On Monday, I had a meeting with my manager to <b>discuss</b>(讨论) the new marketing plan.",zh:"这周公司很忙但效率很高。周一我和经理开会讨论新的营销方案。"},
+    {en:"He was happy with my ideas and told me to start working on the <b>details</b>(细节) right away.",zh:"他对我的想法很满意，让我马上开始处理细节。"},
+    {en:"On Tuesday, I sent an email to a <b>client</b>(客户) to <b>confirm</b>(确认) the <b>schedule</b>(日程) for the <b>presentation</b>(演讲) on Friday.",zh:"周二我发邮件给客户确认周五演讲的日程。"},
+    {en:"Wednesday was spent doing <b>research</b>(研究) and <b>preparing</b>(准备) the <b>materials</b>(材料). I checked the <b>data</b>(数据) to make sure it was <b>accurate</b>(准确).",zh:"周三做研究和准备材料。我检查了数据以确保准确无误。"},
+    {en:"On Thursday, I met with the design team to review the <b>drafts</b>(草稿) of the poster and <b>brochure</b>(宣传册). They made changes to make it more <b>professional</b>(专业).",zh:"周四我和设计团队审查海报和宣传册的草稿。他们做了修改让它更专业。"},
+    {en:"Friday finally came, and the presentation went well. The <b>audience</b>(观众) seemed interested, and we answered all questions <b>confidently</b>(自信地).",zh:"周五终于到了，演讲进展顺利。观众似乎很感兴趣，我们自信地回答了所有问题。"},
+    {en:"My manager said I would be <b>in charge of</b>(负责) the next project. I was <b>proud</b>(骄傲) and <b>motivated</b>(有动力).",zh:"经理说让我负责下一个项目。我感到骄傲且充满动力。"}
   ]},
-  {id:4,title:"科技与创新",enTitle:"A New App for Learning",words:"~220",unique:"~130",paras:[
-    "I have been working on a new app for learning English for the past two months. The goal is to make it easy and fun for students to practice listening and speaking every day.",
-    "The main <b>feature</b>(特征) is a <b>voice recognition</b>(语音识别) tool that can check <b>pronunciation</b>(发音) and give <b>feedback</b>(反馈) immediately. We also added a game mode to help users <b>memorize</b>(记忆) <b>vocabulary</b>(词汇) in a more enjoyable way.",
-    "To test the function, we invited some <b>volunteers</b>(志愿者) from a local school to try it out. Their comments were mostly <b>positive</b>(积极的), and they suggested a few <b>improvements</b>(改进) to the user interface.",
-    "The development process was not smooth at the beginning because we had some <b>technical</b>(技术的) problems with the <b>server</b>(服务器). But the <b>engineer</b>(工程师) team managed to fix them quickly.",
-    "Now, the app is almost ready for <b>release</b>(发布). We plan to <b>launch</b>(上线) it on both Android and iOS <b>platforms</b>(平台) next week. I am excited to see how it will be received by the public."
+  {id:4,title:"科技与创新",enTitle:"A New App for Learning",words:"~220",paras:[
+    {en:"I have been working on a new app for learning English for the past two months. The goal is to make it easy and fun for students to practice every day.",zh:"过去两个月我一直在开发一款学英语的新应用。目标是让学生们每天轻松有趣地练习。"},
+    {en:"The main <b>feature</b>(特征) is a <b>voice recognition</b>(语音识别) tool that can check <b>pronunciation</b>(发音) and give <b>feedback</b>(反馈) immediately.",zh:"主要功能是一个语音识别工具，能即时检查发音并给出反馈。"},
+    {en:"We invited some <b>volunteers</b>(志愿者) from a local school to try it out. Their comments were mostly <b>positive</b>(积极的).",zh:"我们邀请了当地学校的志愿者来试用。反馈基本是积极的。"},
+    {en:"The development process had some <b>technical</b>(技术的) problems with the <b>server</b>(服务器). But the <b>engineer</b>(工程师) team managed to fix them quickly.",zh:"开发过程中服务器有一些技术问题。但工程师团队很快就修复了。"},
+    {en:"Now, the app is almost ready for <b>release</b>(发布). We plan to <b>launch</b>(上线) it on both Android and iOS <b>platforms</b>(平台) next week.",zh:"现在应用几乎准备好发布了。我们计划下周在安卓和iOS平台同时上线。"}
   ]},
-  {id:5,title:"社会与文化",enTitle:"A Festival in My City",words:"~210",unique:"~125",paras:[
-    "Every year, our city holds a traditional festival in late spring. It is a celebration of our local culture and history, and it attracts thousands of visitors from different parts of the country.",
-    "The main event is a parade with colorful costumes and lively music. There are also booths selling handmade crafts and delicious snacks. I bought a small wooden box for my sister and a bag of spicy candies for myself.",
-    "In the evening, there is a fireworks show by the river. The sky is lit up with beautiful lights, and the crowd cheers loudly. It is a magical moment that I look forward to every year.",
-    "This festival is not only entertaining but also educational. It reminds us of the importance of preserving our heritage and sharing it with future generations.",
-    "I hope it will continue for many years to come."
+  {id:5,title:"社会与文化",enTitle:"A Festival in My City",words:"~210",paras:[
+    {en:"Every year, our city holds a traditional festival in late spring. It is a celebration of our local culture and history, and it attracts thousands of visitors.",zh:"每年晚春，我们城市都会举办传统节日。这是对本地文化和历史的庆祝，吸引了成千上万的游客。"},
+    {en:"The main event is a parade with colorful costumes and lively music. There are also booths selling handmade crafts and delicious snacks.",zh:"主要活动是穿着五颜六色服装、伴着欢快音乐的游行。还有摊位卖手工艺品和美味小吃。"},
+    {en:"In the evening, there is a fireworks show by the river. The sky is lit up with beautiful lights, and the crowd cheers loudly.",zh:"晚上河边有烟花表演。天空被美丽的灯光照亮，人群大声欢呼。"},
+    {en:"This festival is not only entertaining but also educational. It reminds us of the importance of preserving our heritage.",zh:"这个节日不仅有趣还有教育意义。它提醒我们保护文化遗产的重要性。"},
+    {en:"I hope it will continue for many years to come.",zh:"我希望它能延续很多年。"}
   ]},
-  {id:6,title:"自然与环境",enTitle:"Protecting Our Environment",words:"~210",unique:"~120",paras:[
-    "I live near a large park with many trees and a small lake. Every morning, I go there for a walk and enjoy the fresh air. The nature here is peaceful, and I can see birds, fish, and even rabbits if I'm lucky.",
-    "However, I have noticed some <b>pollution</b>(污染) in the area. A few factories near the river sometimes release waste water, and there is plastic rubbish on the path. It makes me sad because it damages the beauty of the place.",
-    "Last month, some volunteers organized a clean-up activity. We picked up the trash and planted new flowers along the road. The local government also promised to take action to control the pollution.",
-    "I think protecting the environment is important for our health and for future generations. If everyone makes a small effort, we can make a big difference."
+  {id:6,title:"自然与环境",enTitle:"Protecting Our Environment",words:"~210",paras:[
+    {en:"I live near a large park with many trees and a small lake. Every morning, I go there for a walk and enjoy the fresh air.",zh:"我住在一个有很多树和小湖的大公园附近。每天早上我去那里散步，享受新鲜空气。"},
+    {en:"However, I have noticed some <b>pollution</b>(污染) in the area. A few factories near the river sometimes release waste water.",zh:"然而我注意到这个地区有一些污染。河边几家工厂有时排放废水。"},
+    {en:"Last month, some volunteers organized a clean-up activity. We picked up the trash and planted new flowers along the road.",zh:"上个月一些志愿者组织了清洁活动。我们捡了垃圾，沿路种了新花。"},
+    {en:"I think protecting the environment is important for our health and for future generations. If everyone makes a small effort, we can make a big difference.",zh:"我认为保护环境对健康和后代很重要。如果每个人都做出一点努力，就能产生大的改变。"}
   ]},
-  {id:7,title:"情感与态度",enTitle:"How I Feel About Moving",words:"~230",unique:"~135",paras:[
-    "I have mixed feelings about moving to a new city next month. On one hand, I am excited about the opportunity to explore a different place and meet new people. I have always wanted to live in a bigger city with more activities and cultural events.",
-    "On the other hand, I am nervous about leaving my family and friends. We have lived together for many years, and I will miss our daily conversations and weekend trips. It will be hard to <b>adjust</b>(适应) to a new environment at first.",
-    "My parents told me to focus on the positive side and to remember that change is a natural part of life. They said I should try to stay in touch with them and visit often.",
-    "I think they are right. Even though I will miss some things, I believe this move will help me grow and become more independent. I am looking forward to starting this new chapter."
+  {id:7,title:"情感与态度",enTitle:"How I Feel About Moving",words:"~230",paras:[
+    {en:"I have mixed feelings about moving to a new city next month. On one hand, I am excited about the opportunity to explore a different place and meet new people.",zh:"对于下月搬到新城市，我心情复杂。一方面，我对探索不同地方和认识新朋友感到兴奋。"},
+    {en:"On the other hand, I am nervous about leaving my family and friends. We have lived together for many years.",zh:"另一方面，我对离开家人和朋友感到紧张。我们一起生活了很多年。"},
+    {en:"My parents told me to focus on the positive side and to remember that change is a natural part of life.",zh:"我父母让我关注积极的一面，记住改变是生活的自然组成部分。"},
+    {en:"Even though I will miss some things, I believe this move will help me grow and become more independent. I am looking forward to starting this new chapter.",zh:"虽然我会想念一些东西，但我相信搬家会帮我成长，变得更独立。我期待开始这个新篇章。"}
   ]},
-  {id:8,title:"抽象概念",enTitle:"Time and Change",words:"~210",unique:"~125",paras:[
-    "Time is something we all experience, but it is difficult to understand. It seems to pass quickly when we are busy, and slowly when we are bored. Some people say that time is money, but I think it is more valuable than that.",
-    "As we grow older, we realize that change is <b>unavoidable</b>(不可避免的). We cannot stop the clock, but we can choose how to spend our days. For example, we can learn new skills, travel to new places, or help others. These actions can make our lives more meaningful.",
-    "Another important idea is balance. We need to find a balance between work and rest, between study and play. If we pay too much attention to one thing, we might ignore others that are also necessary.",
-    "In the end, it is up to each person to decide how to use their time. I hope I can make the most of mine."
+  {id:8,title:"抽象概念",enTitle:"Time and Change",words:"~210",paras:[
+    {en:"Time is something we all experience, but it is difficult to understand. It seems to pass quickly when we are busy, and slowly when we are bored.",zh:"时间是我们都会经历的东西，但很难理解。忙的时候似乎过得很快，无聊的时候又很慢。"},
+    {en:"As we grow older, we realize that change is <b>unavoidable</b>(不可避免的). We cannot stop the clock, but we can choose how to spend our days.",zh:"随着年龄增长，我们意识到改变是不可避免的。我们无法停止时钟，但可以选择如何度过每一天。"},
+    {en:"Another important idea is balance. We need to find a balance between work and rest, between study and play.",zh:"另一个重要的概念是平衡。我们需要在工作和休息之间、学习和玩耍之间找到平衡。"},
+    {en:"In the end, it is up to each person to decide how to use their time. I hope I can make the most of mine.",zh:"最终，如何利用时间取决于每个人自己。我希望我能充分利用我的时间。"}
   ]},
-  {id:9,title:"旅行与休闲",enTitle:"A Weekend Trip",words:"~220",unique:"~130",paras:[
-    "Last weekend, I went on a short trip to a small town near the sea. The weather was perfect — sunny but not too hot. I packed my bags the night before and left home early in the morning.",
-    "The journey took about two hours by train. When I arrived, I checked into a small hotel near the beach. The room was clean and comfortable, and I could hear the waves outside my window.",
-    "During the day, I walked along the coast, took photos, and tried some local food. In the evening, I sat at a café and watched the sunset. It was relaxing and peaceful.",
-    "On Sunday, I visited a museum and learned about the history of the area. Before I returned home, I bought some souvenirs for my friends.",
-    "It was a short trip, but it helped me forget my stress and <b>recharge</b>(充电) my energy. I think I will plan more trips like this in the future."
+  {id:9,title:"旅行与休闲",enTitle:"A Weekend Trip",words:"~220",paras:[
+    {en:"Last weekend, I went on a short trip to a small town near the sea. The weather was perfect — sunny but not too hot.",zh:"上周末我去了一个海边小镇短途旅行。天气很完美——晴朗但不太热。"},
+    {en:"The journey took about two hours by train. When I arrived, I checked into a small hotel near the beach. The room was clean and comfortable.",zh:"坐火车大约两小时。到了之后我住进海滩附近的小酒店。房间干净舒适。"},
+    {en:"During the day, I walked along the coast, took photos, and tried some local food. In the evening, I sat at a cafe and watched the sunset.",zh:"白天我沿着海岸散步、拍照、品尝当地美食。晚上我坐在咖啡馆看日落。"},
+    {en:"On Sunday, I visited a museum and learned about the history of the area. Before I returned home, I bought some souvenirs for my friends.",zh:"周日我参观了博物馆，了解了这个地区的历史。回家前给朋友买了些纪念品。"},
+    {en:"It was a short trip, but it helped me forget my stress and <b>recharge</b>(充电) my energy.",zh:"虽然是短途旅行，但帮我忘记了压力，恢复了精力。"}
   ]},
-  {id:10,title:"综合场景",enTitle:"A Day Full of Surprises",words:"~230",unique:"~135",paras:[
-    "Today was a day full of surprises. I planned to stay at home and study for the exam next week, but my friend called in the morning and invited me to join a hiking trip in the mountains.",
-    "I was <b>hesitant</b>(犹豫的) at first because I had a lot of work to do, but I decided to go anyway. The view from the top was amazing — I could see the city and the river far below. We also met some friendly locals who offered us tea and snacks.",
-    "In the afternoon, I returned home and continued my studies. I found that I was more focused than before, probably because the fresh air had cleared my mind.",
-    "In the evening, I cooked a simple dinner and watched a movie with my family. It was a nice way to end the day.",
-    "I learned that sometimes it is good to step out of our comfort zone and <b>embrace</b>(拥抱) the unexpected."
+  {id:10,title:"综合场景",enTitle:"A Day Full of Surprises",words:"~230",paras:[
+    {en:"Today was a day full of surprises. I planned to stay at home and study for the exam, but my friend called and invited me to join a hiking trip in the mountains.",zh:"今天充满惊喜。我原计划待在家里复习考试，但朋友打电话邀我去山里徒步。"},
+    {en:"I was <b>hesitant</b>(犹豫的) at first, but I decided to go anyway. The view from the top was amazing — I could see the city and the river far below.",zh:"一开始我犹豫了，但还是决定去。山顶风景太美了——能看到远处的城市和河流。"},
+    {en:"In the afternoon, I returned home and continued my studies. I found that I was more focused, probably because the fresh air had cleared my mind.",zh:"下午回家继续学习。我发现更专注了，可能是因为新鲜空气让头脑清醒了。"},
+    {en:"In the evening, I cooked a simple dinner and watched a movie with my family. It was a nice way to end the day.",zh:"晚上做了简单的晚餐，和家人看了电影。这是结束一天的美好方式。"},
+    {en:"I learned that sometimes it is good to step out of our comfort zone and <b>embrace</b>(拥抱) the unexpected.",zh:"我学到了有时候走出舒适区、拥抱意外是件好事。"}
   ]}
 ];
 
@@ -1383,16 +1385,23 @@ function buildArticles(){
   const tabsEl = document.getElementById("articlesSubTabs");
   const contentEl = document.getElementById("articlesContent");
 
-  tabsEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-tab ${i===0?'active':''}" data-subtab="art-${i}">第${a.id}篇 ${a.title} <span class="badge">${a.words}</span></div>`).join("");
+  // Make tabs scrollable
+  tabsEl.style.overflowX = "auto";
+  tabsEl.style.whiteSpace = "nowrap";
+  tabsEl.style.flexWrap = "nowrap";
+
+  tabsEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-tab ${i===0?'active':''}" data-subtab="art-${i}" style="flex-shrink:0">第${a.id}篇 ${a.title}</div>`).join("");
 
   contentEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-section ${i===0?'active':''}" id="art-${i}">
     <div class="section-header"><h2>第${a.id}篇：${a.title}</h2><span class="count">${a.enTitle} | ${a.words} 词</span></div>
-    <div style="background:white;border-radius:12px;padding:24px;box-shadow:var(--card-shadow);margin-top:12px">
+    <div style="background:white;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);margin-top:12px">
       <h3 style="font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:16px">${a.enTitle}</h3>
-      ${a.paras.map(p => `<p style="font-size:.9rem;color:var(--dark);line-height:1.9;margin-bottom:14px;text-indent:2em">${p}</p>`).join("")}
-      <div style="margin-top:16px;padding:12px;background:var(--purple-bg);border-radius:8px;font-size:.78rem;color:var(--gray)">
-        📊 词汇统计：总词数 ${a.words} | 不重复 ${a.unique} | 覆盖高频词 80+ 个
-      </div>
+      ${a.paras.map(p => `
+        <div style="margin-bottom:16px;padding:14px;background:#FAFAFA;border-radius:10px;border-left:3px solid var(--purple)">
+          <div style="font-size:.9rem;color:var(--dark);line-height:1.8">${p.en}</div>
+          <div style="font-size:.82rem;color:var(--gray);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed #E5E7EB">${p.zh}</div>
+        </div>
+      `).join("")}
     </div>
   </div>`).join("");
 
