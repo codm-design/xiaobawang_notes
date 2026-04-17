@@ -129,8 +129,8 @@
   <h1>小霸王 English Notes</h1>
   <div class="sub">258 entries from 10 handwritten scans &mdash; with pronunciation, phonetics & exam levels</div>
   <div class="stats">
-    <div class="stat"><div class="n">510</div><div class="l">Total</div></div>
-    <div class="stat"><div class="n">300</div><div class="l">Vocab</div></div>
+    <div class="stat"><div class="n">630</div><div class="l">Total</div></div>
+    <div class="stat"><div class="n">326</div><div class="l">Vocab</div></div>
     <div class="stat"><div class="n">29</div><div class="l">Grammar</div></div>
     <div class="stat"><div class="n">112</div><div class="l">Phrases</div></div>
   </div>
@@ -853,6 +853,111 @@ const PHRASES = [
   {p:"Getting up early is worth it",zh:"早起是值得的",ex:"Getting up early is worth it for such a beautiful scenic spot.",cat:"日常",date:"2026-04-15"},
 ];
 
+// ============================================================
+// IELTS DATA (雅思笔记)
+// ============================================================
+
+// 雅思口语话题库
+const IELTS_SPEAKING = [
+  {topic:"Topic 1: What you did last weekend",part:"Part 1 Interview",questions:["May I have your full name please?","Are you working or studying?","How do you like your job?","Do you like movies?","Do you like to watch a movie at home or in a cinema?","What kind of movies do you like best?","And what about your worst kind of movies?","What kind of movies did you watch when you were a child?","Can you tell me the features of seasons here in your country?","What kind of temperature do you like?","Do you believe in weather reports?","Are there some times that the weather affects your plans?"],cueCard:"Talk about what you did in the last weekend, please say:\n- Where did you go?\n- Whom did you go with?\n- What did you see?",cueTemplate:"Speaking of ___, I would like to talk about ___.\nTalking about ___, I would like to tell something about ___.",discussion:["What is your opinion on shift work, for example working in a hospital?","Do you think it needs to change?","What kind of bad effects on your life can shifts have?","Do you think two days of rest in the weekend are sufficient?"],date:"2026-04-17"},
+  {topic:"Topic 2: Favorite wild animal",part:"Part 1 Interview",questions:["What is your name?","Do you work or study?","What is your full name?","Where do you come from?","Will you recommend anyone to visit your town or village?","What places will you recommend a tourist to visit in your hometown?"],cueCard:"Talk about the way you like to relax, when you are not at work. Please say:\n- Where did you go recently to relax?\n- Who was with you?\n- How did you relax?",discussion:["Do you think that sleeping and relaxing are the same?","Do you like to travel?","Where did you last travel to and what for?","What places do you like in South Africa?","Will you recommend someone to visit South Africa and why?"],date:"2026-04-17"},
+  {topic:"Topic 4: Something bought never used",part:"Part 1 Interview",questions:["What is your full name?","What can you tell me about your hometown?","How long have you lived in your hometown?","What places in your hometown do you like best?","What can you tell me about your neighbors?","Do you prefer to have young or old people as neighbors? Why?","What season do you like?"],cueCard:"Describe something that you have bought and never used, please say:\n- Where did you buy it?\n- What was the item?\n- Why didn't you use the item?",discussion:["Do you usually buy things that you don't use?","What do you think about recycling?","Do you think that people recycle more now than in the past?","Is recycling important? Why?"],date:"2026-04-17"},
+  {topic:"Topic 5: Way to relax",part:"Part 1 Interview",questions:["ID verification","What is your full name?","Where do you come from?","Will you recommend anyone to visit your town or village?","What places will you recommend a tourist to visit in your hometown?"],cueCard:"Talk about the way you like to relax, when you are not at work. Please say:\n- Where did you go recently to relax?\n- Who was with you?\n- How did you relax?",discussion:["Do you think that sleeping and relaxing are the same?","Do you like to travel?","Where did you last travel to and what for?"],date:"2026-04-17"},
+  {topic:"Topic 6: A piece of household equipment",part:"Part 1 Interview",questions:["Tell me your name.","Where do you live?","Do you work or study?","Is your job common in your country?","What is your favorite color?","Why is that your favorite color?","Do you often wear clothes in your favorite color?","Which color do you think has a special meaning to people in your country?","Would you paint the walls in your home in a color you like, and what would that look like?"],cueCard:"Describe a piece of equipment in your household (not a computer) which you find useful. Please say:\n- What it is\n- Where and when you bought it\n- Why you find it useful",discussion:["What benefit do people get from using modern equipment in the household?","Do you think modern equipment is difficult to operate for older people?","Do you think that employers should train their employees to use modern equipment?"],date:"2026-04-17"}
+];
+
+// 雅思口语分类题库 (Part 1 高频问题)
+const IELTS_QUESTION_BANK = [
+  {cat:"人物类 People",questions:["Do you spend much time with your family?","Who do you usually talk to when you have a problem?","Do you have a close friend from childhood?"],date:"2026-04-17"},
+  {cat:"物体类 Objects",questions:["Do you often use any special equipment or tools?","Is there a gadget you can't live without?","Do you keep things that are meaningful to you?"],date:"2026-04-17"},
+  {cat:"事件类 Events",questions:["Do you celebrate your birthday every year?","What was the last special event you attended?","Do you enjoy going to parties or gatherings?"],date:"2026-04-17"},
+  {cat:"地点类 Places",questions:["Is there a park or public place you often visit?","Do you prefer going to crowded places or quiet ones?","What places do you usually go to on weekends?"],date:"2026-04-17"}
+];
+
+// 雅思写作连接词（按功能分类）
+const IELTS_CONNECTORS = [
+  {cat:"【一】时间/因果/条件类 (高频)",words:[
+    {en:"since",zh:"自从；因为"},{en:"until",zh:"直到"},{en:"during",zh:"在……期间"},{en:"while",zh:"当……的时候；同时"},
+    {en:"when",zh:"当……时"},{en:"whenever",zh:"每当；无论何时"},{en:"before",zh:"在……之前"},{en:"after",zh:"在……之后"},
+    {en:"prior to",zh:"在……之前（正式）"},{en:"subsequent to",zh:"在……之后（正式）"},{en:"by",zh:"截至；不迟于"},
+    {en:"within",zh:"在……之内"},{en:"upon",zh:"一……就……（正式）"},{en:"as",zh:"当……时；因为"},
+    {en:"as soon as",zh:"一……就……"},{en:"so long as",zh:"只要"},{en:"provided (that)",zh:"如果；只要"},
+    {en:"in case",zh:"以防；万一"},{en:"because",zh:"因为（连词）"},{en:"because of",zh:"因为（介词）"}
+  ],date:"2026-04-17"},
+  {cat:"【二】转折/让步/对比 (易错)",words:[
+    {en:"although",zh:"虽然；尽管"},{en:"though",zh:"虽然；尽管"},{en:"even though",zh:"即使；尽管"},
+    {en:"whereas",zh:"然而；而（对比）"},{en:"while",zh:"然而；而（对比）"},{en:"however",zh:"然而"},
+    {en:"nevertheless",zh:"尽管如此"},{en:"nonetheless",zh:"尽管如此"},{en:"despite",zh:"尽管（介词）"},
+    {en:"in spite of",zh:"尽管（介词）"},{en:"regardless of",zh:"不管；不论"},{en:"otherwise",zh:"否则"},
+    {en:"instead",zh:"反而；代替"},{en:"rather than",zh:"而不是"},{en:"on the other hand",zh:"另一方面"}
+  ],date:"2026-04-17"},
+  {cat:"【三】因果/结果/逻辑推进",words:[
+    {en:"therefore",zh:"因此"},{en:"thus",zh:"因此"},{en:"hence",zh:"因此"},{en:"as a result",zh:"结果；因此"},
+    {en:"so",zh:"所以"},{en:"consequently",zh:"因此；结果"},{en:"due to",zh:"由于（介词）"},
+    {en:"owing to",zh:"由于（介词）"},{en:"result in",zh:"导致"},{en:"lead to",zh:"导致"}
+  ],date:"2026-04-17"},
+  {cat:"【四】补充/并列/递进",words:[
+    {en:"and",zh:"和"},{en:"or",zh:"或者"},{en:"nor",zh:"也不"},
+    {en:"not only...but also",zh:"不仅……而且……"},{en:"both...and",zh:"两者都"},
+    {en:"either...or",zh:"要么……要么……"},{en:"as well as",zh:"以及；还有"},
+    {en:"in addition",zh:"另外"},{en:"additionally",zh:"此外"},{en:"furthermore",zh:"此外；而且"},
+    {en:"moreover",zh:"而且；此外"},{en:"besides",zh:"此外；而且"}
+  ],date:"2026-04-17"},
+  {cat:"【五】介词搭配高频 (重灾区)",words:[
+    {en:"for",zh:"为了；因……"},{en:"of",zh:"……的"},{en:"to",zh:"向；到"},{en:"from",zh:"从；来自"},
+    {en:"with",zh:"和；带有"},{en:"without",zh:"没有"},{en:"at",zh:"在（具体点）"},{en:"on",zh:"在……上"},
+    {en:"in",zh:"在……里"},{en:"by",zh:"通过；由；不迟于"},{en:"about",zh:"关于"},
+    {en:"regarding",zh:"关于（正式）"},{en:"concerning",zh:"关于（正式）"},{en:"according to",zh:"根据"},
+    {en:"in accordance with",zh:"按照；依据"}
+  ],date:"2026-04-17"},
+  {cat:"【六】范围/对象/指向",words:[
+    {en:"among",zh:"在……之中（三者及以上）"},{en:"between",zh:"在……之间（两者）"},
+    {en:"against",zh:"反对；防止"},{en:"toward(s)",zh:"朝向；对于"},{en:"across",zh:"穿过；横跨"},
+    {en:"throughout",zh:"遍及；在整个……期间"},{en:"via",zh:"通过；经由"},{en:"per",zh:"每；按照"}
+  ],date:"2026-04-17"},
+  {cat:"【七】条件/假设/限制",words:[
+    {en:"if",zh:"如果"},{en:"unless",zh:"除非"},{en:"otherwise",zh:"否则"},
+    {en:"only if",zh:"只有在……情况下"},{en:"even if",zh:"即使"},{en:"whether",zh:"是否"},
+    {en:"in the event that",zh:"如果；万一（正式）"},{en:"subject to",zh:"取决于；受……限制"}
+  ],date:"2026-04-17"},
+  {cat:"【八】连接副词/时间逻辑词",words:[
+    {en:"meanwhile",zh:"与此同时"},{en:"thereafter",zh:"此后"},{en:"previously",zh:"之前"},
+    {en:"currently",zh:"目前"},{en:"eventually",zh:"最终"},{en:"immediately",zh:"立刻"},
+    {en:"simultaneously",zh:"同时"},{en:"specifically",zh:"具体地"},{en:"particularly",zh:"尤其"},
+    {en:"generally",zh:"通常；一般来说"},{en:"officially",zh:"正式地"},{en:"temporarily",zh:"暂时地"}
+  ],date:"2026-04-17"}
+];
+
+// 雅思手写词汇笔记
+const IELTS_VOCAB = [
+  {en:"retired",zh:"退休的",uk:"/rɪˈtaɪəd/",us:"/rɪˈtaɪərd/",defs:["adj. 退休的"],exam:["雅思","四级"],tag:"adj",date:"2026-04-17"},
+  {en:"chords",zh:"弦；和弦",uk:"/kɔːdz/",us:"/kɔːrdz/",defs:["n. 弦；和弦"],exam:["雅思"],plural:"chords",date:"2026-04-17"},
+  {en:"officials",zh:"官方人员",uk:"/əˈfɪʃlz/",us:"/əˈfɪʃlz/",defs:["n. 官员；裁判"],exam:["雅思","四级","六级"],date:"2026-04-17"},
+  {en:"captain",zh:"队长；船长",uk:"/ˈkæptɪn/",us:"/ˈkæptɪn/",defs:["n. 队长；船长；机长"],exam:["高考","四级","雅思"],plural:"captains",date:"2026-04-17"},
+  {en:"cap",zh:"帽子",uk:"/kæp/",us:"/kæp/",defs:["n. 帽子；盖子"],exam:["高考","雅思"],plural:"caps",date:"2026-04-17"},
+  {en:"capital",zh:"首都；资本",uk:"/ˈkæpɪtl/",us:"/ˈkæpɪtl/",defs:["n. 首都；资本；大写字母"],exam:["高考","四级","六级","雅思"],plural:"capitals",date:"2026-04-17"},
+  {en:"volunteering",zh:"志愿活动",uk:"/ˌvɒlənˈtɪərɪŋ/",us:"/ˌvɑːlənˈtɪrɪŋ/",defs:["n. 志愿服务；做义工"],exam:["雅思","四级"],date:"2026-04-17"},
+  {en:"gap",zh:"间隔；间隙",uk:"/ɡæp/",us:"/ɡæp/",defs:["n. 间隔；差距；缺口"],exam:["四级","六级","雅思"],plural:"gaps",date:"2026-04-17"},
+  {en:"gap year",zh:"间隔年",defs:["n. 间隔年（高中毕业后的休息年）"],exam:["雅思"],date:"2026-04-17"},
+  {en:"athlete",zh:"运动员",uk:"/ˈæθliːt/",us:"/ˈæθliːt/",defs:["n. 运动员"],exam:["高考","四级","雅思"],plural:"athletes",date:"2026-04-17"},
+  {en:"inquiry",zh:"查询；调查",uk:"/ɪnˈkwaɪəri/",us:"/ɪnˈkwaɪəri/",defs:["n. 询问；查询；调查"],exam:["四级","六级","雅思"],plural:"inquiries",date:"2026-04-17"},
+  {en:"request",zh:"要求；请求",uk:"/rɪˈkwest/",us:"/rɪˈkwest/",defs:["n. 请求；要求","v. 请求"],exam:["高考","四级","六级","雅思"],tag:"verb",past:"requested",pp:"requested",ing:"requesting",future:"will request",plural:"requests",date:"2026-04-17"},
+  {en:"directing",zh:"引导；导演",uk:"/dɪˈrektɪŋ/",us:"/daɪˈrektɪŋ/",defs:["n. 导演；指导"],exam:["雅思"],date:"2026-04-17"},
+  {en:"director",zh:"导演；主管",uk:"/dɪˈrektə/",us:"/dɪˈrektər/",defs:["n. 导演；主管；董事"],exam:["高考","四级","六级","雅思"],plural:"directors",date:"2026-04-17"},
+  {en:"admire",zh:"钦佩；欣赏",uk:"/ədˈmaɪə/",us:"/ədˈmaɪər/",defs:["v. 钦佩；羡慕；欣赏"],exam:["高考","四级","六级","雅思"],tag:"verb",past:"admired",pp:"admired",ing:"admiring",future:"will admire",date:"2026-04-17"},
+  {en:"worship",zh:"崇拜；礼拜",uk:"/ˈwɜːʃɪp/",us:"/ˈwɜːrʃɪp/",defs:["v. 崇拜；敬奉","n. 崇拜"],exam:["四级","六级","雅思"],tag:"verb",past:"worshipped",pp:"worshipped",ing:"worshipping",future:"will worship",date:"2026-04-17"},
+  {en:"personal achievement",zh:"个人成就",defs:["n. 个人成就"],exam:["雅思"],date:"2026-04-17"},
+  {en:"mushroom",zh:"蘑菇",uk:"/ˈmʌʃruːm/",us:"/ˈmʌʃruːm/",defs:["n. 蘑菇"],exam:["高考","雅思"],plural:"mushrooms",date:"2026-04-17"},
+  {en:"speech",zh:"演讲",uk:"/spiːtʃ/",us:"/spiːtʃ/",defs:["n. 演讲；讲话；言语"],exam:["高考","四级","六级","雅思"],plural:"speeches",date:"2026-04-17"},
+  {en:"convenience",zh:"方便；便利",uk:"/kənˈviːniəns/",us:"/kənˈviːniəns/",defs:["n. 方便；便利；便利设施"],exam:["四级","六级","雅思"],date:"2026-04-17"},
+  {en:"monologue",zh:"独白；独角戏",uk:"/ˈmɒnəlɒɡ/",us:"/ˈmɑːnəlɔːɡ/",defs:["n. 独白；独角戏；长篇大论"],exam:["六级","雅思"],plural:"monologues",date:"2026-04-17"},
+  {en:"fitness center",zh:"健身中心",defs:["n. 健身中心"],exam:["雅思"],date:"2026-04-17"},
+  {en:"gym",zh:"健身房",uk:"/dʒɪm/",us:"/dʒɪm/",defs:["n. 健身房；体育馆"],exam:["高考","雅思"],plural:"gyms",date:"2026-04-17"},
+  {en:"stadium",zh:"体育场",uk:"/ˈsteɪdiəm/",us:"/ˈsteɪdiəm/",defs:["n. 体育场；运动场"],exam:["高考","四级","雅思"],plural:"stadiums",date:"2026-04-17"},
+  {en:"in charge of",zh:"负责",defs:["phr. 负责；掌管"],exam:["高考","四级","雅思"],date:"2026-04-17"},
+  {en:"MOBA",zh:"多人在线战术竞技",defs:["n. Multiplayer Online Battle Arena 多人在线战术竞技游戏"],exam:[],note:"There are two teams and each team has five people.",date:"2026-04-17"}
+];
+
 const SOURCES = [
   {name:"4756_001.pdf",desc:"电影类型、影视行业",ink:"red",l:"红色"},
   {name:"4757_001.pdf",desc:"编程/游戏、形容词",ink:"blue",l:"蓝色"},
@@ -1002,23 +1107,66 @@ function buildIris(){
 
 // ========== 雅思笔记 ==========
 function buildIelts(){
-  document.getElementById("ieltsSubTabs").innerHTML = "";
-  document.getElementById("ieltsContent").innerHTML = `
-    <div style="text-align:center;padding:80px 20px">
-      <div style="font-size:4rem;margin-bottom:16px">🎯</div>
-      <h2 style="font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:10px">雅思笔记</h2>
-      <p style="color:var(--gray);font-size:.95rem;max-width:400px;margin:0 auto;line-height:1.7">暂无内容<br>上传雅思相关扫描件（写作范文、口语话题、听力词汇等）后，<br>跟我说「更新笔记，归雅思」即可自动归类到这里。</p>
-      <div style="margin-top:30px;padding:16px 24px;background:var(--purple-bg);border-radius:12px;display:inline-block;text-align:left">
-        <div style="font-size:.8rem;font-weight:700;color:var(--purple);margin-bottom:8px">📌 支持的雅思内容类型</div>
-        <div style="font-size:.8rem;color:var(--gray);line-height:1.8">
-          ✦ 雅思写作 Task 1 & Task 2 词汇<br>
-          ✦ 雅思口语 Part 1/2/3 话题词汇<br>
-          ✦ 雅思听力高频场景词汇<br>
-          ✦ 雅思阅读学术词汇<br>
-          ✦ 考试技巧 & 模板笔记
-        </div>
+  const tabsEl = document.getElementById("ieltsSubTabs");
+  const contentEl = document.getElementById("ieltsContent");
+  const tabs = ["口语话题","口语题库","写作连接词","雅思词汇"];
+  const counts = [IELTS_SPEAKING.length, IELTS_QUESTION_BANK.length, IELTS_CONNECTORS.length, IELTS_VOCAB.length];
+
+  tabsEl.innerHTML = tabs.map((t,i) => `<div class="sub-tab ${i===0?'active':''}" data-subtab="ielts-${i}">${t} <span class="badge">${counts[i]}</span></div>`).join("");
+
+  let html = "";
+  // 口语话题
+  html += `<div class="sub-section active" id="ielts-0">
+    <div class="section-header"><h2>🎤 雅思口语完整话题</h2></div>
+    ${IELTS_SPEAKING.map(t => `<div class="grammar-card" data-search="${t.topic} ${t.questions.join(' ')} ${t.cueCard} ${t.discussion.join(' ')}">
+      <h3 style="color:var(--purple)">${t.topic}</h3>
+      <div style="margin:10px 0"><span style="font-size:.72rem;padding:3px 8px;background:#EDE9FE;color:var(--purple);border-radius:4px;font-weight:600">${t.part}</span></div>
+      <div style="margin:10px 0">
+        <div style="font-weight:700;font-size:.8rem;color:var(--dark);margin-bottom:6px">📋 Interview Questions:</div>
+        ${t.questions.map(q => `<div style="font-size:.82rem;color:var(--gray);padding:3px 0;border-bottom:1px solid #F3F4F6">• ${q}</div>`).join("")}
       </div>
-    </div>`;
+      <div style="margin:12px 0;padding:12px;background:#FEF3C7;border-radius:8px;border-left:3px solid #F59E0B">
+        <div style="font-weight:700;font-size:.8rem;color:#92400E;margin-bottom:6px">🃏 Cue Card:</div>
+        <div style="font-size:.82rem;color:#78350F;white-space:pre-line">${t.cueCard}</div>
+      </div>
+      ${t.cueTemplate?`<div style="font-size:.78rem;color:var(--gray);margin:6px 0;font-style:italic">${t.cueTemplate}</div>`:""}
+      <div style="margin:10px 0">
+        <div style="font-weight:700;font-size:.8rem;color:var(--dark);margin-bottom:6px">💬 Discussion:</div>
+        ${t.discussion.map(d => `<div style="font-size:.82rem;color:var(--gray);padding:3px 0">• ${d}</div>`).join("")}
+      </div>
+    </div>`).join("")}
+  </div>`;
+
+  // 口语题库
+  html += `<div class="sub-section" id="ielts-1">
+    <div class="section-header"><h2>📚 雅思口语 Part 1 分类题库</h2></div>
+    ${IELTS_QUESTION_BANK.map(c => `<div class="grammar-card" data-search="${c.cat} ${c.questions.join(' ')}">
+      <h3 style="color:var(--purple)">${c.cat}</h3>
+      ${c.questions.map(q => `<div style="font-size:.88rem;color:var(--dark);padding:8px 0;border-bottom:1px solid #F3F4F6">• ${q}</div>`).join("")}
+    </div>`).join("")}
+  </div>`;
+
+  // 写作连接词
+  html += `<div class="sub-section" id="ielts-2">
+    <div class="section-header"><h2>✍️ 雅思写作连接词大全</h2></div>
+    ${IELTS_CONNECTORS.map(g => `<div class="grammar-card" data-search="${g.cat} ${g.words.map(w=>w.en+' '+w.zh).join(' ')}">
+      <h3 style="color:var(--purple);font-size:.95rem">${g.cat}</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+        ${g.words.map(w => `<div style="padding:6px 10px;background:var(--purple-bg);border-radius:6px;font-size:.8rem">
+          <strong style="color:var(--purple)">${w.en}</strong> <span style="color:var(--gray)">${w.zh}</span>
+        </div>`).join("")}
+      </div>
+    </div>`).join("")}
+  </div>`;
+
+  // 雅思词汇
+  html += `<div class="sub-section" id="ielts-3">
+    <div class="section-header"><h2>📝 雅思手写词汇笔记</h2></div>
+    <div class="vocab-grid">${IELTS_VOCAB.map(vocabCard).join("")}</div>
+  </div>`;
+
+  contentEl.innerHTML = html;
+  bindSubTabs(tabsEl, "ielts");
 }
 
 // ========== 语法笔记 ==========
@@ -1095,8 +1243,8 @@ buildGrammar();
 // UPDATE DATE FOOTER
 document.querySelector(".content").insertAdjacentHTML("beforeend", `
   <div style="text-align:center;padding:40px 20px 20px;border-top:1px solid #E5E7EB;margin-top:40px">
-    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-17 10:57</strong></div>
-    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 510 条 &middot; 来自 10 份扫描件 + 3 份课程文档 &middot; 小霸王 English Study Notes</div>
+    <div style="font-size:.8rem;color:var(--gray-light)">📅 内容最后更新: <strong style="color:var(--purple)">2026-04-17 12:18</strong></div>
+    <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 630 条 &middot; 来自 10+10 份扫描件 + 3 份课程文档 &middot; 小霸王 English Study Notes</div>
   </div>
 `);
 </script>
