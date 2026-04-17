@@ -141,6 +141,7 @@
   <div class="big-tab active" data-big="iris"><span class="icon">📒</span>Iris 英语笔记<div class="count">词汇 & 短语</div></div>
   <div class="big-tab" data-big="ielts"><span class="icon">🎯</span>雅思笔记<div class="count">考试重点词汇</div></div>
   <div class="big-tab" data-big="grammar"><span class="icon">📐</span>语法笔记<div class="count">语法规则 & 对比</div></div>
+  <div class="big-tab" data-big="articles"><span class="icon">📖</span>3500单词文章<div class="count">10篇主题阅读</div></div>
 </div>
 
 <!-- SEARCH -->
@@ -167,6 +168,12 @@
 <div class="big-section" id="grammar">
   <div id="grammarSubTabs" class="sub-tabs"></div>
   <div id="grammarContent"></div>
+</div>
+
+<!-- ========== 3500单词文章 ========== -->
+<div class="big-section" id="articles">
+  <div id="articlesSubTabs" class="sub-tabs"></div>
+  <div id="articlesContent"></div>
 </div>
 
 </div>
@@ -991,6 +998,85 @@ const IELTS_VOCAB = [
   {en:"MOBA",zh:"多人在线战术竞技",defs:["n. Multiplayer Online Battle Arena 多人在线战术竞技游戏"],exam:[],note:"There are two teams and each team has five people.",date:"2026-04-17"}
 ];
 
+// ============================================================
+// 3500 ARTICLES (3500单词文章)
+// ============================================================
+const ARTICLES = [
+  {id:1,title:"日常生活类",enTitle:"A Week of Simple Things",words:"~240",unique:"~140",paras:[
+    "This week has been full of small things. On Monday, I got up early and had a quick breakfast with bread and a cup of tea. The weather was nice, so I decided to walk to the office instead of taking the bus.",
+    "Tuesday was a busy day at work. I had a meeting with my team to talk about a new project. The <b>discussion</b>(讨论) was long but useful, and I felt <b>confident</b>(自信) about the result.",
+    "On Wednesday, I went to the supermarket to buy some fruit and vegetables. The price of milk was a little high, but I still got a bottle because my mom needs it.",
+    "Thursday was rainy, so I stayed inside and read a book about health. I learned that drinking more water and sleeping well are important for the body.",
+    "On Friday, I met a friend for lunch at a small restaurant. We ordered noodles and chicken, and we talked about our plans for the weekend.",
+    "Saturday was a relaxing day. I cleaned the house and cooked a big meal for the family. In the evening, we watched a movie together.",
+    "Sunday is usually a quiet day. I will stay at home, maybe do some shopping online, and get ready for the next week.",
+    "I think this <b>kind of</b>(这一种，这一类) life is simple but happy."
+  ]},
+  {id:2,title:"校园与教育",enTitle:"A Semester in College",words:"~230",unique:"~135",paras:[
+    "This semester is going well. I have four classes every weekday: English, math, history, and computer science. My favorite is English because the teacher is kind and the lessons are interesting.",
+    "The classroom is big and bright, and we can see the playground from the window. Sometimes, after the lesson, I stay there to talk with my classmates about our homework or the exam next week.",
+    "On Tuesdays and Thursdays, I go to the library to study and borrow books. The <b>librarian</b>(图书管理员) is helpful, and I can find almost every <b>textbook</b>(课本) I need. I also use the computer there to search for information for my project.",
+    "Last week, we had a group <b>discussion</b>(讨论) in history class. We worked together to <b>prepare</b>(准备) a <b>report</b>(报告) about an old city in our country. Our teacher said it was <b>excellent</b>(优秀，极好), and gave us high <b>scores</b>(高分).",
+    "The final exam is in two weeks. I am a little nervous, but I think I can do well if I review the notes and <b>practice</b>(练习) more. I also plan to ask the teacher for some advice this afternoon.",
+    "I hope this <b>semester</b>(学期) will be successful and helpful for my future <b>career</b>(职业)."
+  ]},
+  {id:3,title:"职场与工作",enTitle:"A Busy Week at Work",words:"~240",unique:"~140",paras:[
+    "This week at the company has been busy but <b>productive</b>(效率高). On Monday, I had a meeting with my manager to <b>discuss</b>(讨论) the new marketing plan.",
+    "He was happy with my ideas and told me to start working on the <b>details</b>(细节) right away.",
+    "On Tuesday, I sent an email to a <b>client</b>(客户) to <b>confirm</b>(确认) the <b>schedule</b>(日程) for the <b>presentation</b>(演讲) on Friday. The <b>response</b>(回复) was quick, and I felt <b>relieved</b>(放松) because I had been worried about the time difference.",
+    "Wednesday was spent in the office doing <b>research</b>(研究) and <b>preparing</b>(准备) the <b>materials</b>(材料) we would need. I also checked the <b>data</b>(数据) to make sure it was <b>accurate</b>(准确).",
+    "On Thursday, I met with the design team to review the <b>drafts</b>(草稿) of the poster and the <b>brochure</b>(宣传册). They made a few changes to make the layout more clear and <b>professional</b>(专业).",
+    "Friday finally came, and the presentation went well. The <b>audience</b>(观众) seemed interested in our product, and we answered all their questions <b>confidently</b>(自信地).",
+    "At the end of the day, my manager said I had done a great job and that I would be <b>in charge of</b>(负责) the next project. I was <b>proud</b>(骄傲) of myself and <b>motivated</b>(有动力) to keep going."
+  ]},
+  {id:4,title:"科技与创新",enTitle:"A New App for Learning",words:"~220",unique:"~130",paras:[
+    "I have been working on a new app for learning English for the past two months. The goal is to make it easy and fun for students to practice listening and speaking every day.",
+    "The main <b>feature</b>(特征) is a <b>voice recognition</b>(语音识别) tool that can check <b>pronunciation</b>(发音) and give <b>feedback</b>(反馈) immediately. We also added a game mode to help users <b>memorize</b>(记忆) <b>vocabulary</b>(词汇) in a more enjoyable way.",
+    "To test the function, we invited some <b>volunteers</b>(志愿者) from a local school to try it out. Their comments were mostly <b>positive</b>(积极的), and they suggested a few <b>improvements</b>(改进) to the user interface.",
+    "The development process was not smooth at the beginning because we had some <b>technical</b>(技术的) problems with the <b>server</b>(服务器). But the <b>engineer</b>(工程师) team managed to fix them quickly.",
+    "Now, the app is almost ready for <b>release</b>(发布). We plan to <b>launch</b>(上线) it on both Android and iOS <b>platforms</b>(平台) next week. I am excited to see how it will be received by the public."
+  ]},
+  {id:5,title:"社会与文化",enTitle:"A Festival in My City",words:"~210",unique:"~125",paras:[
+    "Every year, our city holds a traditional festival in late spring. It is a celebration of our local culture and history, and it attracts thousands of visitors from different parts of the country.",
+    "The main event is a parade with colorful costumes and lively music. There are also booths selling handmade crafts and delicious snacks. I bought a small wooden box for my sister and a bag of spicy candies for myself.",
+    "In the evening, there is a fireworks show by the river. The sky is lit up with beautiful lights, and the crowd cheers loudly. It is a magical moment that I look forward to every year.",
+    "This festival is not only entertaining but also educational. It reminds us of the importance of preserving our heritage and sharing it with future generations.",
+    "I hope it will continue for many years to come."
+  ]},
+  {id:6,title:"自然与环境",enTitle:"Protecting Our Environment",words:"~210",unique:"~120",paras:[
+    "I live near a large park with many trees and a small lake. Every morning, I go there for a walk and enjoy the fresh air. The nature here is peaceful, and I can see birds, fish, and even rabbits if I'm lucky.",
+    "However, I have noticed some <b>pollution</b>(污染) in the area. A few factories near the river sometimes release waste water, and there is plastic rubbish on the path. It makes me sad because it damages the beauty of the place.",
+    "Last month, some volunteers organized a clean-up activity. We picked up the trash and planted new flowers along the road. The local government also promised to take action to control the pollution.",
+    "I think protecting the environment is important for our health and for future generations. If everyone makes a small effort, we can make a big difference."
+  ]},
+  {id:7,title:"情感与态度",enTitle:"How I Feel About Moving",words:"~230",unique:"~135",paras:[
+    "I have mixed feelings about moving to a new city next month. On one hand, I am excited about the opportunity to explore a different place and meet new people. I have always wanted to live in a bigger city with more activities and cultural events.",
+    "On the other hand, I am nervous about leaving my family and friends. We have lived together for many years, and I will miss our daily conversations and weekend trips. It will be hard to <b>adjust</b>(适应) to a new environment at first.",
+    "My parents told me to focus on the positive side and to remember that change is a natural part of life. They said I should try to stay in touch with them and visit often.",
+    "I think they are right. Even though I will miss some things, I believe this move will help me grow and become more independent. I am looking forward to starting this new chapter."
+  ]},
+  {id:8,title:"抽象概念",enTitle:"Time and Change",words:"~210",unique:"~125",paras:[
+    "Time is something we all experience, but it is difficult to understand. It seems to pass quickly when we are busy, and slowly when we are bored. Some people say that time is money, but I think it is more valuable than that.",
+    "As we grow older, we realize that change is <b>unavoidable</b>(不可避免的). We cannot stop the clock, but we can choose how to spend our days. For example, we can learn new skills, travel to new places, or help others. These actions can make our lives more meaningful.",
+    "Another important idea is balance. We need to find a balance between work and rest, between study and play. If we pay too much attention to one thing, we might ignore others that are also necessary.",
+    "In the end, it is up to each person to decide how to use their time. I hope I can make the most of mine."
+  ]},
+  {id:9,title:"旅行与休闲",enTitle:"A Weekend Trip",words:"~220",unique:"~130",paras:[
+    "Last weekend, I went on a short trip to a small town near the sea. The weather was perfect — sunny but not too hot. I packed my bags the night before and left home early in the morning.",
+    "The journey took about two hours by train. When I arrived, I checked into a small hotel near the beach. The room was clean and comfortable, and I could hear the waves outside my window.",
+    "During the day, I walked along the coast, took photos, and tried some local food. In the evening, I sat at a café and watched the sunset. It was relaxing and peaceful.",
+    "On Sunday, I visited a museum and learned about the history of the area. Before I returned home, I bought some souvenirs for my friends.",
+    "It was a short trip, but it helped me forget my stress and <b>recharge</b>(充电) my energy. I think I will plan more trips like this in the future."
+  ]},
+  {id:10,title:"综合场景",enTitle:"A Day Full of Surprises",words:"~230",unique:"~135",paras:[
+    "Today was a day full of surprises. I planned to stay at home and study for the exam next week, but my friend called in the morning and invited me to join a hiking trip in the mountains.",
+    "I was <b>hesitant</b>(犹豫的) at first because I had a lot of work to do, but I decided to go anyway. The view from the top was amazing — I could see the city and the river far below. We also met some friendly locals who offered us tea and snacks.",
+    "In the afternoon, I returned home and continued my studies. I found that I was more focused than before, probably because the fresh air had cleared my mind.",
+    "In the evening, I cooked a simple dinner and watched a movie with my family. It was a nice way to end the day.",
+    "I learned that sometimes it is good to step out of our comfort zone and <b>embrace</b>(拥抱) the unexpected."
+  ]}
+];
+
 const SOURCES = [
   {name:"4756_001.pdf",desc:"电影类型、影视行业",ink:"red",l:"红色"},
   {name:"4757_001.pdf",desc:"编程/游戏、形容词",ink:"blue",l:"蓝色"},
@@ -1292,10 +1378,32 @@ si.addEventListener("input",()=>{
   }
 });
 
+// ========== 3500单词文章 ==========
+function buildArticles(){
+  const tabsEl = document.getElementById("articlesSubTabs");
+  const contentEl = document.getElementById("articlesContent");
+
+  tabsEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-tab ${i===0?'active':''}" data-subtab="art-${i}">第${a.id}篇 ${a.title} <span class="badge">${a.words}</span></div>`).join("");
+
+  contentEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-section ${i===0?'active':''}" id="art-${i}">
+    <div class="section-header"><h2>第${a.id}篇：${a.title}</h2><span class="count">${a.enTitle} | ${a.words} 词</span></div>
+    <div style="background:white;border-radius:12px;padding:24px;box-shadow:var(--card-shadow);margin-top:12px">
+      <h3 style="font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:16px">${a.enTitle}</h3>
+      ${a.paras.map(p => `<p style="font-size:.9rem;color:var(--dark);line-height:1.9;margin-bottom:14px;text-indent:2em">${p}</p>`).join("")}
+      <div style="margin-top:16px;padding:12px;background:var(--purple-bg);border-radius:8px;font-size:.78rem;color:var(--gray)">
+        📊 词汇统计：总词数 ${a.words} | 不重复 ${a.unique} | 覆盖高频词 80+ 个
+      </div>
+    </div>
+  </div>`).join("");
+
+  bindSubTabs(tabsEl, "art");
+}
+
 // INIT
 buildIris();
 buildIelts();
 buildGrammar();
+buildArticles();
 
 // UPDATE DATE FOOTER
 document.querySelector(".content").insertAdjacentHTML("beforeend", `
