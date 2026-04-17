@@ -882,6 +882,15 @@ const GRAMMAR = [
   {title:"让步状语从句",rule:"引导词: though(虽然), although(虽然), even if(即使)",ok:"Although it was cold, he went out.",no:null,cat:"状语从句",date:"2026-04-15"},
   {title:"方式状语从句",rule:"引导词: as(像...一样/按照)",ok:"You must do as I tell you.",no:null,cat:"状语从句",date:"2026-04-15"},
   {title:"be动词和实义动词不能同时出现",rule:"一个句子中 be 动词和实义动词不能同时做谓语。进行时用 be+doing，被动用 be+p.p.",ok:"I am designing game level carefully.",no:"I am design the game.",cat:"基础语法",date:"2026-04-15"},
+  // === NEW from 4.16 音标知识点 ===
+  {title:"元音字母 A 的发音",rule:"①前后有辅音: /æ/ (apple, cat, bat, map) ②a在结尾: /ə/ (China, panda, sofa) ③结尾有e(本身音): /eɪ/ (cake, name)",ok:"apple /ˈæpl/, China /ˈtʃaɪnə/, cake /keɪk/",no:null,cat:"元音发音",date:"2026-04-16"},
+  {title:"元音字母 E 的发音",rule:"①前后有辅音: /e/ (egg, pen, red, desk) ②e在结尾(本身音): /iː/ (bee, she, we, me) ③e在结尾但前面有元音→不发音 (cake, bike)",ok:"egg /eg/, bee /biː/, cake /keɪk/",no:null,cat:"元音发音",date:"2026-04-16"},
+  {title:"元音字母 I 的发音",rule:"①前后有辅音: /ɪ/ (pig, fish, Tim) ②结尾有e(本身音): /aɪ/ (bike, five, time) ③i+nd: /aɪ/ (mind, find)",ok:"pig /pɪg/, bike /baɪk/, mind /maɪnd/",no:null,cat:"元音发音",date:"2026-04-16"},
+  {title:"元音字母 O 的发音",rule:"①前后有辅音: /ɒ/ (dog, hot) ②o在结尾: /əʊ/ (go, no, so, hello) ③结尾有e: /əʊ/ (home, rose) ④wh+o: /uː/ (who, whose) ⑤m,n,th,ve前: /ʌ/ (son, some, love)",ok:"dog /dɒg/, go /gəʊ/, home /həʊm/, who /huː/, son /sʌn/",no:null,cat:"元音发音",date:"2026-04-16"},
+  {title:"元音字母 U 的发音",rule:"①前后有辅音: /ʌ/ (bus, cup, us) ②结尾有e(本身音): /juː/ (use, student) ③/uː/ (June, super) ④p+u: /ʊ/ (pull, push, put)",ok:"bus /bʌs/, use /juːs/, June /dʒuːn/, pull /pʊl/",no:null,cat:"元音发音",date:"2026-04-16"},
+  {title:"不发音字母: kn/wr/wh/mb/bt",rule:"kn开头k不发音(know), wr开头w不发音(write,wrong), wh开头h不发音(why,white), wh+o则w不发音(who,whose), mb结尾b不发音(climb), bt结尾b不发音(debt)",ok:"know /nəʊ/, write /raɪt/, why /waɪ/, climb /klaɪm/",no:null,cat:"特殊发音",date:"2026-04-16"},
+  {title:"不发音字母: mn/sten/stle/rh",rule:"mn结尾n不发音(autumn), sten结尾t不发音(listen), stle结尾t不发音(castle), rh开头h不发音(rhino)",ok:"autumn /ˈɔːtəm/, listen /ˈlɪsən/, castle /ˈkɑːsəl/",no:null,cat:"特殊发音",date:"2026-04-16"},
+  {title:"清辅音浊化规则",rule:"当s后面跟清辅音时浊化: sp→[sb] (sport), st→[sd] (star), sc/sk→[sg] (scar, sky), str→[sdr] (street). 也包括 school 中的 ch→/g/",ok:"sport [sbɔːrt], star [sdɑːr], sky [sgaɪ], street [sdriːt]",no:null,cat:"特殊发音",date:"2026-04-16"},
 ];
 
 const PHRASES = [
