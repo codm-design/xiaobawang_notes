@@ -292,41 +292,9 @@
 </div>
 
 
-<div class="review-panel" id="reviewPanel" onclick="if(event.target===this)this.classList.remove('show')">
-  <div class="review-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">📋 复习清单</h2>
-      <button onclick="document.getElementById('reviewPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
-    </div>
-    <div id="reviewList"></div>
-    <div style="margin-top:16px;display:flex;gap:8px">
-      <button onclick="exportUnknown()" style="flex:1;padding:10px;border-radius:8px;border:1.5px solid var(--purple);background:var(--purple-bg);color:var(--purple);font-size:.82rem;font-weight:600;cursor:pointer">📥 导出不认识的词</button>
-      <button onclick="document.getElementById('reviewPanel').classList.remove('show')" style="flex:1;padding:10px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-size:.82rem;font-weight:600;cursor:pointer">关闭</button>
-    </div>
-  </div>
-</div>
-<div class="review-panel" id="quizPanel" onclick="if(event.target===this)this.classList.remove('show')">
-  <div class="review-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">🎯 随机测试</h2>
-      <button onclick="document.getElementById('quizPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
-    </div>
-    <div id="quizContent"></div>
-  </div>
-</div>
-<div class="review-panel" id="syncPanel" onclick="if(event.target===this)this.classList.remove('show')">
-  <div class="review-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <h2 style="font-size:1.1rem;font-weight:800;color:var(--purple)">💾 数据同步</h2>
-      <button onclick="document.getElementById('syncPanel').classList.remove('show')" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button>
-    </div>
-    <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px">导出学习进度，在其他设备导入恢复。</p>
-    <button onclick="exportData()" style="width:100%;padding:12px;border-radius:8px;border:none;background:var(--purple);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer;margin-bottom:8px">📤 导出数据</button>
-    <label style="display:block;width:100%;padding:12px;border-radius:8px;border:2px dashed #C4B5FD;text-align:center;font-size:.85rem;color:var(--purple);cursor:pointer;font-weight:600">
-      📥 导入数据 <input type="file" accept=".json" onchange="importData(event)" style="display:none">
-    </label>
-  </div>
-</div>
+
+
+
 
 <!-- TOOLBAR -->
 <div class="toolbar">
