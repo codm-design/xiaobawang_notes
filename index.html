@@ -123,6 +123,42 @@
     .vocab-grid{grid-template-columns:1fr}.source-grid{grid-template-columns:1fr}
     .big-tab{font-size:.85rem;padding:12px 6px}.big-tab .icon{font-size:1.1rem}
   }
+
+  /* DARK MODE */
+  body.dark{--dark:#E5E7EB;--gray:#9CA3AF;--gray-light:#6B7280;--bg:#111827;--white:#1F2937;--card-shadow:0 1px 3px rgba(0,0,0,.3);--card-hover:0 10px 25px rgba(124,58,237,.2);--purple-bg:#1E1B4B;--purple-bg2:#312E81}
+  body.dark{background:#111827;color:#E5E7EB}
+  body.dark .hero{background:linear-gradient(135deg,#312E81 0%,#1E1B4B 100%)}
+  body.dark .big-tabs{background:#1F2937;border-color:#374151}
+  body.dark .big-tab{color:#9CA3AF}
+  body.dark .big-tab.active{color:var(--purple);background:#312E81}
+  body.dark .sub-tabs{background:#1F2937;border-color:#374151}
+  body.dark .sub-tab{color:#9CA3AF}
+  body.dark .search-bar input{background:#374151;border-color:#4B5563;color:#E5E7EB}
+  body.dark .vocab-card{background:#1F2937;border-color:#374151}
+  body.dark .grammar-card{background:#1F2937;border-color:#374151}
+  body.dark .phrase-table{background:#1F2937}
+  body.dark .phrase-table th{background:#312E81}
+  body.dark .phrase-table td{border-color:#374151;color:#D1D5DB}
+  body.dark .source-card{background:#1F2937}
+  body.dark .content{background:#111827}
+  body.dark .art-btn{background:#312E81!important;color:#C4B5FD!important}
+
+  /* TOOLBAR */
+  .toolbar{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:999}
+  .tool-btn{width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;font-size:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .tool-btn:hover{transform:scale(1.1)}
+
+  /* WORD MARK */
+  .word-mark{display:inline-block;cursor:pointer;border-radius:3px;transition:background .2s}
+  .word-mark.known{background:#D1FAE5;color:#065F46}
+  .word-mark.unknown{background:#FEE2E2;color:#991B1B}
+
+  /* PROGRESS BAR */
+  .progress-wrap{max-width:1200px;margin:8px auto;padding:0 20px}
+  .progress-bar{height:6px;background:#E5E7EB;border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;background:var(--purple);border-radius:3px;transition:width .5s}
+  .progress-text{font-size:.7rem;color:var(--gray-light);margin-top:4px;text-align:right}
+
 </style>
 </head>
 <body>
@@ -150,6 +186,15 @@
 <div class="search-bar">
   <input type="text" id="searchInput" placeholder="🔍 搜索词汇、音标、释义、语法...">
   <div class="search-count" id="searchCount"></div>
+
+<div class="progress-wrap">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:.75rem;font-weight:600;color:var(--gray)">📊 学习进度</span>
+    <span class="progress-text" id="progressText">0%</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+</div>
+
 </div>
 
 <div class="content">
@@ -180,7 +225,15 @@
 
 </div>
 
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <button class="tool-btn" id="darkToggle" onclick="toggleDark()" title="深色模式" style="background:#1F2937;color:#FCD34D">🌙</button>
+  <button class="tool-btn" id="transToggle" onclick="toggleTranslation()" title="隐藏/显示翻译" style="background:var(--purple);color:#fff">译</button>
+  <button class="tool-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部" style="background:var(--purple);color:#fff">↑</button>
+</div>
 <script>
+
 // ============================================================
 // TTS PRONUNCIATION (Web Speech API)
 // ============================================================
@@ -1127,7 +1180,7 @@ function vocabCard(w){
   const dt = w.date?`<div style="font-size:.62rem;color:#C4B5FD;margin-top:6px">📅 ${w.date}</div>`:"";
   const ss = `${w.en} ${w.zh} ${(w.defs||[]).join(" ")} ${(w.exam||[]).join(" ")} ${w.uk||""} ${w.us||""} ${w.past||""} ${w.plural||""} ${w.date||""}`;
   return `<div class="vocab-card" data-search="${ss.replace(/"/g,"'")}" data-sub="${w.sub||w.cat}">
-    <div class="card-top"><div class="en">${w.en}</div><a class="dict-link" href="${dictUrl(w.en)}" target="_blank">🔍 词典</a></div>
+    <div class="card-top"><div class="en">${w.en}</div><div style="display:flex;gap:4px;align-items:center"><button onclick="event.stopPropagation();markWord('${word}','known')" style="font-size:.6rem;padding:2px 6px;border-radius:4px;border:1px solid #059669;background:#ECFDF5;color:#059669;cursor:pointer" title="已掌握">✓</button><button onclick="event.stopPropagation();markWord('${word}','unknown')" style="font-size:.6rem;padding:2px 6px;border-radius:4px;border:1px solid #DC2626;background:#FEF2F2;color:#DC2626;cursor:pointer" title="不认识">✗</button><a class="dict-link" href="${dictUrl(w.en)}" target="_blank">🔍</a></div></div>
     ${ph}${df}${tagH(w.tag)}${examH(w.exam)}${w.note?`<div class="note">${w.note}</div>`:""}${formsH(w)}${dt}
   </div>`;
 }
@@ -1273,7 +1326,7 @@ function buildIelts(){
             ${p.answer.map(a => `
               <div style="padding:8px 0;border-bottom:1px solid #F3F4F6">
                 <div style="font-size:.88rem;color:var(--dark);line-height:1.6">${a.en}</div>
-                <div style="font-size:.78rem;color:var(--gray-light);margin-top:2px">${a.zh}</div>
+                <div class="ielts-zh" style="font-size:.78rem;color:var(--gray-light);margin-top:2px">${a.zh}</div>
               </div>
             `).join("")}
           </div>
@@ -1385,7 +1438,6 @@ function buildArticles(){
   const tabsEl = document.getElementById("articlesSubTabs");
   const contentEl = document.getElementById("articlesContent");
 
-  // 使用网格选择器而不是 tab，彻底避免溢出问题
   tabsEl.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;padding:12px 0;width:100%">
     ${ARTICLES.map((a,i) => `
       <div class="art-btn ${i===0?'art-btn-active':''}" data-idx="${i}" onclick="switchArticle(${i})" style="
@@ -1399,13 +1451,22 @@ function buildArticles(){
   </div>`;
 
   contentEl.innerHTML = ARTICLES.map((a,i) => `<div class="art-section" id="art-sec-${i}" style="display:${i===0?'block':'none'}">
-    <div class="section-header"><h2>第${a.id}篇：${a.title}</h2><span class="count">${a.enTitle} | ${a.words} 词</span></div>
+    <div class="section-header">
+      <h2>第${a.id}篇：${a.title}</h2>
+      <span class="count">${a.enTitle} | ${a.words} 词</span>
+    </div>
+    <div style="margin:8px 0;display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="speakArticle(${i})" style="padding:6px 14px;border-radius:6px;border:1.5px solid var(--purple);background:var(--purple-bg);color:var(--purple);font-size:.78rem;font-weight:600;cursor:pointer">🔊 朗读全文</button>
+      <button onclick="speakArticle(${i},'uk')" style="padding:6px 14px;border-radius:6px;border:1.5px solid #3B82F6;background:#EFF6FF;color:#3B82F6;font-size:.78rem;font-weight:600;cursor:pointer">🇬🇧 英式</button>
+      <button onclick="speakArticle(${i},'us')" style="padding:6px 14px;border-radius:6px;border:1.5px solid #F59E0B;background:#FFFBEB;color:#92400E;font-size:.78rem;font-weight:600;cursor:pointer">🇺🇸 美式</button>
+      <button onclick="speechSynthesis.cancel()" style="padding:6px 14px;border-radius:6px;border:1.5px solid var(--red);background:#FEF2F2;color:var(--red);font-size:.78rem;font-weight:600;cursor:pointer">⏹ 停止</button>
+    </div>
     <div style="background:white;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);margin-top:12px">
       <h3 style="font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:16px">${a.enTitle}</h3>
-      ${a.paras.map(p => `
-        <div style="margin-bottom:16px;padding:14px;background:#FAFAFA;border-radius:10px;border-left:3px solid var(--purple)">
-          <div style="font-size:.9rem;color:var(--dark);line-height:1.8">${p.en}</div>
-          <div style="font-size:.82rem;color:var(--gray);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed #E5E7EB">${p.zh}</div>
+      ${a.paras.map((p,j) => `
+        <div style="margin-bottom:16px;padding:14px;background:#FAFAFA;border-radius:10px;border-left:3px solid var(--purple)" class="art-para" data-art="${i}" data-para="${j}">
+          <div style="font-size:.9rem;color:var(--dark);line-height:1.8" onclick="speakText(this.textContent)">${p.en}</div>
+          <div class="art-zh" style="font-size:.82rem;color:var(--gray);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed #E5E7EB">${p.zh}</div>
         </div>
       `).join("")}
     </div>
@@ -1413,7 +1474,6 @@ function buildArticles(){
 }
 
 function switchArticle(idx){
-  // Update button styles
   document.querySelectorAll(".art-btn").forEach((btn,i) => {
     if(i===idx){
       btn.style.background="var(--purple)";btn.style.color="#fff";btn.style.border="1.5px solid var(--purple)";
@@ -1421,10 +1481,88 @@ function switchArticle(idx){
       btn.style.background="var(--purple-bg)";btn.style.color="var(--purple)";btn.style.border="1.5px solid transparent";
     }
   });
-  // Show/hide sections
   document.querySelectorAll(".art-section").forEach((sec,i) => {
     sec.style.display = i===idx?"block":"none";
   });
+  speechSynthesis.cancel();
+}
+
+function speakArticle(idx, accent){
+  const a = ARTICLES[idx];
+  const fullText = a.paras.map(p => p.en.replace(/<[^>]*>/g,"")).join(". ");
+  const u = new SpeechSynthesisUtterance(fullText);
+  u.lang = accent==="uk"?"en-GB":"en-US";
+  u.rate = 0.82;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+
+
+
+// ========== DARK MODE ==========
+function toggleDark(){
+  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("darkMode", isDark);
+  document.getElementById("darkToggle").textContent = isDark ? "☀️" : "🌙";
+}
+if(localStorage.getItem("darkMode")==="true"){
+  document.body.classList.add("dark");
+  document.getElementById("darkToggle").textContent = "☀️";
+}
+
+// ========== HIDE/SHOW TRANSLATION ==========
+let transVisible = true;
+function toggleTranslation(){
+  transVisible = !transVisible;
+  // Article translations
+  document.querySelectorAll(".art-zh").forEach(el => {
+    el.style.display = transVisible ? "block" : "none";
+  });
+  // IELTS sample translations  
+  document.querySelectorAll(".ielts-zh").forEach(el => {
+    el.style.display = transVisible ? "block" : "none";
+  });
+  document.getElementById("transToggle").style.opacity = transVisible ? "1" : "0.5";
+}
+
+// ========== WORD MARKING (localStorage) ==========
+const wordStatus = JSON.parse(localStorage.getItem("wordStatus") || "{}");
+function markWord(word, status){
+  if(wordStatus[word] === status) delete wordStatus[word];
+  else wordStatus[word] = status;
+  localStorage.setItem("wordStatus", JSON.stringify(wordStatus));
+  updateWordMarks();
+  updateProgress();
+}
+function updateWordMarks(){
+  document.querySelectorAll(".word-mark").forEach(el => {
+    const w = el.dataset.word;
+    el.classList.remove("known","unknown");
+    if(wordStatus[w]) el.classList.add(wordStatus[w]);
+  });
+}
+
+// ========== PROGRESS TRACKING ==========
+function updateProgress(){
+  const totalWords = ALL_VOCAB.length + IELTS_VOCAB.length;
+  const knownCount = Object.values(wordStatus).filter(s=>s==="known").length;
+  const pct = totalWords > 0 ? Math.round(knownCount / totalWords * 100) : 0;
+  const fill = document.getElementById("progressFill");
+  const text = document.getElementById("progressText");
+  if(fill) fill.style.width = pct + "%";
+  if(text) text.textContent = knownCount + " / " + totalWords + " 已掌握 (" + pct + "%)";
+}
+updateProgress();
+
+// ========== TTS for articles ==========
+function speakText(text, accent){
+  const u = new SpeechSynthesisUtterance(text.replace(/<[^>]*>/g,""));
+  u.lang = accent === "uk" ? "en-GB" : "en-US";
+  u.rate = 0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
 }
 
 // INIT
@@ -1440,6 +1578,6 @@ document.querySelector(".content").insertAdjacentHTML("beforeend", `
     <div style="font-size:.7rem;color:#D1D5DB;margin-top:4px">共 630 条 &middot; 来自 10+10 份扫描件 + 3 份课程文档 &middot; 小霸王 English Study Notes</div>
   </div>
 `);
+
 </script>
-</body>
-</html>
+</body></html>
