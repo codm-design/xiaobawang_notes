@@ -1277,11 +1277,12 @@ function buildIris(){
   const contentEl = document.getElementById("irisContent");
 
   // Add dialogue, exercises, phrase, grammar & source tabs
-  const allTabs = [...cats, "场景对话", "被动语态练习", "语法笔记", "常用短语", "扫描来源"];
+  const allTabs = [...cats, "场景对话", "被动语态练习", "发音规则", "语法笔记", "常用短语", "扫描来源"];
   tabsEl.innerHTML = allTabs.map((c,i) => {
     let cnt = 0;
     if(c==="场景对话") cnt=DIALOGUES.length;
     else if(c==="被动语态练习") cnt=EXERCISES.length;
+    else if(c==="发音规则") cnt=GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音"||g.cat==="发音规则").length;
     else if(c==="常用短语") cnt=PHRASES.length;
     else if(c==="扫描来源") cnt=SOURCES.length;
     else if(c==="语法笔记") cnt=GRAMMAR.length;
@@ -1331,9 +1332,26 @@ function buildIris(){
     `).join("")}
   </div>`;
 
-  // Grammar section inside Iris
-  const gramIdx = exIdx + 1;
-  const gramCats = [...new Set(GRAMMAR.map(g=>g.cat))];
+  // Pronunciation rules section (发音规则)
+  const pronIdx = exIdx + 1;
+  const pronRules = GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音"||g.cat==="发音规则");
+  const pronCats = [...new Set(pronRules.map(g=>g.cat))];
+  html += `<div class="sub-section" id="iris-${pronIdx}">
+    <div class="section-header"><h2>🔤 发音规则</h2></div>
+    ${pronCats.map(pc => {
+      const items = pronRules.filter(g=>g.cat===pc);
+      return `<h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin:20px 0 10px">${pc}</h3>
+      ${items.map(g=>`<div class="grammar-card" data-search="${g.title} ${g.rule} ${g.ok||''} ${g.no||''}">
+        <h3>${g.title}</h3><div class="rule">${g.rule}</div>
+        ${g.no?`<div class="ex no"><span class="m">✗</span>${g.no}</div>`:''}
+        ${g.ok?`<div class="ex ok"><span class="m">✓</span>${g.ok}</div>`:''}
+      </div>`).join("")}`;
+    }).join("")}
+  </div>`;
+
+  // Grammar section inside Iris (exclude pronunciation rules)
+  const gramIdx = pronIdx + 1;
+  const gramCats = [...new Set(GRAMMAR.filter(g=>g.cat!=="元音发音"&&g.cat!=="特殊发音"&&g.cat!=="发音规则").map(g=>g.cat))];
   html += `<div class="sub-section" id="iris-${gramIdx}">
     <div class="section-header"><h2>语法笔记</h2></div>
     ${gramCats.map(gc => {
