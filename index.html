@@ -1385,12 +1385,9 @@ function buildArticles(){
   const tabsEl = document.getElementById("articlesSubTabs");
   const contentEl = document.getElementById("articlesContent");
 
-  // Make tabs scrollable
-  tabsEl.style.overflowX = "auto";
-  tabsEl.style.whiteSpace = "nowrap";
-  tabsEl.style.flexWrap = "nowrap";
-
-  tabsEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-tab ${i===0?'active':''}" data-subtab="art-${i}" style="flex-shrink:0">第${a.id}篇 ${a.title}</div>`).join("");
+  tabsEl.innerHTML = ARTICLES.map((a,i) =>
+    `<div class="sub-tab ${i===0?'active':''}" data-subtab="art-${i}">${a.title} <span class="badge">${a.words.replace('~','')}</span></div>`
+  ).join("");
 
   contentEl.innerHTML = ARTICLES.map((a,i) => `<div class="sub-section ${i===0?'active':''}" id="art-${i}">
     <div class="section-header"><h2>第${a.id}篇：${a.title}</h2><span class="count">${a.enTitle} | ${a.words} 词</span></div>
@@ -1404,6 +1401,9 @@ function buildArticles(){
       `).join("")}
     </div>
   </div>`).join("");
+
+  bindSubTabs(tabsEl, "art");
+}
 
   bindSubTabs(tabsEl, "art");
 }
