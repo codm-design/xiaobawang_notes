@@ -1456,16 +1456,17 @@ function buildArticles(){
       <span class="count">${a.enTitle} | ${a.words} 词</span>
     </div>
     <div style="margin:8px 0;display:flex;gap:8px;flex-wrap:wrap">
-      <button onclick="speakArticle(${i})" style="padding:6px 14px;border-radius:6px;border:1.5px solid var(--purple);background:var(--purple-bg);color:var(--purple);font-size:.78rem;font-weight:600;cursor:pointer">🔊 朗读全文</button>
-      <button onclick="speakArticle(${i},'uk')" style="padding:6px 14px;border-radius:6px;border:1.5px solid #3B82F6;background:#EFF6FF;color:#3B82F6;font-size:.78rem;font-weight:600;cursor:pointer">🇬🇧 英式</button>
-      <button onclick="speakArticle(${i},'us')" style="padding:6px 14px;border-radius:6px;border:1.5px solid #F59E0B;background:#FFFBEB;color:#92400E;font-size:.78rem;font-weight:600;cursor:pointer">🇺🇸 美式</button>
-      <button onclick="speechSynthesis.cancel()" style="padding:6px 14px;border-radius:6px;border:1.5px solid var(--red);background:#FEF2F2;color:var(--red);font-size:.78rem;font-weight:600;cursor:pointer">⏹ 停止</button>
+      <button onclick="speechSynthesis.cancel()" style="padding:6px 14px;border-radius:6px;border:1.5px solid var(--red);background:#FEF2F2;color:var(--red);font-size:.78rem;font-weight:600;cursor:pointer">⏹ 停止朗读</button>
     </div>
     <div style="background:white;border-radius:12px;padding:20px;box-shadow:var(--card-shadow);margin-top:12px">
       <h3 style="font-size:1.1rem;font-weight:800;color:var(--purple);margin-bottom:16px">${a.enTitle}</h3>
       ${a.paras.map((p,j) => `
         <div style="margin-bottom:16px;padding:14px;background:#FAFAFA;border-radius:10px;border-left:3px solid var(--purple)" class="art-para" data-art="${i}" data-para="${j}">
-          <div style="font-size:.9rem;color:var(--dark);line-height:1.8" onclick="speakText(this.textContent)">${p.en}</div>
+          <div style="display:flex;gap:6px;margin-bottom:6px">
+            <button onclick="speakText(this.parentElement.nextElementSibling.textContent,'uk')" style="padding:2px 8px;border-radius:4px;border:1px solid #3B82F6;background:#EFF6FF;color:#3B82F6;font-size:.65rem;font-weight:600;cursor:pointer">🔊 UK</button>
+            <button onclick="speakText(this.parentElement.nextElementSibling.textContent,'us')" style="padding:2px 8px;border-radius:4px;border:1px solid #F59E0B;background:#FFFBEB;color:#92400E;font-size:.65rem;font-weight:600;cursor:pointer">🔊 US</button>
+          </div>
+          <div style="font-size:.9rem;color:var(--dark);line-height:1.8">${p.en}</div>
           <div class="art-zh" style="font-size:.82rem;color:var(--gray);line-height:1.7;margin-top:6px;padding-top:6px;border-top:1px dashed #E5E7EB">${p.zh}</div>
         </div>
       `).join("")}
