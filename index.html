@@ -882,15 +882,54 @@ const GRAMMAR = [
   {title:"让步状语从句",rule:"引导词: though(虽然), although(虽然), even if(即使)",ok:"Although it was cold, he went out.",no:null,cat:"状语从句",date:"2026-04-15"},
   {title:"方式状语从句",rule:"引导词: as(像...一样/按照)",ok:"You must do as I tell you.",no:null,cat:"状语从句",date:"2026-04-15"},
   {title:"be动词和实义动词不能同时出现",rule:"一个句子中 be 动词和实义动词不能同时做谓语。进行时用 be+doing，被动用 be+p.p.",ok:"I am designing game level carefully.",no:"I am design the game.",cat:"基础语法",date:"2026-04-15"},
-  // === NEW from 4.16 音标知识点 ===
-  {title:"元音字母 A 的发音",rule:"①前后有辅音: /æ/ (apple, cat, bat, map) ②a在结尾: /ə/ (China, panda, sofa) ③结尾有e(本身音): /eɪ/ (cake, name)",ok:"apple /ˈæpl/, China /ˈtʃaɪnə/, cake /keɪk/",no:null,cat:"元音发音",date:"2026-04-16"},
-  {title:"元音字母 E 的发音",rule:"①前后有辅音: /e/ (egg, pen, red, desk) ②e在结尾(本身音): /iː/ (bee, she, we, me) ③e在结尾但前面有元音→不发音 (cake, bike)",ok:"egg /eg/, bee /biː/, cake /keɪk/",no:null,cat:"元音发音",date:"2026-04-16"},
-  {title:"元音字母 I 的发音",rule:"①前后有辅音: /ɪ/ (pig, fish, Tim) ②结尾有e(本身音): /aɪ/ (bike, five, time) ③i+nd: /aɪ/ (mind, find)",ok:"pig /pɪg/, bike /baɪk/, mind /maɪnd/",no:null,cat:"元音发音",date:"2026-04-16"},
-  {title:"元音字母 O 的发音",rule:"①前后有辅音: /ɒ/ (dog, hot) ②o在结尾: /əʊ/ (go, no, so, hello) ③结尾有e: /əʊ/ (home, rose) ④wh+o: /uː/ (who, whose) ⑤m,n,th,ve前: /ʌ/ (son, some, love)",ok:"dog /dɒg/, go /gəʊ/, home /həʊm/, who /huː/, son /sʌn/",no:null,cat:"元音发音",date:"2026-04-16"},
-  {title:"元音字母 U 的发音",rule:"①前后有辅音: /ʌ/ (bus, cup, us) ②结尾有e(本身音): /juː/ (use, student) ③/uː/ (June, super) ④p+u: /ʊ/ (pull, push, put)",ok:"bus /bʌs/, use /juːs/, June /dʒuːn/, pull /pʊl/",no:null,cat:"元音发音",date:"2026-04-16"},
-  {title:"不发音字母: kn/wr/wh/mb/bt",rule:"kn开头k不发音(know), wr开头w不发音(write,wrong), wh开头h不发音(why,white), wh+o则w不发音(who,whose), mb结尾b不发音(climb), bt结尾b不发音(debt)",ok:"know /nəʊ/, write /raɪt/, why /waɪ/, climb /klaɪm/",no:null,cat:"特殊发音",date:"2026-04-16"},
-  {title:"不发音字母: mn/sten/stle/rh",rule:"mn结尾n不发音(autumn), sten结尾t不发音(listen), stle结尾t不发音(castle), rh开头h不发音(rhino)",ok:"autumn /ˈɔːtəm/, listen /ˈlɪsən/, castle /ˈkɑːsəl/",no:null,cat:"特殊发音",date:"2026-04-16"},
-  {title:"清辅音浊化规则",rule:"当s后面跟清辅音时浊化: sp→[sb] (sport), st→[sd] (star), sc/sk→[sg] (scar, sky), str→[sdr] (street). 也包括 school 中的 ch→/g/",ok:"sport [sbɔːrt], star [sdɑːr], sky [sgaɪ], street [sdriːt]",no:null,cat:"特殊发音",date:"2026-04-16"},
+  // === 4.16 音标知识点 - 按原始笔记格式 ===
+  {title:"A",rule:"VOWEL_TABLE",cat:"元音发音",date:"2026-04-16",rows:[
+    {cond:"前后有辅音",ipa:"/æ/",words:"apple /ˈæpl/、cat /kæt/、bat、map、an 安、en 嗯"},
+    {cond:"a 在结尾",ipa:"/ə/",words:"China /ˈtʃaɪnə/、panda /ˈpændə/、sofa /ˈsoʊ.fə/"},
+    {cond:"e 在结尾 (本身音)",ipa:"/eɪ/",words:"cake /keɪk/、name /neɪm/"}
+  ]},
+  {title:"E",rule:"VOWEL_TABLE",cat:"元音发音",date:"2026-04-16",rows:[
+    {cond:"前后有辅音",ipa:"/e/",words:"egg /eg/、pen /pen/、red、desk"},
+    {cond:"e 在结尾 (本身音)",ipa:"/iː/",words:"bee /biː/、she /ʃiː/、we、me、see"},
+    {cond:"e 在结尾但前面有元音 → 不发音",ipa:"—",words:"cake /keɪk/、bike /baɪk/"}
+  ]},
+  {title:"I",rule:"VOWEL_TABLE",cat:"元音发音",date:"2026-04-16",rows:[
+    {cond:"前后有辅音",ipa:"/ɪ/",words:"pig /pɪg/、fish /fɪʃ/、Tim"},
+    {cond:"结尾有 e (本身音)",ipa:"/aɪ/",words:"bike /baɪk/、five /faɪv/、time"},
+    {cond:"i + nd",ipa:"/aɪ/",words:"mind /maɪnd/、find /faɪnd/"}
+  ]},
+  {title:"O",rule:"VOWEL_TABLE",cat:"元音发音",date:"2026-04-16",rows:[
+    {cond:"前后有辅音",ipa:"/ɒ/",words:"dog /dɒg/、hot /hɒt/"},
+    {cond:"o 在结尾",ipa:"/əʊ/",words:"go /gəʊ/、no /nəʊ/、so /səʊ/、hello /həˈləʊ/"},
+    {cond:"结尾有 e (本身音)",ipa:"/əʊ/",words:"home /həʊm/、rose /roʊz/、clothes /kloʊðz/"},
+    {cond:"wh + o",ipa:"/uː/",words:"who /huː/、whose /huːz/"},
+    {cond:"m, n, th, ve 前",ipa:"/ʌ/",words:"son /sʌn/、some /sʌm/、love /lʌv/"}
+  ]},
+  {title:"U",rule:"VOWEL_TABLE",cat:"元音发音",date:"2026-04-16",rows:[
+    {cond:"前后有辅音",ipa:"/ʌ/",words:"bus /bʌs/、cup /kʌp/、us"},
+    {cond:"结尾有 e (本身音)",ipa:"/juː/",words:"use /juːs/、student /ˈstjuːdnt/"},
+    {cond:"(无特殊条件)",ipa:"/uː/",words:"June /dʒuːn/、super /ˈsuː.pə/"},
+    {cond:"p + u",ipa:"/ʊ/",words:"pull /pʊl/、push /pʊʃ/、put /pʊt/"}
+  ]},
+  {title:"不发音字母组合",rule:"SILENT_TABLE",cat:"特殊发音",date:"2026-04-16",rows:[
+    {cond:"kn 开头，k 不发音",words:"know /nəʊ/"},
+    {cond:"mn 结尾，n 不发音",words:"autumn /ˈɔːtəm/"},
+    {cond:"rh 开头，h 不发音",words:"rhino /ˈraɪ.nəʊ/ 犀牛"},
+    {cond:"mb 结尾，b 不发音",words:"climb /klaɪm/"},
+    {cond:"sten 结尾，t 不发音",words:"listen /ˈlɪsən/"},
+    {cond:"bt 结尾，b 不发音",words:"debt /det/"},
+    {cond:"stle 结尾，t 不发音",words:"castle /ˈkæsəl/"},
+    {cond:"wr 开头，w 不发音",words:"write /raɪt/、wrong /rɒŋ/"},
+    {cond:"wh 开头，h 不发音",words:"why /waɪ/、white /waɪt/"},
+    {cond:"wh + o，w 不发音",words:"who /huː/、whose /huːz/"}
+  ]},
+  {title:"清辅音浊化",rule:"VOICING_TABLE",cat:"特殊发音",date:"2026-04-16",rows:[
+    {cond:"sp → [sb]",words:"sport 读作 [sbɔːrt]"},
+    {cond:"st → [sd]",words:"star 读作 [sdɑːr]"},
+    {cond:"sc/sk → [sg]",words:"scar 读作 [sgɑːr]、sky 读作 [sgaɪ]"},
+    {cond:"str → [sdr]",words:"street 读作 [sdriːt]"},
+    {cond:"school 中 ch → /g/",words:"school"}
+  ]},
 ];
 
 const PHRASES = [
@@ -1282,7 +1321,7 @@ function buildIris(){
     let cnt = 0;
     if(c==="场景对话") cnt=DIALOGUES.length;
     else if(c==="被动语态练习") cnt=EXERCISES.length;
-    else if(c==="发音规则") cnt=GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音"||g.cat==="发音规则").length;
+    else if(c==="发音规则") cnt=GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音").length;
     else if(c==="常用短语") cnt=PHRASES.length;
     else if(c==="扫描来源") cnt=SOURCES.length;
     else if(c==="语法笔记") cnt=GRAMMAR.length;
@@ -1332,38 +1371,38 @@ function buildIris(){
     `).join("")}
   </div>`;
 
-  // Pronunciation rules section (发音规则) - 多列紧凑排版
+  // Pronunciation rules section - 按笔记原始格式排版
   const pronIdx = exIdx + 1;
-  const pronRules = GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音"||g.cat==="发音规则");
+  const pronRules = GRAMMAR.filter(g=>g.cat==="元音发音"||g.cat==="特殊发音");
   const pronCats = [...new Set(pronRules.map(g=>g.cat))];
   html += `<div class="sub-section" id="iris-${pronIdx}">
     <div class="section-header"><h2>🔤 发音规则</h2></div>
+    <div style="background:white;border-radius:12px;padding:16px;box-shadow:var(--card-shadow);margin-bottom:16px">
+      <div style="font-size:.85rem;font-weight:700;color:var(--purple);margin-bottom:4px">音标知识点 · 元音</div>
+      <div style="font-size:.78rem;color:var(--gray);line-height:1.6">元音音标：20个 &nbsp; 元音字母：5个（<b>a e i o u</b>）<br><span style="color:var(--red)">e 在结尾，前面的元音发本身音，e 不发音</span></div>
+    </div>
     ${pronCats.map(pc => {
       const items = pronRules.filter(g=>g.cat===pc);
       const icon = pc==="元音发音"?"🅰️":"🔇";
-      return `<div style="margin:16px 0">
-        <h3 style="font-size:.95rem;font-weight:700;color:var(--purple);margin-bottom:10px">${icon} ${pc}</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px">
+      return `<div style="margin:12px 0">
+        <h3 style="font-size:.9rem;font-weight:700;color:var(--purple);margin-bottom:8px">${icon} ${pc}</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:10px">
         ${items.map(g=>{
-          const rules = g.rule.split(/[①②③④⑤]/).filter(r=>r.trim());
-          const examples = (g.ok||"").split(",").map(e=>e.trim()).filter(e=>e);
-          return `<div style="background:white;border-radius:10px;padding:12px;box-shadow:var(--card-shadow);border-left:3px solid var(--purple)" data-search="${g.title} ${g.rule} ${g.ok||''}" class="grammar-card">
-            <div style="font-size:.85rem;font-weight:700;color:var(--purple);margin-bottom:8px">${g.title}</div>
-            ${rules.length > 1 ? rules.map((r,ri) => {
-              const parts = r.split(":");
-              const cond = parts[0]||"";
-              const phon = parts.slice(1).join(":").trim();
-              return `<div style="display:flex;gap:6px;padding:4px 6px;margin:2px 0;border-radius:5px;background:${ri%2===0?'#F5F3FF':'#FAFAFA'};font-size:.78rem">
-                <span style="font-size:.6rem;background:var(--purple);color:#fff;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">${ri+1}</span>
-                <div><span style="color:var(--gray)">${cond.trim()}</span>${phon?` <strong style="color:var(--dark)">${phon}</strong>`:''}</div>
-              </div>`;
-            }).join("") : `<div style="font-size:.8rem;color:var(--dark);line-height:1.7">${g.rule}</div>`}
-            ${examples.length > 0 ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">
-              ${examples.map(ex => {
-                const word = ex.split("/")[0].split("(")[0].trim();
-                return `<span style="padding:2px 8px;background:#D1FAE5;border-radius:4px;font-size:.72rem;color:#065F46;cursor:pointer" onclick="speakText('${word}')">${ex}</span>`;
-              }).join("")}
-            </div>` : ''}
+          if(!g.rows) return '';
+          const isVowel = g.rule==="VOWEL_TABLE";
+          return `<div style="background:white;border-radius:10px;padding:14px;box-shadow:var(--card-shadow);border-top:3px solid var(--purple)" data-search="${g.title} ${g.rows.map(r=>r.cond+' '+r.words+(r.ipa||'')).join(' ')}" class="grammar-card">
+            <div style="font-size:1.2rem;font-weight:800;color:var(--purple);margin-bottom:8px;display:flex;align-items:center;gap:8px">
+              <span style="background:var(--purple);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem">${g.title}</span>
+              元音字母 ${g.title}
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:.78rem">
+              ${g.rows.map((r,ri) => `<tr style="border-bottom:1px solid #F3F4F6">
+                <td style="padding:6px 4px;color:var(--gray);white-space:nowrap;vertical-align:top;width:1%;font-weight:500">${ri+1}.</td>
+                <td style="padding:6px 4px;color:var(--dark);vertical-align:top;min-width:100px"><span style="color:var(--red);font-weight:500">${r.cond}</span></td>
+                ${r.ipa?`<td style="padding:6px 4px;vertical-align:top;white-space:nowrap"><strong style="color:var(--purple);font-size:.85rem">${r.ipa}</strong></td>`:''}
+                <td style="padding:6px 4px;color:var(--dark);font-family:monospace;font-size:.76rem;line-height:1.6">${r.words}</td>
+              </tr>`).join("")}
+            </table>
           </div>`;
         }).join("")}
         </div>
